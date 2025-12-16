@@ -7,6 +7,7 @@
     <meta name="description" content="Harish Footwear - Wholesale distributor of premium footwear brands. Budget Shoe Bazaar with unbeatable wholesale prices.">
     <title>Harish Footwear - Wholesale Distributor</title>
     <style>
+        /* RESTORED ALL ORIGINAL UI STYLES */
         :root {
             --color-primary: #1e3a8a;
             --color-primary-hover: #1e40af;
@@ -21,25 +22,11 @@
             --color-error: #ef4444;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
+        /* RESTORED ALL ORIGINAL ANIMATIONS */
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -58,10 +45,15 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background: 
                 radial-gradient(circle at 20% 50%, rgba(30, 58, 138, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(20, 184, 166, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 60% 40%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
             pointer-events: none;
             z-index: 0;
         }
+
+        @keyframes bgFloat { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
         nav {
             background: var(--color-text);
@@ -70,16 +62,9 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
+        .logo { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { color: white; text-decoration: none; }
-
-        .admin-badge {
-            position: fixed; top: 20px; right: 20px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            color: white; padding: 0.75rem 1.5rem; border-radius: 30px;
-            font-weight: 600; display: none; z-index: 1001; cursor: pointer;
-        }
-        .admin-badge.visible { display: flex; }
+        .nav-links a { color: white; text-decoration: none; transition: 0.3s; }
 
         .hero {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%);
@@ -88,40 +73,47 @@
         .hero::before { content: '👟'; position: absolute; top: 10%; left: 10%; font-size: 4rem; opacity: 0.1; animation: float 6s ease-in-out infinite; }
         .hero::after { content: '👞'; position: absolute; bottom: 10%; right: 10%; font-size: 4rem; opacity: 0.1; animation: float 6s ease-in-out infinite 3s; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; animation: fadeIn 1s ease-out; }
+        .hero p { font-size: 1.2rem; opacity: 0.95; max-width: 600px; margin: 0 auto 2rem; animation: fadeIn 1.2s ease-out; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; position: relative; z-index: 1; }
         .section-title { font-size: 2rem; text-align: center; margin-bottom: 2rem; }
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
 
         .product-card {
             background: white; border: 1px solid var(--color-border);
             border-radius: 12px; overflow: hidden; transition: 0.3s;
-            position: relative; animation: fadeIn 0.6s ease-out;
+            animation: fadeIn 0.6s ease-out; position: relative;
         }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(30, 58, 138, 0.15); }
 
         .product-image {
-            width: 100%; height: 200px; background: #f3f4f6;
+            width: 100%; height: 200px; background: var(--color-surface);
             display: flex; align-items: center; justify-content: center;
-            overflow: hidden; border-bottom: 1px solid #eee;
+            overflow: hidden; border-bottom: 1px solid var(--color-border);
         }
         .product-image img { width: 100%; height: 100%; object-fit: cover; }
         .product-image-emoji { font-size: 3rem; }
 
         .product-info { padding: 1.5rem; }
-        .product-brand { font-size: 0.75rem; font-weight: 700; color: var(--color-text-secondary); text-transform: uppercase; }
-        .product-name { font-size: 1.1rem; margin: 5px 0; }
+        .product-brand { font-size: 0.875rem; color: var(--color-text-secondary); font-weight: 600; text-transform: uppercase; }
+        .product-name { font-size: 1.125rem; font-weight: 600; margin: 0.5rem 0; }
         .product-price { font-size: 1.25rem; color: var(--color-primary); font-weight: 700; margin-top: 10px; }
 
-        /* AI Chat Box */
-        #aiChatButton { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: #3b82f6; color: white; border: none; font-size: 1.5rem; cursor: pointer; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-        #aiChatWidget { display: none; position: fixed; bottom: 90px; right: 20px; width: 320px; background: white; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); z-index: 1000; overflow: hidden; }
+        /* RESTORED AI CHATBOX UI */
+        #aiChatButton { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: #3b82f6; color: white; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        #aiChatWidget { display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); z-index: 1000; overflow: hidden; }
 
         .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
         .modal-content { background: white; border-radius: 12px; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 2rem; }
+        
         .form-control { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid var(--color-border); border-radius: 6px; }
         .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; }
         .btn-primary { background: var(--color-primary); color: white; }
+
+        .admin-badge { position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); color: white; padding: 0.75rem 1.5rem; border-radius: 30px; font-weight: 600; display: none; z-index: 1001; cursor: pointer; }
+        .admin-badge.visible { display: flex; }
 
         footer { background: var(--color-text); color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
     </style>
@@ -141,8 +133,8 @@
     </nav>
 
     <section class="hero" id="home">
-        <h1>Budget Shoe Bazaar ✨</h1>
-        <p>Wholesale distribution of premium footwear brands.</p>
+        <h1 id="heroTitle">Budget Shoe Bazaar: Wholesale Footwear ✨</h1>
+        <p id="heroSubtitle">Explore premium brands like Nike, Adidas, and Puma at unbeatable wholesale prices.</p>
     </section>
 
     <div class="container" id="products">
@@ -151,23 +143,22 @@
     </div>
 
     <section class="container" id="contact">
-        <h2 class="section-title">Contact Us</h2>
-        <form onsubmit="handleContactSubmit(event)" id="contactForm" style="max-width: 600px; margin: 0 auto;">
-            <input type="text" id="cName" class="form-control" placeholder="Your Name" required>
+        <h2 class="section-title">Contact Harish Footwear</h2>
+        <p style="text-align:center; margin-bottom: 2rem;">Call: +91 6393191774</p>
+        <form onsubmit="handleContactSubmit(event)" style="max-width: 600px; margin: 0 auto;">
+            <input type="text" id="cName" class="form-control" placeholder="First Name" required>
             <input type="email" id="cEmail" class="form-control" placeholder="Email" required>
-            <textarea id="cMessage" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+            <textarea id="cMessage" class="form-control" rows="5" placeholder="Message" required></textarea>
             <button type="submit" class="btn btn-primary">Send Message</button>
         </form>
-        <div id="contactAlert" style="text-align: center; margin-top: 15px;"></div>
+        <div id="contactAlert" style="margin-top: 1rem; text-align: center;"></div>
     </section>
-
-    <footer>© 2025 Harish Footwear. All rights reserved.</footer>
 
     <button id="aiChatButton" onclick="toggleAiChat()">💬</button>
     <div id="aiChatWidget">
-        <div style="background: #3b82f6; color: white; padding: 1rem;">Harish Assistant 🤖</div>
+        <div style="background: #3b82f6; color: white; padding: 1rem; font-weight: 600;">Harish Assistant 🤖</div>
         <div id="aiMessages" style="height: 250px; overflow-y: auto; padding: 1rem; font-size: 0.9rem; background: #f9fafb;">
-            <div>👋 Hello! Ask me about bulk orders or our footwear collection.</div>
+            <div>👋 Hi! I can help you with product info, bulk orders, and location. How can I assist you?</div>
         </div>
         <div style="padding: 1rem; border-top: 1px solid #eee;">
             <input type="text" id="aiInput" style="width: 75%; padding: 5px;" placeholder="Type here...">
@@ -184,37 +175,22 @@
                 <form onsubmit="handleLogin(event)">
                     <input type="text" id="username" class="form-control" placeholder="Username" required>
                     <input type="password" id="password" class="form-control" placeholder="Password" required>
-                    <button type="submit" class="btn btn-primary" style="width:100%">Login</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
                 </form>
             </div>
-            <div id="dashboardSection" style="display:none;">
-                <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
-                    <button class="btn btn-primary" onclick="switchTab('list')">View Products</button>
-                    <button class="btn btn-primary" onclick="switchTab('add')">Add New</button>
-                    <button class="btn btn-danger" onclick="location.reload()">Logout</button>
-                </div>
-
-                <div id="listTab" class="tab-content">
-                    <table style="width:100%; border-collapse: collapse;">
-                        <thead><tr style="text-align:left;"><th>Brand</th><th>Name</th><th>Price</th><th>Action</th></tr></thead>
-                        <tbody id="adminProductsList"></tbody>
-                    </table>
-                </div>
-
-                <div id="addTab" class="tab-content" style="display:none;">
-                    <h3>Add New Product</h3>
-                    <form onsubmit="handleAddProduct(event)">
-                        <input type="text" id="pBrand" class="form-control" placeholder="Brand (Nike, Adidas...)">
-                        <input type="text" id="pName" class="form-control" placeholder="Shoe Name">
-                        <input type="number" id="pPrice" class="form-control" placeholder="Wholesale Price (₹)">
-                        <input type="url" id="pImage" class="form-control" placeholder="Image URL (https://...)">
-                        <input type="text" id="pEmoji" class="form-control" value="👟">
-                        <textarea id="pDesc" class="form-control" placeholder="Description"></textarea>
-                        <button type="submit" class="btn btn-primary">Save to Firestore</button>
-                    </form>
-                </div>
+            <div id="dashboardSection" style="display: none;">
+                <h2>Add New Product</h2>
+                <input type="text" id="pBrand" class="form-control" placeholder="Brand (Nike, Adidas...)">
+                <input type="text" id="pName" class="form-control" placeholder="Shoe Name">
+                <input type="number" id="pPrice" class="form-control" placeholder="Wholesale Price (₹)">
+                <input type="url" id="pImage" class="form-control" placeholder="Image Link (Ending in .jpg)">
+                <input type="text" id="pEmoji" class="form-control" placeholder="Fallback Emoji (👟)">
+                <textarea id="pDesc" class="form-control" placeholder="Description"></textarea>
+                <button onclick="saveNewProduct()" class="btn btn-primary">Save Product</button>
+                <hr style="margin: 2rem 0">
+                <button class="btn" onclick="location.reload()" style="background:#ddd">Logout</button>
             </div>
-            <button onclick="closeAdminPanel()" style="margin-top:1rem; cursor:pointer; background:none; border:none; color:blue;">Close Panel</button>
+            <button onclick="closeAdminPanel()" style="margin-top: 1rem; cursor:pointer; background:none; border:none; color:blue;">Close Panel</button>
         </div>
     </div>
 
@@ -232,12 +208,10 @@
 
         let products = [];
 
-        // RENDER LOGIC (FIXED: Tags closed, separate cards)
+        // FIXED RENDER: Tags closed properly, products separated
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
-            const adminList = document.getElementById('adminProductsList');
             if (!grid) return;
-
             grid.innerHTML = products.map(p => `
                 <div class="product-card">
                     <div class="product-image">
@@ -245,20 +219,11 @@
                     </div>
                     <div class="product-info">
                         <div class="product-brand">${p.brand}</div>
-                        <h3 class="product-name">${p.name}</h3>
+                        <h3>${p.name}</h3>
                         <p style="font-size:0.8rem; color:#666;">${p.description || ''}</p>
                         <div class="product-price">₹${p.price}</div>
                     </div>
                 </div>
-            `).join('');
-
-            adminList.innerHTML = products.map(p => `
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding:10px;">${p.brand}</td>
-                    <td>${p.name}</td>
-                    <td>₹${p.price}</td>
-                    <td><button onclick="deleteProduct('${p.id}')" style="color:red; border:none; background:none; cursor:pointer;">Delete</button></td>
-                </tr>
             `).join('');
         }
 
@@ -268,8 +233,7 @@
             renderProducts();
         }
 
-        async function handleAddProduct(e) {
-            e.preventDefault();
+        async function saveNewProduct() {
             const data = {
                 brand: document.getElementById('pBrand').value,
                 name: document.getElementById('pName').value,
@@ -281,31 +245,10 @@
             };
             try {
                 await db.collection('products').add(data);
-                if (e.target && e.target.reset) e.target.reset();
-                alert("Product Saved!");
+                alert("Product Added Successfully!");
                 loadProducts();
-                switchTab('list');
-            } catch(err) { console.error(err); alert("Save failed. Check console."); }
-        }
-
-        async function deleteProduct(id) {
-            if(confirm("Delete this product?")) {
-                await db.collection('products').doc(id).delete();
-                loadProducts();
-            }
-        }
-
-        async function handleContactSubmit(e) {
-            e.preventDefault();
-            const msg = {
-                name: document.getElementById('cName').value,
-                email: document.getElementById('cEmail').value,
-                message: document.getElementById('cMessage').value,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            };
-            await db.collection('messages').add(msg);
-            document.getElementById('contactAlert').innerHTML = "✅ Message Sent!";
-            e.target.reset();
+                document.querySelectorAll('#dashboardSection input, #dashboardSection textarea').forEach(i => i.value = '');
+            } catch(e) { console.error(e); }
         }
 
         function toggleAiChat() {
@@ -315,12 +258,12 @@
 
         function handleAiChat() {
             const input = document.getElementById('aiInput');
-            const box = document.getElementById('aiMessages');
+            const messages = document.getElementById('aiMessages');
             if(!input.value) return;
-            box.innerHTML += `<div style="text-align:right; margin:5px 0;"><span style="background:#3b82f6; color:white; padding:5px 10px; border-radius:10px;">${input.value}</span></div>`;
+            messages.innerHTML += `<div style="text-align:right; margin-bottom:5px;"><span style="background:#3b82f6; color:white; padding:5px 10px; border-radius:10px;">${input.value}</span></div>`;
             setTimeout(() => {
-                box.innerHTML += `<div style="margin:5px 0;"><span style="background:#eee; padding:5px 10px; border-radius:10px;">For wholesale bulk orders, please call us at 6393191774.</span></div>`;
-                box.scrollTop = box.scrollHeight;
+                messages.innerHTML += `<div><span style="background:#eee; padding:5px 10px; border-radius:10px; display:inline-block; margin-bottom:5px;">For bulk inquiries, please call us at 6393191774.</span></div>`;
+                messages.scrollTop = messages.scrollHeight;
             }, 600);
             input.value = '';
         }
@@ -330,15 +273,11 @@
             if(document.getElementById('username').value === 'Aditya' && document.getElementById('password').value === 'Aditya@9050') {
                 document.getElementById('loginSection').style.display = 'none';
                 document.getElementById('dashboardSection').style.display = 'block';
-            } else { alert("Login failed."); }
+            } else { alert("Wrong credentials!"); }
         }
 
         function openAdminPanel() { document.getElementById('adminModal').classList.add('active'); }
         function closeAdminPanel() { document.getElementById('adminModal').classList.remove('active'); }
-        function switchTab(t) {
-            document.getElementById('listTab').style.display = (t === 'list' ? 'block' : 'none');
-            document.getElementById('addTab').style.display = (t === 'add' ? 'block' : 'none');
-        }
 
         window.onload = () => {
             loadProducts();
