@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1e3a8a">
+    <meta name="description" content="Harish Footwear - Wholesale distributor of premium footwear brands. Budget Shoe Bazaar with unbeatable wholesale prices.">
     <title>Harish Footwear - Wholesale Distributor</title>
     <style>
         :root {
@@ -20,45 +21,63 @@
             --color-error: #ef4444;
         }
 
-        /* Restored Animations */
         @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--color-background); color: var(--color-text); line-height: 1.6; overflow-x: hidden; }
-
-        /* Navigation */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #e7e5e4 100%);
+            color: var(--color-text);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
         nav { background: var(--color-text); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .logo { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a { color: white; text-decoration: none; }
-
-        /* Hero with restorted shoe animations */
-        .hero { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%); color: white; padding: 4rem 2rem; text-align: center; position: relative; overflow: hidden; }
-        .hero::before { content: '👟'; position: absolute; top: 10%; left: 10%; font-size: 4rem; opacity: 0.1; animation: float 6s ease-in-out infinite; }
-        .hero::after { content: '👞'; position: absolute; bottom: 10%; right: 10%; font-size: 4rem; opacity: 0.1; animation: float 6s ease-in-out infinite 3s; }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+        .admin-badge {
+            position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white; padding: 0.75rem 1.5rem; border-radius: 30px; font-weight: 600; font-size: 0.875rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1001; display: none; align-items: center; gap: 0.5rem; cursor: pointer;
+        }
+        .admin-badge.visible { display: flex; }
 
-        /* Restored Product Cards */
-        .product-card { background: white; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; transition: transform 0.3s; animation: fadeIn 0.6s ease-out; }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
-        .product-image { width: 100%; height: 200px; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%); color: white; padding: 4rem 2rem; text-align: center; position: relative; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; animation: fadeIn 1s ease-out; }
+        .hero p { font-size: 1.2rem; opacity: 0.95; max-width: 600px; margin: 0 auto 2rem; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        
+        .product-card { background: white; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; position: relative; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(30, 58, 138, 0.15); }
+        .product-controls { position: absolute; top: 10px; right: 10px; display: none; flex-direction: column; gap: 0.5rem; z-index: 10; }
+        .admin-badge.visible ~ .container .product-card .product-controls { display: flex; }
+        
+        .product-image { width: 100%; height: 200px; background: var(--color-surface); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--color-border); overflow: hidden; }
         .product-image img { width: 100%; height: 100%; object-fit: cover; }
         .product-image-emoji { font-size: 3rem; }
         .product-info { padding: 1.5rem; }
+        .product-brand { font-size: 0.875rem; color: var(--color-text-secondary); font-weight: 600; text-transform: uppercase; }
+        .product-name { font-size: 1.125rem; font-weight: 600; margin: 0.5rem 0; }
+        .product-price { font-size: 1.25rem; color: var(--color-primary); font-weight: 700; }
 
-        /* Restored Forms & Modals */
         .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
-        .modal-content { background: white; border-radius: 12px; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 2rem; }
-        .form-control { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid var(--color-border); border-radius: 6px; }
-        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; }
+        .modal-content { background: white; border-radius: 12px; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; }
+        .modal-header, .modal-body { padding: 1.5rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-control { width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: 6px; }
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; }
         .btn-primary { background: var(--color-primary); color: white; }
-
-        .admin-badge { position: fixed; top: 20px; right: 20px; background: var(--color-accent); color: white; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; display: none; z-index: 1001; }
-        .admin-badge.visible { display: block; }
+        .btn-danger { background: var(--color-error); color: white; }
+        
+        footer { background: var(--color-text); color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
     </style>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
@@ -71,13 +90,12 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#products">Products</a></li>
-            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <section class="hero" id="home">
-        <h1>Budget Shoe Bazaar ✨</h1>
-        <p>Wholesale distribution of premium brands at unbeatable prices.</p>
+        <h1 id="heroTitle">Budget Shoe Bazaar ✨</h1>
+        <p id="heroSubtitle">Wholesale distributor for top brands like Nike, Adidas, and Puma.</p>
     </section>
 
     <div class="container" id="products">
@@ -85,42 +103,50 @@
         <div class="products-grid" id="productsGrid"></div>
     </div>
 
-    <section class="container" id="contact">
-        <h2>Contact Us</h2>
-        <form onsubmit="handleContactSubmit(event)">
-            <input type="text" class="form-control" placeholder="Name" required>
-            <input type="email" class="form-control" placeholder="Email" required>
-            <textarea class="form-control" rows="4" placeholder="Message" required></textarea>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-    </section>
+    <footer>
+        <p>© 2025 Harish Footwear. All rights reserved.</p>
+    </footer>
 
     <div class="admin-badge" id="adminBadge" onclick="openAdminPanel()">👤 Admin Mode</div>
 
     <div class="modal" id="adminModal">
         <div class="modal-content">
-            <h2 id="modalTitle">Admin Dashboard</h2>
-            <div id="loginSection">
-                <form onsubmit="handleLogin(event)">
-                    <input type="text" id="username" class="form-control" placeholder="Username" required>
-                    <input type="password" id="password" class="form-control" placeholder="Password" required>
-                    <button type="submit" class="btn btn-primary" style="width:100%">Login</button>
-                </form>
+            <div class="modal-header">
+                <h2 id="modalTitle">Admin Dashboard</h2>
+                <button onclick="closeAdminPanel()" style="float:right; cursor:pointer;">×</button>
             </div>
-            <div id="dashboardSection" style="display:none;">
-                <button class="btn btn-primary" onclick="showAddForm()">+ Add Product</button>
-                <div id="addForm" style="margin-top:1rem; border-top:1px solid #eee; padding-top:1rem;">
-                    <input type="text" id="pBrand" class="form-control" placeholder="Brand (Nike, Adidas...)">
-                    <input type="text" id="pName" class="form-control" placeholder="Product Name">
-                    <input type="number" id="pPrice" class="form-control" placeholder="Price (₹)">
-                    <input type="url" id="pImage" class="form-control" placeholder="Image URL (Direct link ending in .jpg)">
-                    <input type="text" id="pEmoji" class="form-control" placeholder="Fallback Emoji (e.g. 👟)">
-                    <button onclick="saveNewProduct()" class="btn btn-primary">Save Product</button>
+            <div class="modal-body">
+                <div id="loginSection">
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group"><label>Username</label><input type="text" id="username" class="form-control" required></div>
+                        <div class="form-group"><label>Password</label><input type="password" id="password" class="form-control" required></div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                    </form>
                 </div>
-                <hr style="margin:1rem 0">
-                <button class="btn" onclick="location.reload()" style="background:#ddd">Logout</button>
+
+                <div id="dashboardSection" style="display: none;">
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                        <button class="btn btn-primary" onclick="switchTab('products')">View Products</button>
+                        <button class="btn btn-primary" onclick="switchTab('add')">Add New</button>
+                        <button class="btn btn-danger" onclick="handleLogout()">Logout</button>
+                    </div>
+
+                    <div id="productsTab" class="tab-content active">
+                        <table style="width:100%; text-align:left;" id="adminProductsList"></table>
+                    </div>
+
+                    <div id="addTab" class="tab-content" style="display:none;">
+                        <form onsubmit="handleAddProduct(event)">
+                            <div class="form-group"><label>Brand</label><input type="text" id="productBrand" class="form-control" required></div>
+                            <div class="form-group"><label>Name</label><input type="text" id="productName" class="form-control" required></div>
+                            <div class="form-group"><label>Price (₹)</label><input type="number" id="productPrice" class="form-control" required></div>
+                            <div class="form-group"><label>Image URL</label><input type="url" id="productImage" class="form-control" placeholder="Use https:// link"></div>
+                            <div class="form-group"><label>Emoji</label><input type="text" id="productEmoji" class="form-control" value="👟"></div>
+                            <button type="submit" class="btn btn-primary">Add Product</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <button onclick="closeAdminPanel()" style="margin-top:1rem; cursor:pointer; background:none; border:none; color:blue;">Close</button>
         </div>
     </div>
 
@@ -137,59 +163,72 @@
         const db = firebase.firestore();
 
         let products = [];
+        let isLoggedIn = false;
 
-        // RESTORED RENDER (Fixed divs and image fallback)
+        // --- RENDER FUNCTION (FIXED: DIVS NOW SEPARATE) ---
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
             if (!grid) return;
-            grid.innerHTML = products.map(p => `
+            grid.innerHTML = products.map(product => `
                 <div class="product-card">
                     <div class="product-image">
-                        ${p.image ? `<img src="${p.image}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="product-image-emoji" style="display:none">${p.emoji || '👟'}</div>` : `<div class="product-image-emoji">${p.emoji || '👟'}</div>`}
+                        ${product.image ? 
+                            `<img src="${product.image}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'product-image-emoji\'>${product.emoji || '👟'}</div>';">` : 
+                            `<div class="product-image-emoji">${product.emoji || '👟'}</div>`}
                     </div>
                     <div class="product-info">
-                        <div class="product-brand">${p.brand}</div>
-                        <h3>${p.name}</h3>
-                        <div class="product-price">₹${p.price}</div>
+                        <div class="product-brand">${product.brand}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-price">₹${product.price}</div>
                     </div>
                 </div>
             `).join('');
         }
 
-        async function loadProducts() {
-            const snap = await db.collection('products').orderBy('timestamp', 'desc').get();
-            products = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        async function loadSavedProducts() {
+            const snapshot = await db.collection('products').orderBy('timestamp', 'desc').get();
+            products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             renderProducts();
         }
 
-        async function saveNewProduct() {
-            const data = {
-                brand: document.getElementById('pBrand').value,
-                name: document.getElementById('pName').value,
-                price: parseInt(document.getElementById('pPrice').value) || 0,
-                image: document.getElementById('pImage').value.trim(),
-                emoji: document.getElementById('pEmoji').value || '👟',
+        // --- ADD FUNCTION (FIXED: RESET SAFETY) ---
+        async function handleAddProduct(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const newProduct = {
+                brand: document.getElementById('productBrand').value,
+                name: document.getElementById('productName').value,
+                price: parseInt(document.getElementById('productPrice').value) || 0,
+                image: document.getElementById('productImage').value.trim(),
+                emoji: document.getElementById('productEmoji').value || '👟',
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             };
-            await db.collection('products').add(data);
-            alert("Added!");
-            loadProducts();
-            document.querySelectorAll('#addForm input').forEach(i => i.value = '');
+            try {
+                await db.collection('products').add(newProduct);
+                if (e && e.target && e.target.reset) e.target.reset();
+                alert("Success!");
+                loadSavedProducts();
+            } catch (err) { console.error(err); }
         }
 
         function handleLogin(e) {
             e.preventDefault();
-            if(document.getElementById('username').value === 'Aditya' && document.getElementById('password').value === 'Aditya@9050') {
+            if (document.getElementById('username').value === 'Aditya' && document.getElementById('password').value === 'Aditya@9050') {
+                isLoggedIn = true;
                 document.getElementById('loginSection').style.display = 'none';
                 document.getElementById('dashboardSection').style.display = 'block';
             }
         }
 
+        function handleLogout() { location.reload(); }
         function openAdminPanel() { document.getElementById('adminModal').classList.add('active'); }
         function closeAdminPanel() { document.getElementById('adminModal').classList.remove('active'); }
-        
+        function switchTab(t) {
+            document.getElementById('productsTab').style.display = (t === 'products') ? 'block' : 'none';
+            document.getElementById('addTab').style.display = (t === 'add') ? 'block' : 'none';
+        }
+
         window.onload = () => {
-            loadProducts();
+            loadSavedProducts();
             if (new URLSearchParams(window.location.search).get('admin') === 'true') {
                 document.getElementById('adminBadge').classList.add('visible');
             }
