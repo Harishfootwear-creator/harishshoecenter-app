@@ -1101,34 +1101,33 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
 
+                // We build the HTML and ensure every tag is closed properly
                 card.innerHTML = `
                     <div class="product-controls">
-                        <button class="product-control-btn" onclick="editProduct('${product.id}')" title="Edit">✏️</button>
                         <button class="product-control-btn" onclick="deleteProduct('${product.id}')" title="Delete">🗑️</button>
                     </div>
                     <div class="product-image">
                         ${
-                            product.image
-                                ? `<img src="${product.image}"
-                                         alt="${product.name}"
-                                         onerror="this.onerror=null;
-                                                  this.remove();
-                                                  const c=this.closest('.product-image');
-                                                  if(c){c.innerHTML='<div class=&quot;product-image-emoji&quot;>${product.emoji || '👟'}</div>'; }">`
+                            product.image 
+                                ? `<img src="${product.image}" 
+                                     alt="${product.name}" 
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                   <div class="product-image-emoji" style="display:none">${product.emoji || '👟'}</div>`
                                 : `<div class="product-image-emoji">${product.emoji || '👟'}</div>`
                         }
                     </div>
                     <div class="product-info">
                         <div class="product-brand">${product.brand || ''}</div>
                         <h3 class="product-name">${product.name || ''}</h3>
-                        <div class="product-article">${product.article ? 'Article: ' + product.article : ''}</div>
+                        <div class="product-article">${product.article ? 'Art: ' + product.article : ''}</div>
                         <p class="product-description">${product.description || ''}</p>
-                        <div class="product-stock">${product.stock ? 'Stock: ' + product.stock : ''}</div>
+                        <div style="font-weight:bold; color:var(--color-primary); margin-top:10px;">₹${product.price || 0}</div>
                     </div>
                 `;
 
                 productsGrid.appendChild(card);
 
+                // Add to Admin Table
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${index + 1}</td>
@@ -1137,7 +1136,6 @@
                     <td>₹${product.price || 0}</td>
                     <td>${product.stock || 0}</td>
                     <td class="action-btns">
-                        <button class="btn btn-sm btn-primary" onclick="editProduct('${product.id}')">Edit</button>
                         <button class="btn btn-sm btn-danger" onclick="deleteProduct('${product.id}')">Delete</button>
                     </td>
                 `;
@@ -1153,42 +1151,42 @@
 
         async function handleAddProduct(event) {
             event.preventDefault();
-
+            
+            // Reference form elements safely
             const brandSelect = document.getElementById('productBrand');
             const customBrandInput = document.getElementById('customBrandInput');
-            const nameInput = document.getElementById('productName');
-            const priceInput = document.getElementById('productPrice');
-            const imageInput = document.getElementById('productImage');
-            const articleInput = document.getElementById('productArticle');
-            const descInput = document.getElementById('productDescription');
-            const stockInput = document.getElementById('productStock');
-            const emojiInput = document.getElementById('productEmoji');
-
+            
             let brand = brandSelect.value;
-            if (brand === '__custom__' && customBrandInput.value.trim()) {
+            if (brand === '__custom__') {
                 brand = customBrandInput.value.trim();
             }
 
             const product = {
-                brand,
-                name: nameInput.value.trim(),
-                price: Number(priceInput.value) || 0,
-                image: imageInput.value.trim(),
-                article: articleInput.value.trim(),
-                description: descInput.value.trim(),
-                stock: Number(stockInput.value) || 0,
-                emoji: emojiInput.value.trim() || '👟',
+                brand: brand,
+                name: document.getElementById('productName').value.trim(),
+                price: Number(document.getElementById('productPrice').value) || 0,
+                image: document.getElementById('productImage').value.trim(), // Image URL
+                article: document.getElementById('productArticle').value.trim(),
+                description: document.getElementById('productDescription').value.trim(),
+                stock: Number(document.getElementById('productStock').value) || 0,
+                emoji: document.getElementById('productEmoji').value.trim() || '👟',
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
             };
 
             try {
                 await db.collection('products').add(product);
-                alert('Product added successfully');
-                event.target.reset();
-                loadProducts();
+                alert('Product added successfully!');
+                
+                // Safely reset form
+                if (event.target && typeof event.target.reset === 'function') {
+                    event.target.reset();
+                }
+                
+                loadProducts(); // Refresh the grid
+                switchTab('products'); // Go to list view
             } catch (err) {
                 console.error('Error adding product:', err);
-                alert('Error adding product to Firestore. Check console for details.');
+                alert('Error adding product. Check console.');
             }
         }
 
