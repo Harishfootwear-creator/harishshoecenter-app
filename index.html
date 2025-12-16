@@ -151,88 +151,105 @@
     </div>
 
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzasyDWPorADXyłem4El5xAU4x_n3aeuXzA",
-            authDomain: "harishfootwear-5986c.firebaseapp.com",
-            projectId: "harishfootwear-5986c",
-            storageBucket: "harishfootwear-5986c.appspot.com",
-            messagingSenderId: "416642383698",
-            appId: "1:618642383698:web:f643110e08ef8fa9c633"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+    const firebaseConfig = {
+        apiKey: "AIzasyDWPorADXyłem4El5xAU4x_n3aeuXzA",
+        authDomain: "harishfootwear-5986c.firebaseapp.com",
+        projectId: "harishfootwear-5986c",
+        storageBucket: "harishfootwear-5986c.appspot.com",
+        messagingSenderId: "416642383698",
+        appId: "1:618642383698:web:f643110e08ef8fa9c633"
+    };
 
-        let products = [];
-        let isLoggedIn = false;
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
-        // --- RENDER FUNCTION (FIXED: DIVS NOW SEPARATE) ---
-        function renderProducts() {
-            const grid = document.getElementById('productsGrid');
-            if (!grid) return;
-            grid.innerHTML = products.map(product => `
-                <div class="product-card">
-                    <div class="product-image">
-                        ${product.image ? 
-                            `<img src="${product.image}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'product-image-emoji\'>${product.emoji || '👟'}</div>';">` : 
-                            `<div class="product-image-emoji">${product.emoji || '👟'}</div>`}
-                    </div>
-                    <div class="product-info">
-                        <div class="product-brand">${product.brand}</div>
-                        <h3 class="product-name">${product.name}</h3>
-                        <div class="product-price">₹${product.price}</div>
-                    </div>
+    let products = [];
+    let isLoggedIn = false;
+
+    // --- RENDER FUNCTION (FIXED: DIVS ARE NOW PROPERLY CLOSED) ---
+    function renderProducts() {
+        const grid = document.getElementById('productsGrid');
+        if (!grid) return;
+        
+        grid.innerHTML = products.map(product => `
+            <div class="product-card">
+                <div class="product-image">
+                    ${product.image ? 
+                        `<img src="${product.image}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'product-image-emoji\'>${product.emoji || '👟'}</div>';">` : 
+                        `<div class="product-image-emoji">${product.emoji || '👟'}</div>`}
                 </div>
-            `).join('');
-        }
+                <div class="product-info">
+                    <div class="product-brand">${product.brand}</div>
+                    <h3 class="product-name">${product.name}</h3>
+                    <div class="product-price">₹${product.price}</div>
+                </div>
+            </div>
+        `).join(''); // Every product is now in its own separate container
+    }
 
-        async function loadSavedProducts() {
+    async function loadSavedProducts() {
+        try {
             const snapshot = await db.collection('products').orderBy('timestamp', 'desc').get();
             products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             renderProducts();
+        } catch (e) {
+            console.error("Load Error:", e);
         }
+    }
 
-        // --- ADD FUNCTION (FIXED: RESET SAFETY) ---
-        async function handleAddProduct(e) {
-            if (e && e.preventDefault) e.preventDefault();
-            const newProduct = {
-                brand: document.getElementById('productBrand').value,
-                name: document.getElementById('productName').value,
-                price: parseInt(document.getElementById('productPrice').value) || 0,
-                image: document.getElementById('productImage').value.trim(),
-                emoji: document.getElementById('productEmoji').value || '👟',
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            };
-            try {
-                await db.collection('products').add(newProduct);
-                if (e && e.target && e.target.reset) e.target.reset();
-                alert("Success!");
-                loadSavedProducts();
-            } catch (err) { console.error(err); }
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            if (document.getElementById('username').value === 'Aditya' && document.getElementById('password').value === 'Aditya@9050') {
-                isLoggedIn = true;
-                document.getElementById('loginSection').style.display = 'none';
-                document.getElementById('dashboardSection').style.display = 'block';
-            }
-        }
-
-        function handleLogout() { location.reload(); }
-        function openAdminPanel() { document.getElementById('adminModal').classList.add('active'); }
-        function closeAdminPanel() { document.getElementById('adminModal').classList.remove('active'); }
-        function switchTab(t) {
-            document.getElementById('productsTab').style.display = (t === 'products') ? 'block' : 'none';
-            document.getElementById('addTab').style.display = (t === 'add') ? 'block' : 'none';
-        }
-
-        window.onload = () => {
-            loadSavedProducts();
-            if (new URLSearchParams(window.location.search).get('admin') === 'true') {
-                document.getElementById('adminBadge').classList.add('visible');
-            }
+    // --- ADD PRODUCT (FIXED: INCLUDES SAFETY CHECK FOR RESET) ---
+    async function handleAddProduct(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        
+        const newProduct = {
+            brand: document.getElementById('productBrand').value,
+            name: document.getElementById('productName').value,
+            price: parseInt(document.getElementById('productPrice').value) || 0,
+            image: document.getElementById('productImage').value.trim(),
+            emoji: document.getElementById('productEmoji').value || '👟',
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
         };
-    </script>
+
+        try {
+            await db.collection('products').add(newProduct);
+            // Safely reset form only if event exists
+            if (e && e.target && typeof e.target.reset === 'function') {
+                e.target.reset();
+            }
+            alert("Product successfully added!");
+            await loadSavedProducts();
+            switchTab('products');
+        } catch (err) {
+            console.error("Firestore Error:", err);
+        }
+    }
+
+    function handleLogin(e) {
+        e.preventDefault();
+        if (document.getElementById('username').value === 'Aditya' && document.getElementById('password').value === 'Aditya@9050') {
+            isLoggedIn = true;
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('dashboardSection').style.display = 'block';
+        } else {
+            alert("Wrong credentials!");
+        }
+    }
+
+    function handleLogout() { location.reload(); }
+    function openAdminPanel() { document.getElementById('adminModal').classList.add('active'); }
+    function closeAdminPanel() { document.getElementById('adminModal').classList.remove('active'); }
+    
+    function switchTab(t) {
+        document.getElementById('productsTab').style.display = (t === 'products') ? 'block' : 'none';
+        document.getElementById('addTab').style.display = (t === 'add') ? 'block' : 'none';
+    }
+
+    window.onload = () => {
+        loadSavedProducts();
+        if (new URLSearchParams(window.location.search).get('admin') === 'true') {
+            document.getElementById('adminBadge').classList.add('visible');
+        }
+    };
+</script>
 </body>
 </html>
