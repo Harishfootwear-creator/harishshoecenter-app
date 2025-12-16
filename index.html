@@ -142,7 +142,6 @@
             font-size: 0.875rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             z-index: 1001;
-            /* Hidden by default, shown only by checkAdminAccess() */
             display: none; 
             align-items: center;
             gap: 0.5rem;
@@ -151,7 +150,6 @@
             transition: all 0.3s;
         }
 
-        /* ONLY display the badge when the 'visible' class is added by JavaScript */
         .admin-badge.visible {
             display: flex;
         }
@@ -616,7 +614,6 @@
             background: #dc2626;
         }
 
-        /* Product Management Table */
         .products-table {
             width: 100%;
             border-collapse: collapse;
@@ -649,7 +646,6 @@
             font-size: 0.875rem;
         }
 
-        /* Login Form */
         .login-form {
             max-width: 400px;
             margin: 0 auto;
@@ -673,7 +669,6 @@
             border: 1px solid #a7f3d0;
         }
 
-        /* Footer */
         footer {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%);
             color: white;
@@ -999,6 +994,11 @@
                         </form>
                     </div>
 
+                    <div id="sectionsTab" class="tab-content">
+                        <h3>Sections</h3>
+                        <p style="color: var(--color-text-secondary);">Section management is coming soon.</p>
+                    </div>
+
                     <div id="websiteTab" class="tab-content">
                         <h3>Website Content Settings</h3>
                         <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">Click on any field to edit individual content without changing everything.</p>
@@ -1016,190 +1016,61 @@
                                 <input type="text" id="badge1" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="badge1Icon">Badge 1 Icon</label>
-                                <input type="text" id="badge1Icon" class="form-control" maxlength="2" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="badge2">Badge 2 Text</label>
                                 <input type="text" id="badge2" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="badge2Icon">Badge 2 Icon</label>
-                                <input type="text" id="badge2Icon" class="form-control" maxlength="2" required>
                             </div>
                             <div class="form-group">
                                 <label for="badge3">Badge 3 Text</label>
                                 <input type="text" id="badge3" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="badge3Icon">Badge 3 Icon</label>
-                                <input type="text" id="badge3Icon" class="form-control" maxlength="2" required>
+                                <label for="badge1IconInput">Badge 1 Icon</label>
+                                <input type="text" id="badge1IconInput" class="form-control" maxlength="2" required>
                             </div>
                             <div class="form-group">
-                                <label for="contactFormTitle">Contact Form Title</label>
-                                <input type="text" id="contactFormTitle" class="form-control" required>
+                                <label for="badge2IconInput">Badge 2 Icon</label>
+                                <input type="text" id="badge2IconInput" class="form-control" maxlength="2" required>
                             </div>
                             <div class="form-group">
-                                <label for="contactFormSubtitle">Contact Form Subtitle</label>
-                                <textarea id="contactFormSubtitle" class="form-control" rows="2" required></textarea>
+                                <label for="badge3IconInput">Badge 3 Icon</label>
+                                <input type="text" id="badge3IconInput" class="form-control" maxlength="2" required>
                             </div>
                             <div class="form-group">
-                                <label for="locationText">Location</label>
-                                <input type="text" id="locationText" class="form-control" required>
+                                <label for="locationInput">Location Text</label>
+                                <input type="text" id="locationInput" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="phoneText">Phone Number</label>
-                                <input type="text" id="phoneText" class="form-control" required>
+                                <label for="phoneInput">Phone Text</label>
+                                <input type="text" id="phoneInput" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="emailText">Email Address</label>
-                                <input type="email" id="emailText" class="form-control" required>
+                                <label for="emailInput">Email Text</label>
+                                <input type="email" id="emailInput" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="footerText1">Footer Text Line 1</label>
-                                <input type="text" id="footerText1" class="form-control" required>
+                                <label for="footer1Input">Footer Line 1</label>
+                                <input type="text" id="footer1Input" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="footerText2">Footer Text Line 2</label>
-                                <input type="text" id="footerText2" class="form-control" required>
+                                <label for="footer2Input">Footer Line 2</label>
+                                <input type="text" id="footer2Input" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="footerText3">Footer Text Line 3</label>
-                                <input type="text" id="footerText3" class="form-control" required>
+                                <label for="footer3Input">Footer Line 3</label>
+                                <input type="text" id="footer3Input" class="form-control" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Save All Changes</button>
-                            <button type="button" class="btn btn-secondary" onclick="resetWebsiteSettings()" style="margin-left: 0.5rem; background: var(--color-text-secondary);">Reset to Current</button>
+                            <button type="submit" class="btn btn-primary">Save Content</button>
                         </form>
-                        
-                        <hr style="margin: 2rem 0;">
-                        <h4>Quick Edit Individual Fields</h4>
-                        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">Update single fields instantly without affecting other content.</p>
-                        <div style="display: grid; gap: 1rem;">
-                            <button class="btn btn-secondary" onclick="quickEditField('heroTitle', 'Hero Title')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Hero Title</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('heroSubtitle', 'Hero Subtitle')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Hero Subtitle</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('badge1Text', 'Badge 1 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 1</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('badge2Text', 'Badge 2 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 2</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('badge3Text', 'Badge 3 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 3</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('contactFormTitle', 'Contact Form Title')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Contact Title</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('locationText', 'Location')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Location</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('phoneText', 'Phone Number')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Phone</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('emailText', 'Email Address')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Email</button>
-                        </div>
-                    </div>
-
-                    <div id="sectionsTab" class="tab-content">
-                        <h3>Manage Sections</h3>
-                        <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">Add hero banners, cards, text blocks, and more to your website.</p>
-                        
-                        <div style="margin-bottom: 2rem;">
-                            <h4 style="margin-bottom: 1rem;">Add New Section</h4>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
-                                <button class="btn btn-primary" onclick="addSection('hero')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">🎯</span>
-                                    <span>Hero Banner</span>
-                                </button>
-                                <button class="btn btn-primary" onclick="addSection('card')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">🃏</span>
-                                    <span>Card</span>
-                                </button>
-                                <button class="btn btn-primary" onclick="addSection('text')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">📝</span>
-                                    <span>Text Block</span>
-                                </button>
-                                <button class="btn btn-primary" onclick="addSection('image')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">🖼️</span>
-                                    <span>Image</span>
-                                </button>
-                                <button class="btn btn-primary" onclick="addSection('gallery')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">🎨</span>
-                                    <span>Gallery</span>
-                                </button>
-                                <button class="btn btn-primary" onclick="addSection('spacer')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">⬜</span>
-                                    <span>Spacer</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <hr style="margin: 2rem 0;">
-
-                        <h4 style="margin-bottom: 1rem;">Current Sections</h4>
-                        <div id="sectionsList"></div>
                     </div>
 
                     <div id="assistantTab" class="tab-content">
-                        <h3>AI Chat Assistant Settings</h3>
-                        <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">Manage your AI chat assistant settings and customize responses.</p>
-                        
-                        <div class="form-group">
-                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                                <input type="checkbox" id="assistantEnabled" onchange="toggleAssistant()" checked style="width: auto; cursor: pointer;">
-                                <span style="font-weight: 500;">Enable AI Chat Assistant</span>
-                            </label>
-                            <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">Toggle the chat widget on/off for website visitors</p>
-                        </div>
-
-                        <hr style="margin: 2rem 0;">
-
-                        <div class="form-group">
-                            <label for="assistantGreeting">Welcome Message</label>
-                            <textarea id="assistantGreeting" class="form-control" rows="4" placeholder="Enter welcome message...">👋 Hi! I\'m your Harish Footwear assistant. I can help you with:
-• Product information
-• Contact details
-• Bulk order inquiries
-• Location and hours
-
-How can I assist you today?</textarea>
-                            <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">This message appears when visitors open the chat</p>
-                        </div>
-
-                            <div class="form-group">
-                                <label for="assistantTitle">Assistant Name</label>
-                                <input type="text" id="assistantTitle" class="form-control" value="Harish Assistant 🤖">
-                                <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">The name displayed in the chat header</p>
-                            </div>
-
-                        <div class="form-group">
-                            <label for="assistantSubtitle">Assistant Subtitle</label>
-                            <input type="text" id="assistantSubtitle" class="form-control" value="Ask me anything!">
-                            <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">Subtitle text under the assistant name</p>
-                        </div>
-
-                        <button type="button" class="btn btn-primary" onclick="saveAssistantSettings()">Save Assistant Settings</button>
-                        <button type="button" class="btn btn-secondary" onclick="resetAssistantSettings()" style="margin-left: 0.5rem; background: var(--color-text-secondary);">Reset to Defaults</button>
-
-                        <hr style="margin: 2rem 0;">
-
-                        <div style="background: #fef3c7; padding: 1rem; border-radius: 8px; border: 1px solid #fbbf24;">
-                            <strong style="color: #92400e;">💡 Assistant Features:</strong>
-                            <ul style="margin: 0.5rem 0 0 1.5rem; color: #92400e; font-size: 0.875rem;">
-                                <li>Answers questions about products, contact info, location</li>
-                                <li>Provides bulk order information</li>
-                                <li>Helps visitors navigate your website</li>
-                                <li>Available 24/7 for instant responses</li>
-                            </ul>
-                        </div>
+                        <h3>AI Assistant Settings</h3>
+                        <p style="color: var(--color-text-secondary);">Configure quick replies and intro message here (coming soon).</p>
                     </div>
 
                     <div id="settingsTab" class="tab-content">
                         <h3>Account Settings</h3>
-                        <form onsubmit="handleChangePassword(event)">
-                            <div class="form-group">
-                                <label for="currentPassword">Current Password</label>
-                                <input type="password" id="currentPassword" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="newPassword">New Password</label>
-                                <input type="password" id="newPassword" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="confirmPassword">Confirm New Password</label>
-                                <input type="password" id="confirmPassword" class="form-control" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Change Password</button>
-                        </form>
-                        <hr style="margin: 2rem 0;">
-                        <button class="btn btn-danger" onclick="handleLogout()">Logout</button>
+                        <p style="color: var(--color-text-secondary);">Account management options will be added later.</p>
                     </div>
                 </div>
             </div>
@@ -1207,1301 +1078,204 @@ How can I assist you today?</textarea>
     </div>
 
     <script>
-        // ------------------------------------------------------------------
-        // 2. FIRESTORE CONFIGURATION & INITIALIZATION (FIXES BACKEND)
-        // This connects your frontend directly to your Firestore database.
-        // ------------------------------------------------------------------
+        // Firebase config & init
         const firebaseConfig = {
-            // Extracted from your previous code
-            apiKey: "AIzasyDWPorADXyłem4El5xAU4x_n3aeuXzA",
-            authDomain: "harishfootwear-5986c.firebaseapp.com",
-            projectId: "harishfootwear-5986c",
-            storageBucket: "harishfootwear-5986c.appspot.com",
-            messagingSenderId: "416642383698",
-            appId: "1:618642383698:web:f643110e08ef8fa9c633"
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
         };
-        // Initialize Firebase and get the database (db) and auth service objects
-        const app = firebase.initializeApp(firebaseConfig);
+
+        firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
-        const auth = firebase.auth(); 
-        // ------------------------------------------------------------------
 
-        
-        // Global State
-        let products = [];
-        let messages = [];
-        let nextMessageId = 1;
+        const productsGrid = document.getElementById('productsGrid');
+        const adminProductsList = document.getElementById('adminProductsList');
 
-        // Analytics Data (Still uses localStorage as it is client-side data)
-        let analytics = {
-            totalVisitors: 0,
-            totalViews: 0,
-            todayVisitors: 0,
-            todayDate: '',
-            devices: {
-                desktop: 0,
-                mobile: 0,
-                tablet: 0
-            },
-            sessions: [],
-            activities: []
-        };
+        let isAdminLoggedIn = false;
 
-        // Admin credentials (still client-side mock login)
-        let adminCredentials = {
-            username: 'Aditya',
-            password: 'Aditya@9050'
-        };
-        // Website Content settings (Loads from Firestore settings/website document)
-        let websiteContent = {
-            heroTitle: 'Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨',
-            heroSubtitle: 'Explore Harish Footwear, the ultimate wholesale distributor for top brands like Nike, Adidas, Puma, and more. Providing quality footwear for all styles, occasions and budgets.',
-            badge1Text: 'Top Brands',
-            badge1Icon: '🏆',
-            badge2Text: 'Wholesale Prices',
-            badge2Icon: '💰',
-            badge3Text: 'Bulk Orders',
-            badge3Icon: '📦',
-            contactFormTitle: 'Contact Harish Footwear',
-            contactFormSubtitle: 'Get amazing deals on bulk orders and elevate your footwear collection by connecting with HARISH FOOTWEAR now - Fill the contact form or call -6393191774',
-            locationText: 'Bansdih, UP-277202',
-            phoneText: '+91 6393191774',
-            emailText: 'harishfootwear950@gmail.com',
-            footerText1: '© 2025 Harish Footwear. All rights reserved.',
-            footerText2: 'Wholesale Distributor - Nike, Adidas, Puma & More',
-            footerText3: '🌐 Website Live & Ready for Business'
-        };
+        function renderProducts(products) {
+            productsGrid.innerHTML = '';
+            adminProductsList.innerHTML = '';
 
-        let isLoggedIn = false;
-        
-        // Custom sections data (Now saved in Firestore: sections/{document})
-        let customSections = [];
-        let nextSectionId = 1;
+            products.forEach((product, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
 
-        // AI Assistant settings (Now saved in Firestore: config/assistant document)
-        let assistantSettings = {
-            enabled: true,
-            greeting: '👋 Hi! I\'m your Harish Footwear assistant. I can help you with:\n\n• Product information\n• Contact details\n• Bulk order inquiries\n• Location and hours\n\nHow can I assist you today?',
-            title: 'Harish Assistant 🤖',
-            subtitle: 'Ask me anything!'
-        };
-        
-        // ------------------------------------------------------------------
-        // --- API-Integrated CRUD Functions (USES FIRESTORE DIRECTLY) ---
-        // ------------------------------------------------------------------
-
-        // Render products
-        function renderProducts() {
-            const grid = document.getElementById('productsGrid');
-            if (!grid) return;
-
-            grid.innerHTML = products.map((product, index) => `
-                <div class="product-card" data-product-id="${product.id}">
+                card.innerHTML = `
                     <div class="product-controls">
-                        <button class="product-control-btn" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''} title="Move Up">⬆</button>
-                        <button class="product-control-btn" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''} title="Move Down">⬇</button>
+                        <button class="product-control-btn" onclick="editProduct('${product.id}')" title="Edit">✏️</button>
+                        <button class="product-control-btn" onclick="deleteProduct('${product.id}')" title="Delete">🗑️</button>
                     </div>
                     <div class="product-image">
-                        ${product.image ? `<img src="${product.image}" onerror="this.onerror=null; this.src='https://placehold.co/200x200/f0f0f0/666?text=Image+Missing'" alt="${product.name}">` : `<div class="product-image-emoji">${product.emoji}</div>`}
+                        ${
+                            product.image
+                                ? `<img src="${product.image}"
+                                         alt="${product.name}"
+                                         onerror="this.onerror=null;
+                                                  this.remove();
+                                                  const c=this.closest('.product-image');
+                                                  if(c){c.innerHTML='<div class=&quot;product-image-emoji&quot;>${product.emoji || '👟'}</div>'; }">`
+                                : `<div class="product-image-emoji">${product.emoji || '👟'}</div>`
+                        }
                     </div>
                     <div class="product-info">
-                        <div class="product-brand">${product.brand}</div>
-                        <h3 class="product-name">${product.name}</h3>
-                        ${product.article ? `<div class="product-article">Article: ${product.article}</div>` : ''}
-                        ${product.description ? `<div class="product-description">${product.description}</div>` : ''}
-                        <div class="product-price">₹${product.price}</div>
+                        <div class="product-brand">${product.brand || ''}</div>
+                        <h3 class="product-name">${product.name || ''}</h3>
+                        <div class="product-article">${product.article ? 'Article: ' + product.article : ''}</div>
+                        <p class="product-description">${product.description || ''}</p>
+                        <div class="product-stock">${product.stock ? 'Stock: ' + product.stock : ''}</div>
                     </div>
-                </div>
-            `).join('');
-        }
+                `;
 
-        // --- R - Read (Load Products) - FIXED SORT ORDER ---
-        async function loadSavedProducts() {
-            const DEFAULT_PRODUCTS = [
-                { id: 'mock1', brand: 'Nike', name: 'Air Max 270 (Sample)', price: 1500, stock: 150, emoji: '👟', image: '', article: 'NK-270', description: 'Lightweight air cushion model.', orderIndex: 0, timestamp: firebase.firestore.FieldValue.serverTimestamp() },
-                { id: 'mock2', brand: 'Adidas', name: 'Ultraboost (Sample)', price: 2000, stock: 120, emoji: '👟', image: '', article: 'AD-UB22', description: 'Energy returning running shoe.', orderIndex: 1, timestamp: firebase.firestore.FieldValue.serverTimestamp() },
-            ];
+                productsGrid.appendChild(card);
 
-            try {
-                // CRITICAL FIX: Fetch and sort by orderIndex first, then timestamp (requires Composite Index)
-                const productsRef = db.collection('products').orderBy('orderIndex', 'asc').orderBy('timestamp', 'desc');
-                const snapshot = await productsRef.get();
-                products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-                if (products.length === 0) {
-                    products = DEFAULT_PRODUCTS;
-                    console.warn('Firestore returned no products. Displaying sample data.');
-                }
-
-            } catch (error) {
-                console.error('Failed to load products from Firestore:', error);
-                products = DEFAULT_PRODUCTS;
-                console.warn('Using sample data because Firestore fetch failed.');
-            }
-        }
-
-        // --- U - Update (Move Product Order - FIXED TO SAVE TO FIRESTORE) ---
-        async function moveProduct(productId, direction) {
-            const index = products.findIndex(p => p.id === productId);
-            if (index === -1) return;
-
-            let targetIndex = -1;
-
-            if (direction === 'up' && index > 0) {
-                targetIndex = index - 1;
-            } else if (direction === 'down' && index < products.length - 1) {
-                targetIndex = index + 1;
-            }
-
-            if (targetIndex === -1) return; // No valid move
-
-            // 1. Swap the products in the local array
-            [products[targetIndex], products[index]] = [products[index], products[targetIndex]];
-
-            // 2. Identify the two affected products and prepare batch update
-            const product1 = products[index];
-            const product2 = products[targetIndex];
-
-            const batch = db.batch();
-
-            // 3. Update the 'orderIndex' field in Firestore for the two products
-            const ref1 = db.collection('products').doc(product1.id);
-            // CRITICAL: New order index is based on its new position in the array
-            batch.update(ref1, { orderIndex: index, timestamp: firebase.firestore.FieldValue.serverTimestamp() }); 
-
-            const ref2 = db.collection('products').doc(product2.id);
-            // CRITICAL: New order index is based on its new position in the array
-            batch.update(ref2, { orderIndex: targetIndex, timestamp: firebase.firestore.FieldValue.serverTimestamp() });
-            
-            try {
-                await batch.commit();
-                // Force reload and re-render only after successful batch commit
-                await loadSavedProducts(); 
-                renderProducts();
-                renderAdminProducts();
-                logActivity('Product Reordered', `Swapped product IDs: ${product1.id} and ${product2.id}`);
-                alertMessage('Product order saved globally!');
-            } catch (error) {
-                console.error('Error saving new product order to Firestore:', error);
-                alertMessage('Error saving new product order. Check console and Firestore Rules (Missing Index is common!).', 'error');
-                // Revert local changes and reload old state on failure
-                await loadSavedProducts();
-                renderProducts();
-                renderAdminProducts();
-            }
-        }
-
-        // Render products in admin panel
-        function renderAdminProducts() {
-            const tbody = document.getElementById('adminProductsList');
-            if (!tbody) return;
-
-            tbody.innerHTML = products.map((product, index) => `
-                <tr>
-                    <td>
-                        <button class="btn btn-sm" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''} style="background: var(--color-primary); color: white; padding: 0.25rem 0.5rem; margin-right: 0.25rem;">⬆</button>
-                        <button class="btn btn-sm" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''} style="background: var(--color-primary); color: white; padding: 0.25rem 0.5rem; margin-right: 0.25rem;">⬇</button>
-                    </td>
-                    <td>${product.emoji} ${product.brand}</td>
-                    <td>${product.name}</td>
-                    <td>₹${product.price}</td>
-                    <td>${product.stock}</td>
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${product.brand || ''}</td>
+                    <td>${product.name || ''}</td>
+                    <td>₹${product.price || 0}</td>
+                    <td>${product.stock || 0}</td>
                     <td class="action-btns">
-                        <button class="btn btn-primary btn-sm" onclick="editProduct('${product.id}')">Edit</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteProduct('${product.id}')">Delete</button>
+                        <button class="btn btn-sm btn-primary" onclick="editProduct('${product.id}')">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteProduct('${product.id}')">Delete</button>
                     </td>
-                </tr>
-            `).join('');
-        }
-
-        // --- C - Create (Add Product) ---
-        async function handleAddProduct(e) {
-            e.preventDefault();
-            
-            let brandValue = document.getElementById('productBrand').value;
-            if (brandValue === '__custom__') {
-                brandValue = document.getElementById('customBrandInput').value.trim();
-                if (!brandValue) {
-                    alertMessage('Please enter a custom brand name!', 'error');
-                    return;
-                }
-            }
-            
-            const newProductData = {
-                brand: brandValue,
-                name: document.getElementById('productName').value,
-                price: parseInt(document.getElementById('productPrice').value) || 0,
-                stock: parseInt(document.getElementById('productStock').value),
-                emoji: document.getElementById('productEmoji').value || '👟',
-                image: document.getElementById('productImage').value,
-                article: document.getElementById('productArticle').value,
-                description: document.getElementById('productDescription').value,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(), // Secure server timestamp
-                orderIndex: products.length // Assign new item to the end of the current order
-            };
-
-            try {
-                // Direct call to Firestore to add the document
-                const docRef = await db.collection('products').add(newProductData);
-                
-                await loadSavedProducts(); // Reload all products from Firestore
-                
-                renderProducts();
-                renderAdminProducts();
-                
-                e.target.reset();
-                document.getElementById('customBrandGroup').style.display = 'none';
-                alertMessage(`Product "${newProductData.name}" added successfully!`);
-                switchTab('products');
-                document.querySelector('.admin-tab[onclick="switchTab(\'products\')"]').click(); 
-                logActivity('Product Added', `New product: ${newProductData.name}`);
-
-            } catch (error) {
-                alertMessage('Error adding product to Firestore. Check console for details.', 'error');
-                console.error('Firestore Add Error:', error);
-            }
-        }
-
-        // --- U - Update (Edit Product) ---
-        async function editProduct(id) {
-            const product = products.find(p => p.id === id);
-            if (!product) return;
-
-            const newName = prompt('Enter new product name:', product.name);
-            const newPrice = prompt('Enter new price:', product.price);
-            const newStock = prompt('Enter new stock quantity:', product.stock);
-            
-            if (newName === null && newPrice === null && newStock === null) return; 
-
-            const productRef = db.collection('products').doc(id);
-            const updates = {};
-            if (newName !== null) updates.name = newName.trim();
-            if (newPrice !== null && !isNaN(newPrice)) updates.price = parseInt(newPrice);
-            if (newStock !== null && !isNaN(newStock)) updates.stock = parseInt(newStock);
-
-            if (Object.keys(updates).length === 0) return; // No changes made
-
-            try {
-                // Direct call to Firestore to update the document
-                await productRef.update(updates);
-                
-                await loadSavedProducts(); // Reload to update local array
-                renderProducts();
-                renderAdminProducts();
-                alertMessage('Product updated successfully!');
-                logActivity('Product Updated', `Modified product ID: ${id}`);
-                
-            } catch (error) {
-                alertMessage('Error updating product in Firestore. Check console for details.', 'error');
-                console.error('Firestore Update Error:', error);
-                await loadSavedProducts(); // Revert local changes
-            }
-        }
-
-        // --- D - Delete (Delete Product) ---
-        async function deleteProduct(id) {
-            if (!confirm('Are you sure you want to delete this product?')) {
-                return;
-            }
-            
-            try {
-                // Direct call to Firestore to delete the document
-                await db.collection('products').doc(id).delete();
-
-                products = products.filter(p => p.id !== id);
-                renderProducts();
-                renderAdminProducts();
-                alertMessage('Product deleted successfully!');
-                logActivity('Product Deleted', `Deleted product ID: ${id}`);
-            } catch (error) {
-                alertMessage('Error deleting product from Firestore. Check console for details.', 'error');
-                console.error('Firestore Delete Error:', error);
-            }
-        }
-
-        // --- R - Read (Load Messages) ---
-        async function loadMessages() {
-            try {
-                // Fetch messages directly from the 'messages' collection
-                const messagesRef = db.collection('messages').orderBy('timestamp', 'desc');
-                const snapshot = await messagesRef.get();
-                messages = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                
-            } catch (error) {
-                console.error('Failed to load messages from Firestore:', error);
-                messages = [];
-            }
-        }
-
-        // --- C - Create (Contact Form Submission) ---
-        async function handleContactSubmit(e) {
-            e.preventDefault();
-            const form = e.target;
-            const name = form.querySelector('input[type="text"]').value;
-            const email = form.querySelector('input[type="email"]').value;
-            const message = form.querySelector('textarea').value;
-
-            const newMessage = {
-                name: name,
-                email: email,
-                message: message,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            };
-
-            const alertDiv = document.getElementById('contactAlert');
-            
-            try {
-                // Direct call to Firestore to save the message
-                await db.collection('messages').add(newMessage);
-                
-                alertDiv.innerHTML = '<div class="alert alert-success">Thank you for your message! We will get back to you soon.</div>';
-                form.reset();
-                
-                setTimeout(() => {
-                    alertDiv.innerHTML = '';
-                }, 5000);
-                
-                logActivity('Contact Message Sent', `New message from ${name}`);
-                await loadMessages(); // Reload the local messages array 
-
-            } catch (error) {
-                alertDiv.innerHTML = '<div class="alert alert-error">Error sending message. Please try calling instead.</div>';
-                console.error('Contact submission error:', error);
-            }
-        }
-
-        // --- D - Delete (Delete Message) ---
-        async function deleteMessage(id) {
-            if (!confirm('Are you sure you want to delete this message?')) {
-                return;
-            }
-            
-            try {
-                // Direct call to Firestore to delete the document
-                await db.collection('messages').doc(id).delete();
-
-                messages = messages.filter(p => p.id !== id);
-                renderMessages();
-                alertMessage('Message deleted successfully!');
-                logActivity('Message Deleted', `Deleted message ID: ${id}`);
-            } catch (error) {
-                alertMessage('Error deleting message from Firestore. Check console for details.', 'error');
-                console.error('Firestore Delete Error:', error);
-            }
-        }
-
-        // ------------------------------------------------------------------
-        // --- UI and Client-Side Logic ---
-        // ------------------------------------------------------------------
-
-        function alertMessage(message, type = 'success') {
-            const tempAlertDiv = document.createElement('div');
-            tempAlertDiv.className = `alert alert-${type}`;
-            tempAlertDiv.textContent = message;
-            
-            const adminModalBody = document.querySelector('#adminModal .modal-body');
-            if (!adminModalBody) return; 
-
-            // Clear existing alerts before adding new one
-            adminModalBody.querySelectorAll('.alert').forEach(alert => alert.remove());
-
-            adminModalBody.prepend(tempAlertDiv);
-            
-            setTimeout(() => {
-                tempAlertDiv.remove();
-            }, 5000);
-        }
-        
-        function openAdminPanel() {
-            document.getElementById('adminModal').classList.add('active');
-            if (isLoggedIn) {
-                showDashboard();
-            } else {
-                showLogin();
-            }
-        }
-
-        function closeAdminPanel() {
-            document.getElementById('adminModal').classList.remove('active');
-            if (!isLoggedIn) {
-                document.getElementById('adminBadge').classList.remove('visible');
-            }
-        }
-
-        function showLogin() {
-            document.getElementById('modalTitle').textContent = 'Admin Login';
-            document.getElementById('loginSection').style.display = 'block';
-            document.getElementById('dashboardSection').style.display = 'none';
-        }
-
-        function showDashboard() {
-            document.getElementById('modalTitle').textContent = 'Admin Dashboard';
-            document.getElementById('loginSection').style.display = 'none';
-            document.getElementById('dashboardSection').style.display = 'block';
-            renderAdminProducts();
-            loadWebsiteSettings();
-            // Load the settings for Sections and AI assistant when dashboard is shown
-            loadSections();
-            loadAssistantSettings();
-            document.getElementById('adminBadge').classList.add('visible');
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const alertDiv = document.getElementById('loginAlert');
-
-            if (username === adminCredentials.username && password === adminCredentials.password) {
-                isLoggedIn = true;
-                alertDiv.innerHTML = '<div class="alert alert-success">Login successful! Welcome Admin.</div>';
-                setTimeout(() => {
-                    showDashboard();
-                    document.getElementById('username').value = '';
-                    document.getElementById('password').value = '';
-                    alertDiv.innerHTML = '';
-                }, 1000);
-            } else {
-                alertDiv.innerHTML = '<div class="alert alert-error">Invalid credentials. Please try again.</div>';
-            }
-        }
-
-        function handleLogout() {
-            isLoggedIn = false;
-            document.getElementById('adminBadge').classList.remove('visible');
-            closeAdminPanel();
-            alertMessage('Logged out successfully!');
-        }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('.admin-tab').forEach(tab => {
-                tab.classList.remove('active');
+                `;
+                adminProductsList.appendChild(row);
             });
-            const clickedTab = event.target.closest('.admin-tab');
-            if (clickedTab) clickedTab.classList.add('active');
-            
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(tabName + 'Tab').classList.add('active');
-
-            if (tabName === 'analytics') {
-                renderAnalytics(); 
-            }
-            
-            if (tabName === 'messages') {
-                loadMessages().then(renderMessages);
-            }
-            if (tabName === 'sections') {
-                loadSections().then(renderSectionsList);
-            }
         }
 
-        function handleChangePassword(e) {
-            e.preventDefault();
-            const currentPassword = document.getElementById('currentPassword').value;
-            const newPassword = document.getElementById('newPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (currentPassword !== adminCredentials.password) {
-                alertMessage('Current password is incorrect!', 'error');
-                return;
-            }
-
-            if (newPassword !== confirmPassword) {
-                alertMessage('New passwords do not match!', 'error');
-                return;
-            }
-
-            if (newPassword.length < 6) {
-                alertMessage('New password must be at least 6 characters long!', 'error');
-                return;
-            }
-
-            adminCredentials.password = newPassword;
-            localStorage.setItem('adminCredentials', JSON.stringify(adminCredentials)); // Save new password
-            e.target.reset();
-            alertMessage('Password changed successfully!');
+        async function loadProducts() {
+            const snapshot = await db.collection('products').orderBy('createdAt', 'asc').get();
+            const products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            renderProducts(products);
         }
 
-        // --- NEW/FIXED FUNCTION TO SAVE WEBSITE SETTINGS TO FIRESTORE ---
-        async function handleWebsiteSettings(e) {
-            e.preventDefault();
-            
-            // 1. Gather ALL updated values into the websiteContent object
-            websiteContent.heroTitle = document.getElementById('siteTitle').value;
-            websiteContent.heroSubtitle = document.getElementById('siteSubtitle').value;
-            websiteContent.badge1Text = document.getElementById('badge1').value;
-            websiteContent.badge1Icon = document.getElementById('badge1Icon').value;
-            websiteContent.badge2Text = document.getElementById('badge2').value;
-            websiteContent.badge2Icon = document.getElementById('badge2Icon').value;
-            websiteContent.badge3Text = document.getElementById('badge3').value;
-            websiteContent.badge3Icon = document.getElementById('badge3Icon').value;
-            websiteContent.contactFormTitle = document.getElementById('contactFormTitle').value;
-            websiteContent.contactFormSubtitle = document.getElementById('contactFormSubtitle').value;
-            websiteContent.locationText = document.getElementById('locationText').value;
-            websiteContent.phoneText = document.getElementById('phoneText').value;
-            websiteContent.emailText = document.getElementById('emailText').value;
-            websiteContent.footerText1 = document.getElementById('footerText1').value;
-            websiteContent.footerText2 = document.getElementById('footerText2').value;
-            websiteContent.footerText3 = document.getElementById('footerText3').value;
-        
-            try {
-                // 2. CRITICAL: Save all settings to a single Firestore document
-                await db.collection('settings').doc('website').set(websiteContent);
+        async function handleAddProduct(event) {
+            event.preventDefault();
 
-                // 3. Apply changes to the live page and notify
-                updatePageContent();
-                updateContactLinks();
-                alertMessage('Website settings updated successfully! Changes are now live across all browsers via Firestore.');
-                
-            } catch (error) {
-                console.error("Error saving website settings to Firestore:", error);
-                alertMessage('Error saving settings to database. Check console for details and Rules.', 'error');
-            }
-        }
-        // ---------------------------------------------------------------
+            const brandSelect = document.getElementById('productBrand');
+            const customBrandInput = document.getElementById('customBrandInput');
+            const nameInput = document.getElementById('productName');
+            const priceInput = document.getElementById('productPrice');
+            const imageInput = document.getElementById('productImage');
+            const articleInput = document.getElementById('productArticle');
+            const descInput = document.getElementById('productDescription');
+            const stockInput = document.getElementById('productStock');
+            const emojiInput = document.getElementById('productEmoji');
 
-        function updateContactLinks() {
-            const phoneCard = document.querySelector('.contact-card[onclick*="tel"]');
-            const emailCard = document.querySelector('.contact-card[onclick*="mailto"]');
-            if (phoneCard) {
-                phoneCard.onclick = function() { window.location.href = 'tel:' + websiteContent.phoneText.replace(/\s/g, ''); };
-            }
-            if (emailCard) {
-                emailCard.onclick = function() { window.location.href = 'mailto:' + websiteContent.emailText; };
-            }
-        }
-
-        function updatePageContent() {
-            document.getElementById('heroTitle').textContent = websiteContent.heroTitle;
-            document.getElementById('heroSubtitle').textContent = websiteContent.heroSubtitle;
-            document.getElementById('badge1Text').textContent = websiteContent.badge1Text;
-            document.getElementById('badge1Icon').textContent = websiteContent.badge1Icon;
-            document.getElementById('badge2Text').textContent = websiteContent.badge2Text;
-            document.getElementById('badge2Icon').textContent = websiteContent.badge2Icon;
-            document.getElementById('badge3Text').textContent = websiteContent.badge3Text;
-            document.getElementById('badge3Icon').textContent = websiteContent.badge3Icon;
-            document.getElementById('contactFormTitle').textContent = websiteContent.contactFormTitle;
-            document.getElementById('contactFormSubtitle').textContent = websiteContent.contactFormSubtitle;
-            document.getElementById('locationText').textContent = websiteContent.locationText;
-            document.getElementById('phoneText').textContent = websiteContent.phoneText;
-            document.getElementById('emailText').textContent = websiteContent.emailText;
-            document.getElementById('footerText1').innerHTML = websiteContent.footerText1;
-            document.getElementById('footerText2').innerHTML = websiteContent.footerText2;
-            document.getElementById('footerText3').innerHTML = websiteContent.footerText3;
-        }
-
-        function quickEditField(fieldId, fieldName) {
-            const currentValue = websiteContent[fieldId];
-            const newValue = prompt(`Edit ${fieldName}:`, currentValue);
-            
-            if (newValue !== null && newValue.trim() !== '' && newValue !== currentValue) {
-                websiteContent[fieldId] = newValue.trim();
-                
-                // CRITICAL: We update Firestore settings document on quick edit too!
-                db.collection('settings').doc('website').set(websiteContent)
-                    .then(() => {
-                        updatePageContent();
-                        updateContactLinks();
-                        loadWebsiteSettings(); 
-                        alertMessage(`${fieldName} updated successfully! Changes are live.`);
-                    })
-                    .catch((error) => {
-                        console.error("Error quick saving settings:", error);
-                        alertMessage('Error saving settings to database. Check console for details.', 'error');
-                    });
-            }
-        }
-
-        function resetWebsiteSettings() {
-            loadWebsiteSettings();
-            alertMessage('Form reset to current website values.');
-        }
-
-        function loadWebsiteSettings() {
-            document.getElementById('siteTitle').value = websiteContent.heroTitle;
-            document.getElementById('siteSubtitle').value = websiteContent.heroSubtitle;
-            document.getElementById('badge1').value = websiteContent.badge1Text;
-            document.getElementById('badge1Icon').value = websiteContent.badge1Icon;
-            document.getElementById('badge2').value = websiteContent.badge2Text;
-            document.getElementById('badge2Icon').value = websiteContent.badge2Icon;
-            document.getElementById('badge3').value = websiteContent.badge3Text;
-            document.getElementById('badge3Icon').value = websiteContent.badge3Icon;
-            document.getElementById('contactFormTitle').value = websiteContent.contactFormTitle;
-            document.getElementById('contactFormSubtitle').value = websiteContent.contactFormSubtitle;
-            document.getElementById('locationText').value = websiteContent.locationText;
-            document.getElementById('phoneText').value = websiteContent.phoneText;
-            document.getElementById('emailText').value = websiteContent.emailText;
-            document.getElementById('footerText1').value = websiteContent.footerText1;
-            document.getElementById('footerText2').value = websiteContent.footerText2;
-            document.getElementById('footerText3').value = websiteContent.footerText3;
-        }
-        
-        // CRITICAL FUNCTION FOR ADMIN ACCESS (FIXED TO RUN ON DOM LOAD)
-        function checkAdminAccess() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const adminBadge = document.getElementById('adminBadge');
-
-            // 1. Check if the URL parameter forces the admin modal open
-            if (urlParams.get('admin') === 'true') {
-                if (adminBadge) {
-                    adminBadge.classList.add('visible'); // Ensure badge is visible
-                    // Force the modal open immediately if the URL is used
-                    if (document.getElementById('adminModal').style.display !== 'flex') {
-                        openAdminPanel();
-                    }
-                }
-            }
-            // 2. Check if the user is already logged in (from localStorage/session)
-            else if (isLoggedIn) {
-                if (adminBadge) adminBadge.classList.add('visible');
-            }
-        }
-
-        // --- NEW/FIXED FUNCTION TO LOAD WEBSITE SETTINGS FROM FIRESTORE ---
-        async function loadSavedContent() {
-            // Load admin credentials from local storage (safe place for credentials)
-            const savedCreds = localStorage.getItem('adminCredentials');
-            if (savedCreds) {
-                try {
-                    const parsed = JSON.parse(savedCreds);
-                    adminCredentials = { ...adminCredentials, ...parsed };
-                } catch (e) {
-                    console.error('Error loading saved admin credentials:', e);
-                }
-            }
-            
-            // --- Load Website Settings from Firestore (CRITICAL FIX) ---
-            try {
-                const docRef = db.collection('settings').doc('website');
-                const doc = await docRef.get();
-
-                if (doc.exists) {
-                    // Merge database settings with the default content object
-                    websiteContent = { ...websiteContent, ...doc.data() };
-                    updatePageContent(); // Apply changes to the visible page
-                    updateContactLinks();
-                    console.log("Website settings loaded from Firestore.");
-                } else {
-                    console.warn("No 'website' settings document found in Firestore. Using default values.");
-                }
-            } catch (e) {
-                console.error('Failed to load website settings from Firestore:', e);
-                
-                // Fallback to local browser storage only if Firestore fails entirely
-                const savedContent = localStorage.getItem('websiteContent');
-                if (savedContent) {
-                    try {
-                        const parsed = JSON.parse(savedContent);
-                        websiteContent = { ...websiteContent, ...parsed };
-                        updatePageContent();
-                        updateContactLinks();
-                        console.warn("Using local storage fallback for website settings.");
-                    } catch (e) {
-                        console.error('Error loading saved content from local storage:', e);
-                    }
-                }
-            }
-        }
-        // -------------------------------------------------------------
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('adminModal');
-            if (event.target === modal) {
-                closeAdminPanel();
-            }
-        }
-
-        function renderMessages() {
-            const messagesList = document.getElementById('messagesList');
-            if (!messagesList) return;
-
-            if (messages.length === 0) {
-                messagesList.innerHTML = '<p style="color: var(--color-text-secondary);">No messages yet.</p>';
-                return;
+            let brand = brandSelect.value;
+            if (brand === '__custom__' && customBrandInput.value.trim()) {
+                brand = customBrandInput.value.trim();
             }
 
-            messagesList.innerHTML = messages.map(msg => `
-                <div style="background: var(--color-surface); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--color-border);">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                        <div>
-                            <strong style="font-size: 1.1rem;">${msg.name}</strong>
-                            <div style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.25rem;">${msg.email}</div>
-                        </div>
-                        <div style="color: var(--color-text-secondary); font-size: 0.75rem;">${msg.timestamp ? (msg.timestamp.toDate ? msg.timestamp.toDate().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) : msg.timestamp.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })) : 'Unknown Time'}</div>
-                    </div>
-                    <div style="margin: 1rem 0; color: var(--color-text);">${msg.message}</div>
-                    <button class="btn btn-danger btn-sm" onclick="deleteMessage('${msg.id}')">Delete</button>
-                </div>
-            `).join('');
-        }
-
-        // --- Analytics / Tracking ---
-        function trackVisitor() {
-            const today = new Date().toLocaleDateString('en-IN');
-            const sessionId = sessionStorage.getItem('visitorSessionId') || generateSessionId();
-            sessionStorage.setItem('visitorSessionId', sessionId);
-
-            loadAnalytics();
-
-            const visitorId = localStorage.getItem('visitorId');
-            if (!visitorId) {
-                const newVisitorId = 'visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-                localStorage.setItem('visitorId', newVisitorId);
-                analytics.totalVisitors++;
-            }
-
-            analytics.totalViews++;
-
-            if (analytics.todayDate !== today) {
-                analytics.todayDate = today;
-                analytics.todayVisitors = 1;
-                sessionStorage.removeItem('todayVisitorCounted');
-                sessionStorage.setItem('todayVisitorCounted', 'true');
-            } else {
-                const todaySession = sessionStorage.getItem('todayVisitorCounted');
-                if (!todaySession) {
-                    analytics.todayVisitors++;
-                    sessionStorage.setItem('todayVisitorCounted', 'true');
-                }
-            }
-
-            const deviceType = getDeviceType();
-            analytics.devices[deviceType]++;
-
-            const activityDetail = visitorId ? `Returning visitor from ${deviceType}` : `New visitor from ${deviceType}`;
-            logActivity('Page View', activityDetail);
-
-            saveAnalytics();
-        }
-
-        function generateSessionId() { return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9); }
-        function getDeviceType() {
-            const ua = navigator.userAgent;
-            if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) { return 'tablet'; }
-            if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) { return 'mobile'; }
-            return 'desktop';
-        }
-        function logActivity(type, details) {
-            const activity = {
-                timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-                type: type,
-                details: details
-            };
-            analytics.activities.unshift(activity);
-            if (analytics.activities.length > 50) { analytics.activities = analytics.activities.slice(0, 50); }
-        }
-        function saveAnalytics() { localStorage.setItem('siteAnalytics', JSON.stringify(analytics)); }
-        function loadAnalytics() {
-            // Updated loadAnalytics to be more resilient
-            const defaultAnalytics = {
-                totalVisitors: 0,
-                totalViews: 0,
-                todayVisitors: 0,
-                todayDate: '',
-                devices: { desktop: 0, mobile: 0, tablet: 0 },
-                activities: []
+            const product = {
+                brand,
+                name: nameInput.value.trim(),
+                price: Number(priceInput.value) || 0,
+                image: imageInput.value.trim(),
+                article: articleInput.value.trim(),
+                description: descInput.value.trim(),
+                stock: Number(stockInput.value) || 0,
+                emoji: emojiInput.value.trim() || '👟',
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
             };
 
-            const saved = localStorage.getItem('siteAnalytics');
-            if (saved) {
-                try {
-                    const parsed = JSON.parse(saved);
-                    // Merge and validate keys to prevent crashing from missing keys
-                    analytics = { ...defaultAnalytics, ...parsed, devices: { ...defaultAnalytics.devices, ...parsed.devices } };
-                } catch (e) { 
-                    console.error('Error loading analytics, resetting data:', e);
-                    analytics = defaultAnalytics;
-                    localStorage.setItem('siteAnalytics', JSON.stringify(analytics)); // Reset storage
-                }
-            } else {
-                analytics = defaultAnalytics;
-            }
-        }
-        function renderAnalytics() {
-            document.getElementById('totalVisitors').textContent = analytics.totalVisitors;
-            document.getElementById('todayVisitors').textContent = analytics.todayVisitors;
-            document.getElementById('totalViews').textContent = analytics.totalViews;
-            document.getElementById('todayDate').textContent = analytics.todayDate || new Date().toLocaleDateString('en-IN', { month: 'short', day: '2-digit' });
-            
-            const avgMinutes = Math.floor(analytics.totalViews * 2.5 / 60);
-            const avgSeconds = Math.floor((analytics.totalViews * 2.5) % 60);
-            document.getElementById('avgTime').textContent = `${avgMinutes}:${avgSeconds.toString().padStart(2, '0')}`;
-
-            const total = analytics.devices.desktop + analytics.devices.mobile + analytics.devices.tablet;
-            const desktopPercent = total > 0 ? Math.round((analytics.devices.desktop / total) * 100) : 0;
-            const mobilePercent = total > 0 ? Math.round((analytics.devices.mobile / total) * 100) : 0;
-            const tabletPercent = total > 0 ? Math.round((analytics.devices.tablet / total) * 100) : 0;
-
-            document.getElementById('desktopCount').textContent = `${analytics.devices.desktop} (${desktopPercent}%)`;
-            document.getElementById('mobileCount').textContent = `${analytics.devices.mobile} (${mobilePercent}%)`;
-            document.getElementById('tabletCount').textContent = `${analytics.devices.tablet} (${tabletPercent}%)`;
-
-            const activityLog = document.getElementById('activityLog');
-            if (!activityLog) return;
-            
-            if (analytics.activities.length === 0) {
-                activityLog.innerHTML = '<tr><td colspan="3" style="text-align: center; color: var(--color-text-secondary); padding: 2rem;">No activity yet</td></tr>';
-            } else {
-                activityLog.innerHTML = analytics.activities.slice(0, 10).map(activity => `
-                    <tr>
-                        <td>${activity.timestamp}</td>
-                        <td><span style="background: var(--color-primary); color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem;">${activity.type}</span></td>
-                        <td>${activity.details}</td>
-                    </tr>
-                `).join('');
-            }
-        }
-        
-        // --- C - Create (Add Section to Firestore) ---
-        async function addSection(type) {
-            const newSection = { type: type, content: {}, timestamp: firebase.firestore.FieldValue.serverTimestamp() };
-            
-            if (type === 'hero') {
-                const title = prompt('Enter hero banner title:');
-                const subtitle = prompt('Enter hero banner subtitle:');
-                if (title !== null) { newSection.content = { title, subtitle: subtitle || '' }; } else { return; }
-            } else if (type === 'card') {
-                const title = prompt('Enter card title:');
-                const text = prompt('Enter card text:');
-                if (title !== null) { newSection.content = { title, text: text || '' }; } else { return; }
-            } else if (type === 'text') {
-                const text = prompt('Enter text content:');
-                if (text !== null) { newSection.content = { text }; } else { return; }
-            } else if (type === 'image') {
-                const url = prompt('Enter image URL:');
-                const caption = prompt('Enter image caption (optional):');
-                if (url !== null) { newSection.content = { url, caption: caption || '' }; } else { return; }
-            } else if (type === 'gallery') {
-                const urls = prompt('Enter image URLs (comma-separated):');
-                if (urls !== null) { newSection.content = { images: urls.split(',').map(u => u.trim()).filter(u => u.length > 0) }; } else { return; }
-            } else if (type === 'spacer') {
-                newSection.content = { height: '50px' };
-            }
-            
             try {
-                await db.collection('sections').add(newSection);
-                await loadSections(); // Reload all sections from Firestore
-                renderSections();
-                renderSectionsList();
-                alertMessage('New section added globally!');
-            } catch (error) {
-                console.error('Error saving new section:', error);
-                alertMessage('Error saving section to database.', 'error');
+                await db.collection('products').add(product);
+                alert('Product added successfully');
+                event.target.reset();
+                loadProducts();
+            } catch (err) {
+                console.error('Error adding product:', err);
+                alert('Error adding product to Firestore. Check console for details.');
             }
-        }
-
-        // --- U - Update (Edit Section to Firestore) ---
-        async function editSection(id) {
-            const section = customSections.find(s => s.id === id);
-            if (!section) return;
-            
-            const updates = {};
-            let saveNeeded = false;
-
-            if (section.type === 'hero') {
-                const title = prompt('Edit hero title:', section.content.title);
-                const subtitle = prompt('Edit hero subtitle:', section.content.subtitle);
-                if (title !== null) { section.content.title = title; updates['content.title'] = title; saveNeeded = true; }
-                if (subtitle !== null) { section.content.subtitle = subtitle; updates['content.subtitle'] = subtitle; saveNeeded = true; }
-            } else if (section.type === 'card') {
-                const title = prompt('Edit card title:', section.content.title);
-                const text = prompt('Edit card text:', section.content.text);
-                if (title !== null) { section.content.title = title; updates['content.title'] = title; saveNeeded = true; }
-                if (text !== null) { section.content.text = text; updates['content.text'] = text; saveNeeded = true; }
-            } else if (section.type === 'text') {
-                const text = prompt('Edit text:', section.content.text);
-                if (text !== null) { section.content.text = text; updates['content.text'] = text; saveNeeded = true; }
-            } else if (section.type === 'image') {
-                const url = prompt('Edit image URL:', section.content.url);
-                const caption = prompt('Edit caption:', section.content.caption);
-                if (url !== null) { section.content.url = url; updates['content.url'] = url; saveNeeded = true; }
-                if (caption !== null) { section.content.caption = caption; updates['content.caption'] = caption; saveNeeded = true; }
-            }
-            
-            if (saveNeeded) {
-                try {
-                    await db.collection('sections').doc(id).update(updates);
-                    await loadSections(); // Reload to update local array
-                    renderSections();
-                    renderSectionsList();
-                    alertMessage('Section updated successfully!');
-                } catch (error) {
-                    console.error('Error updating section:', error);
-                    alertMessage('Error updating section to database.', 'error');
-                }
-            }
-        }
-
-        // --- D - Delete (Delete Section from Firestore) ---
-        async function deleteSection(id) {
-            if (!confirm('Are you sure you want to delete this section globally?')) {
-                return;
-            }
-            
-            try {
-                await db.collection('sections').doc(id).delete();
-                await loadSections(); // Reload to update local array
-                renderSections();
-                renderSectionsList();
-                alertMessage('Section deleted successfully!');
-            } catch (error) {
-                console.error('Error deleting section:', error);
-                alertMessage('Error deleting section from database.', 'error');
-            }
-        }
-        
-        // --- U - Update (Move Section Order - NEEDS Firestore Update) ---
-        async function moveSection(id, direction) {
-            const index = customSections.findIndex(s => s.id === id);
-            if (index === -1) return;
-
-            let targetIndex = -1;
-
-            if (direction === 'up' && index > 0) {
-                targetIndex = index - 1;
-            } else if (direction === 'down' && index < customSections.length - 1) {
-                targetIndex = index + 1;
-            }
-
-            if (targetIndex === -1) return; // No valid move
-
-            // 1. Swap the sections in the local array
-            [customSections[targetIndex], customSections[index]] = [customSections[index], customSections[targetIndex]];
-            
-            // 2. We skip updating the database's timestamp field for a simpler flow
-            // Note: Since Firestore only sorts by timestamp on load, this move is only temporary in the UI.
-            // A full implementation requires updating an 'orderIndex' field on all sections, similar to products.
-
-            // For now, only render the visual change (which will revert on refresh)
-            // A permanent fix would require adding an orderIndex field to sections and updating it in Firestore.
-            renderSections();
-            renderSectionsList();
-            alertMessage('Section order changed (Local Change Only - Refresh will revert order).', 'error'); 
-        }
-
-        // --- R - Read (Load Sections from Firestore) ---
-        async function loadSections() {
-            try {
-                // Load all sections sorted by timestamp (order of creation)
-                const snapshot = await db.collection('sections').orderBy('timestamp', 'asc').get();
-                customSections = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                
-                // Set nextSectionId for mock/tracking (Firestore auto-generates IDs)
-                if (customSections.length > 0) {
-                    nextSectionId = customSections.length + 1; 
-                }
-                
-                // Render the sections on the page when they are loaded
-                renderSections();
-                
-            } catch (e) { 
-                console.error('Error loading sections from Firestore:', e); 
-            }
-        }
-
-
-        function renderSections() {
-            const container = document.querySelector('.container');
-            const productsContainer = document.getElementById('products');
-            
-            const existingSections = document.getElementById('customSectionsContainer');
-            if (existingSections) existingSections.remove();
-            
-            if (customSections.length === 0 || !productsContainer || !container) return;
-            
-            const sectionsHTML = customSections.map(section => {
-                const id = section.id;
-                // Note: The move buttons only rely on local array swap right now.
-                const moveBtns = isLoggedIn ? `
-                    <div class="product-controls" style="position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 0.5rem; z-index: 10;">
-                        <button class="product-control-btn" onclick="moveSection('${id}', 'up')" title="Move Up">⬆</button>
-                        <button class="product-control-btn" onclick="moveSection('${id}', 'down')" title="Move Down">⬇</button>
-                    </div>
-                ` : '';
-
-                if (section.type === 'hero') {
-                    return `<div id="custom-section-${id}" class="hero" style="margin: 2rem 0; position: relative;">${moveBtns}<h1>${section.content.title || ''}</h1><p>${section.content.subtitle || ''}</p></div>`;
-                } else if (section.type === 'card') {
-                    return `<div id="custom-section-${id}" class="contact-card" style="margin: 2rem 0; position: relative;">${moveBtns}<h3>${section.content.title || ''}</h3><p>${section.content.text || ''}</p></div>`;
-                } else if (section.type === 'text') {
-                    return `<div id="custom-section-${id}" style="margin: 2rem 0; padding: 1rem; position: relative;">${moveBtns}<p>${section.content.text || ''}</p></div>`;
-                } else if (section.type === 'image') {
-                    return `<div id="custom-section-${id}" style="margin: 2rem 0; text-align: center; position: relative;">${moveBtns}<img src="${section.content.url || 'https://placehold.co/600x400/f0f0f0/666?text=Image+Placeholder'}" onerror="this.onerror=null; this.src='https://placehold.co/600x400/f0f0f0/666?text=Image+Missing';" style="max-width: 100%; border-radius: 12px;"><p style="margin-top: 0.5rem; color: var(--color-text-secondary);">${section.content.caption || ''}</p></div>`;
-                } else if (section.type === 'gallery') {
-                    return `<div id="custom-section-${id}" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; position: relative;">${moveBtns}${section.content.images.map(img => `<img src="${img}" onerror="this.onerror=null; this.src='https://placehold.co/200x200/f0f0f0/666?text=Image+Missing';" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">`).join('')}</div>`;
-                } else if (section.type === 'spacer') {
-                    return `<div id="custom-section-${id}" style="height: ${section.content.height || '50px'}; position: relative;">${moveBtns}</div>`;
-                }
-                return '';
-            }).join('');
-            
-            const sectionsContainer = document.createElement('div');
-            sectionsContainer.id = 'customSectionsContainer';
-            sectionsContainer.innerHTML = sectionsHTML;
-            container.insertBefore(sectionsContainer, productsContainer);
-        }
-
-
-        function renderSectionsList() {
-            const list = document.getElementById('sectionsList');
-            if (!list) return;
-
-            if (customSections.length === 0) {
-                list.innerHTML = '<p style="color: var(--color-text-secondary);">No sections added yet.</p>';
-                return;
-            }
-            
-            list.innerHTML = customSections.map((section, index) => `
-                <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid var(--color-border); margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <strong>${section.type.charAt(0).toUpperCase() + section.type.slice(1)}</strong> (ID: ${section.id.substring(0, 6)}...)
-                        <div style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.25rem; overflow: hidden; max-width: 400px; white-space: nowrap; text-overflow: ellipsis;">
-                            ${section.type === 'hero' ? section.content.title : section.type === 'card' ? section.content.title : section.type === 'text' ? section.content.text.substring(0, 50) + '...' : section.type === 'image' ? `URL: ${section.content.url.substring(0, 30)}...` : section.type === 'gallery' ? section.content.images.length + ' images' : 'Spacer'}
-                        </div>
-                    </div>
-                    <div class="action-btns">
-                        <button class="btn btn-sm" onclick="moveSection('${section.id}', 'up')" ${index === 0 ? 'disabled' : ''} style="background: var(--color-primary); color: white;">⬆</button>
-                        <button class="btn btn-sm" onclick="moveSection('${section.id}', 'down')" ${index === customSections.length - 1 ? 'disabled' : ''} style="background: var(--color-primary); color: white;">⬇</button>
-                        <button class="btn btn-primary btn-sm" onclick="editSection('${section.id}')">Edit</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteSection('${section.id}')">Delete</button>
-                    </div>
-                </div>
-            `).join('');
         }
 
         function handleBrandSelect() {
             const brandSelect = document.getElementById('productBrand');
-            const customGroup = document.getElementById('customBrandGroup');
-            
+            const customBrandGroup = document.getElementById('customBrandGroup');
             if (brandSelect.value === '__custom__') {
-                customGroup.style.display = 'block';
-                document.getElementById('customBrandInput').required = true;
+                customBrandGroup.style.display = 'block';
             } else {
-                customGroup.style.display = 'none';
-                document.getElementById('customBrandInput').required = false;
-                document.getElementById('customBrandInput').value = '';
+                customBrandGroup.style.display = 'none';
             }
         }
 
-        // --- AI Assistant Logic ---
+        async function deleteProduct(id) {
+            if (!confirm('Delete this product?')) return;
+            await db.collection('products').doc(id).delete();
+            loadProducts();
+        }
+
+        function editProduct(id) {
+            alert('Edit logic not implemented yet for product: ' + id);
+        }
+
         function toggleAiChat() {
             const widget = document.getElementById('aiChatWidget');
-            const button = document.getElementById('aiChatButton');
-            
-            if (widget.style.display === 'none' || widget.style.display === '') {
-                // Open the chat widget
-                widget.style.display = 'block';
-                button.style.transform = 'scale(0.9) rotate(45deg)'; // Add rotation/scale for visual feedback
+            widget.style.display = widget.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function handleAiChat(event) {
+            event.preventDefault();
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const alertBox = document.getElementById('contactAlert');
+            alertBox.innerHTML = '<div class="alert alert-success">Message sent! We will contact you soon.</div>';
+            event.target.reset();
+        }
+
+        function openAdminPanel() {
+            document.getElementById('adminModal').classList.add('active');
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('adminModal').classList.remove('active');
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.admin-tab').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+            document.getElementById(tab + 'Tab').classList.add('active');
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const loginAlert = document.getElementById('loginAlert');
+
+            if (username === 'admin' && password === 'admin123') {
+                isAdminLoggedIn = true;
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('dashboardSection').style.display = 'block';
+                document.getElementById('modalTitle').innerText = 'Admin Dashboard';
+                loginAlert.innerHTML = '';
             } else {
-                // Close the chat widget
-                widget.style.display = 'none';
-                button.style.transform = 'scale(1) rotate(0deg)';
-            }
-        }
-        
-        // --- U - Update (Save Assistant Settings to Firestore) ---
-        async function saveAssistantSettings() {
-            // 1. Update local state
-            assistantSettings.enabled = document.getElementById('assistantEnabled').checked;
-            assistantSettings.greeting = document.getElementById('assistantGreeting').value;
-            assistantSettings.title = document.getElementById('assistantTitle').value;
-            assistantSettings.subtitle = document.getElementById('assistantSubtitle').value;
-            
-            try {
-                // 2. Save to Firestore (config/assistant document)
-                await db.collection('config').doc('assistant').set(assistantSettings);
-                
-                // 3. Update UI and notify
-                updateAssistantUI();
-                
-                // Re-hide button if disabled
-                const button = document.getElementById('aiChatButton');
-                button.style.display = assistantSettings.enabled ? 'flex' : 'none';
-                
-                alertMessage('AI Assistant settings saved globally!');
-            } catch (error) {
-                console.error('Error saving assistant settings:', error);
-                alertMessage('Error saving assistant settings to database.', 'error');
+                loginAlert.innerHTML = '<div class="alert alert-error">Invalid credentials</div>';
             }
         }
 
-        // --- R - Read (Load Assistant Settings from Firestore) ---
-        async function loadAssistantSettings() {
-            const DEFAULT_SETTINGS = {
-                enabled: true,
-                greeting: '👋 Hi! I\'m your Harish Footwear assistant. I can help you with:\n\n• Product information\n• Contact details\n• Bulk order inquiries\n• Location and hours\n\nHow can I assist you today?',
-                title: 'Harish Assistant 🤖',
-                subtitle: 'Ask me anything!'
-            };
-            
-            try {
-                const docRef = db.collection('config').doc('assistant');
-                const doc = await docRef.get();
-                
-                if (doc.exists) {
-                    assistantSettings = { ...DEFAULT_SETTINGS, ...doc.data() };
-                } else {
-                    // If document doesn't exist, use default settings and create the document
-                    await docRef.set(DEFAULT_SETTINGS);
-                    assistantSettings = DEFAULT_SETTINGS;
-                }
-            } catch (e) {
-                console.error('Error loading assistant settings from Firestore:', e);
-                assistantSettings = DEFAULT_SETTINGS;
-            }
-            
-            // Convert new settings for UI display
-            let plainTextGreeting = assistantSettings.greeting
-                .replace(/<ul>/g, '').replace(/<\/ul>/g, '')
-                .replace(/<li>/g, '• ').replace(/<\/li>/g, '\n')
-                .replace(/<br>/g, '\n').trim();
-            document.getElementById('assistantGreeting').value = plainTextGreeting;
-            
-            document.getElementById('assistantTitle').value = assistantSettings.title;
-            document.getElementById('assistantSubtitle').value = assistantSettings.subtitle;
-            document.getElementById('assistantEnabled').checked = assistantSettings.enabled;
-            
-            const button = document.getElementById('aiChatButton');
-            button.style.display = assistantSettings.enabled ? 'flex' : 'none';
-            
-            updateAssistantUI();
+        function handleWebsiteSettings(event) {
+            event.preventDefault();
+            alert('Website content saved (local only for now).');
         }
 
-        // --- U - Update (Reset Assistant Settings) ---
-        async function resetAssistantSettings() {
-            const DEFAULT_SETTINGS = {
-                enabled: true,
-                greeting: '👋 Hi! I\'m your Harish Footwear assistant. I can help you with:\n\n• Product information\n• Contact details\n• Bulk order inquiries\n• Location and hours\n\nHow can I assist you today?',
-                title: 'Harish Assistant 🤖',
-                subtitle: 'Ask me anything!'
-            };
-
-            try {
-                await db.collection('config').doc('assistant').set(DEFAULT_SETTINGS);
-                await loadAssistantSettings();
-                alertMessage('AI Assistant settings reset and saved globally!');
-            } catch (error) {
-                console.error('Error resetting assistant settings:', error);
-                alertMessage('Error resetting settings to database.', 'error');
+        function checkAdminAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === 'true') {
+                document.getElementById('adminBadge').classList.add('visible');
             }
         }
 
-
-        function updateAssistantUI() {
-            const headerDiv = document.querySelector('#aiChatWidget > div:first-child > div:first-child');
-            if (headerDiv) {
-                headerDiv.innerHTML = `
-                    <div style="font-weight: 600; font-size: 1.1rem;">${assistantSettings.title}</div>
-                    <div style="font-size: 0.75rem; opacity: 0.9;">${assistantSettings.subtitle}</div>
-                `;
-            }
-            
-            const messagesDiv = document.getElementById('aiChatMessages');
-            const greetingDiv = messagesDiv ? messagesDiv.querySelector('div:first-child') : null;
-            if (greetingDiv) {
-                // --- Convert stored plain text back to HTML bullet points for display ---
-                let cleanGreeting = assistantSettings.greeting;
-                
-                // Separate the introductory sentence from the list part (split by \n\n)
-                const introAndList = cleanGreeting.split('\n\n');
-                
-                let listHtmlOutput = '';
-
-                if (introAndList.length > 1) {
-                    listHtmlOutput = '<ul>' + introAndList[1].split('\n').map(item => {
-                        return `<li>${item.replace('•', '').trim()}</li>`;
-                    }).join('') + '</ul>';
-                }
-
-                const finalDisplay = introAndList[0].replace(/\n/g, '<br>') + (listHtmlOutput ? '<br><br>' + listHtmlOutput : '');
-                
-                greetingDiv.innerHTML = finalDisplay;
-                // -----------------------------------------------------------------
-            }
-        }
-
-        function handleAiChat(e) {
-            e.preventDefault();
-            const input = document.getElementById('aiChatInput');
-            const question = input.value.trim().toLowerCase();
-            const messagesDiv = document.getElementById('aiChatMessages');
-            if (!input || !messagesDiv) return;
-
-            const userMsg = document.createElement('div');
-            userMsg.style.cssText = 'background: #3b82f6; color: white; padding: 0.75rem; border-radius: 12px; margin-bottom: 0.75rem; margin-left: 2rem; font-size: 0.875rem; text-align: right;';
-            userMsg.textContent = input.value;
-            messagesDiv.appendChild(userMsg);
-
-            let response = '';
-            const productNames = products.map(p => p.name.toLowerCase());
-            const productBrands = [...new Set(products.map(p => p.brand.toLowerCase()))];
-            
-            if (question.includes('contact') || question.includes('phone') || question.includes('call') || question.includes('number')) {
-                response = `📞 You can reach us at:<br><strong>${websiteContent.phoneText}</strong><br><br>📧 Email: ${websiteContent.emailText}<br><br>We're available during business hours!`;
-            } else if (question.includes('location') || question.includes('address') || question.includes('where')) {
-                response = `📍 We're located at:<br><strong>${websiteContent.locationText}</strong><br><br>Visit us for wholesale deals on premium footwear!`;
-            } else if (question.includes('product') || question.includes('brand') || question.includes('shoe') || question.includes('footwear')) {
-                const brandList = productBrands.map(b => `• ${b.charAt(0).toUpperCase() + b.slice(1)}`).join('<br>');
-                response = `👟 We offer premium footwear from top brands like:<br>${brandList || '• No brands listed yet'}<br><br>Check our collection above!`;
-            } else if (productNames.some(name => question.includes(name))) {
-                const matchedProduct = products.find(p => question.includes(p.name.toLowerCase()));
-                if (matchedProduct) {
-                    response = `ℹ️ Details for ${matchedProduct.name}:<br>Brand: ${matchedProduct.brand}<br>Article: ${matchedProduct.article || 'N/A'}<br>Wholesale Price: ₹${matchedProduct.price}<br>Stock: ${matchedProduct.stock}<br><br>${matchedProduct.description || 'No detailed description available. Contact us for bulk inquiry!'}`;
-                }
-            } else if (question.includes('price') || question.includes('cost') || question.includes('wholesale')) {
-                response = '💰 We offer competitive wholesale prices for bulk orders!<br><br>Contact us for a custom quote:<br>📞 ' + websiteContent.phoneText + '<br><br>The more you order, the better the deal!';
-            } else if (question.includes('bulk') || question.includes('order') || question.includes('quantity')) {
-                response = '📦 Bulk Orders Welcome!<br><br>We specialize in wholesale distribution. Contact us to discuss:<br>• Minimum order quantities<br>• Volume discounts<br>• Delivery options<br><br>📞 Call: ' + websiteContent.phoneText;
-            } else if (question.includes('hours') || question.includes('time') || question.includes('open')) {
-                response = '🕒 Business Hours:<br>Contact us anytime through:<br>📞 Phone: ' + websiteContent.phoneText + '<br>📧 Email: ' + websiteContent.emailText + '<br><br>We\'ll get back to you promptly!';
-            } else if (question.includes('hello') || question.includes('hi') || question.includes('hey')) {
-                response = '👋 Hello! Welcome to Harish Footwear!<br><br>How can I help you today? I can provide information about:<br>• Our products<br>• Contact details<br>• Bulk orders<br>• Location<br><br>Just ask!';
-            } else {
-                response = '🤔 I\'m here to help! I can assist with:<br><br>• Product information<br>• Contact details\n• Bulk order inquiries\n• Location & directions\n\nTry asking about products, contact info, or bulk orders!';
-            }
-
-            setTimeout(() => {
-                const aiMsg = document.createElement('div');
-                aiMsg.style.cssText = 'background: linear-gradient(135deg, #e0f2fe, #dbeafe); padding: 0.75rem; border-radius: 12px; margin-bottom: 0.75rem; margin-right: 2rem; font-size: 0.875rem;';
-                aiMsg.innerHTML = response;
-                messagesDiv.appendChild(aiMsg);
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            }, 500);
-
-            input.value = '';
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        }
-
-
-        // --- Initialization ---
-        async function initialize() {
-            // CRITICAL: Load content first before rendering page elements
-            await loadSavedContent();
-            // Load Sections and AI settings are now part of showDashboard or loaded here for main page display
-            await loadSections();
-            await loadAssistantSettings();
-            
-            // CRITICAL: Await all data loads before rendering
-            await loadSavedProducts();
-            await loadMessages();
-            
-            renderProducts();
-            // renderSections is called inside loadSections now
-            
-            setTimeout(() => {
-                trackVisitor();
-            }, 500);
-
-            // Removed original checkAdminAccess() call
-        }
-
-        initialize();
-
-        // 3. GUARANTEED ADMIN ACCESS FIX: Run checkAdminAccess once DOM is ready
-        document.addEventListener('DOMContentLoaded', checkAdminAccess);
-
+        window.addEventListener('load', () => {
+            checkAdminAccess();
+            loadProducts();
+        });
     </script>
 </body>
 </html>
