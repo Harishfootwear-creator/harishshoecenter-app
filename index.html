@@ -178,7 +178,7 @@
         }
 
         .hero::before {
-            content: 'ðŸ‘Ÿ';
+            content: '👟';
             position: absolute;
             top: 10%;
             left: 10%;
@@ -188,7 +188,7 @@
         }
 
         .hero::after {
-            content: 'ðŸ‘ž';
+            content: '👞';
             position: absolute;
             bottom: 10%;
             right: 10%;
@@ -721,7 +721,7 @@
 <body>
     <nav>
         <div class="logo">
-            ðŸ‘Ÿ Harish Footwear
+            👟 Harish Footwear
         </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
@@ -731,12 +731,12 @@
     </nav>
 
     <section class="hero" id="home">
-        <h1 id="heroTitle">Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices âœ¨</h1>
+        <h1 id="heroTitle">Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨</h1>
         <p id="heroSubtitle">Explore Harish Footwear, the ultimate wholesale distributor for top brands like Nike, Adidas, Puma, and more. Providing quality footwear for all styles, occasions and budgets.</p>
         <div class="hero-badges">
-            <div class="badge"><span id="badge1Icon">ðŸ†</span> <span id="badge1Text">Top Brands</span></div>
-            <div class="badge"><span id="badge2Icon">ðŸ’°</span> <span id="badge2Text">Wholesale Prices</span></div>
-            <div class="badge"><span id="badge3Icon">ðŸ“¦</span> <span id="badge3Text">Bulk Orders</span></div>
+            <div class="badge"><span id="badge1Icon">🏆</span> <span id="badge1Text">Top Brands</span></div>
+            <div class="badge"><span id="badge2Icon">💰</span> <span id="badge2Text">Wholesale Prices</span></div>
+            <div class="badge"><span id="badge3Icon">📦</span> <span id="badge3Text">Bulk Orders</span></div>
         </div>
     </section>
 
@@ -764,17 +764,17 @@
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-grid">
                 <div class="contact-card" onclick="window.location.href='https://maps.app.goo.gl/qikCuAG94XLCAzia8'" style="cursor: pointer;">
-                    <div class="contact-icon">ðŸ“</div>
+                    <div class="contact-icon">📍</div>
                     <h3>Location</h3>
                     <p id="locationText">Bansdih, UP-277202</p>
                 </div>
                 <div class="contact-card" onclick="window.location.href='tel:+916393191774'" style="cursor: pointer;">
-                    <div class="contact-icon">ðŸ“ž</div>
+                    <div class="contact-icon">📞</div>
                     <h3>Phone</h3>
                     <p id="phoneText">+91 6393191774</p>
                 </div>
                 <div class="contact-card" onclick="window.location.href='mailto:harishfootwear950@gmail.com'" style="cursor: pointer;">
-                    <div class="contact-icon">âœ‰ï¸</div>
+                    <div class="contact-icon">✉️</div>
                     <h3>Email</h3>
                     <p id="emailText">harishfootwear950@gmail.com</p>
                 </div>
@@ -783,43 +783,43 @@
     </section>
 
     <button id="aiChatButton" onclick="toggleAiChat()" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); z-index: 1000; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
-        ðŸ’¬
+        💬
     </button>
 
     <div id="aiChatWidget" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px); background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); z-index: 1000; overflow: hidden;">
         <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <div style="font-weight: 600; font-size: 1.1rem;">Harish Assistant ðŸ¤–</div>
+                <div style="font-weight: 600; font-size: 1.1rem;">Harish Assistant 🤖</div>
                 <div style="font-size: 0.75rem; opacity: 0.9;">Ask me anything!</div>
             </div>
-            <button onclick="toggleAiChat()" class="close-btn" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0; width: 30px; height: 30px;">Ã—</button>
+            <button onclick="toggleAiChat()" class="close-btn" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0; width: 30px; height: 30px;">×</button>
         </div>
         <div id="aiChatMessages" style="height: 300px; overflow-y: auto; padding: 1rem; background: #f9fafb;">
             <div style="background: linear-gradient(135deg, #e0f2fe, #dbeafe); padding: 0.75rem; border-radius: 12px; margin-bottom: 0.75rem; font-size: 0.875rem;">
-                ðŸ‘‹ Hi! I'm your Harish Footwear assistant. I can help you with:<br><br>
-                â€¢ Product information<br>
-                â€¢ Contact details<br>
-                â€¢ Bulk order inquiries<br>
-                â€¢ Location and hours<br><br>
+                👋 Hi! I'm your Harish Footwear assistant. I can help you with:<br><br>
+                • Product information<br>
+                • Contact details<br>
+                • Bulk order inquiries<br>
+                • Location and hours<br><br>
                 How can I assist you today?
             </div>
         </div>
         <div style="padding: 1rem; border-top: 1px solid #e5e7eb; background: white;">
             <form onsubmit="handleAiChat(event)" style="display: flex; gap: 0.5rem;">
                 <input type="text" id="aiChatInput" placeholder="Type your question..." style="flex: 1; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 0.875rem;" required>
-                <button type="submit" class="btn btn-primary" style="background: #3b82f6; color: white; border: none; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; font-size: 1rem;">âž¤</button>
+                <button type="submit" class="btn btn-primary" style="background: #3b82f6; color: white; border: none; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; font-size: 1rem;">➤</button>
             </form>
         </div>
     </div>
 
     <footer>
-        <p id="footerText1">Â© 2025 Harish Footwear. All rights reserved.</p>
+        <p id="footerText1">© 2025 Harish Footwear. All rights reserved.</p>
         <p id="footerText2">Wholesale Distributor - Nike, Adidas, Puma & More</p>
-        <p id="footerText3" style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.8;">ðŸŒ Website Live & Ready for Business</p>
+        <p id="footerText3" style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.8;">🌐 Website Live & Ready for Business</p>
     </footer>
 
     <div class="admin-badge" id="adminBadge" onclick="openAdminPanel()">
-        <span>ðŸ‘¤</span>
+        <span>👤</span>
         <span>Admin Mode</span>
     </div>
 
@@ -827,7 +827,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="modalTitle">Admin Login</h2>
-                <button class="close-btn" onclick="closeAdminPanel()">Ã—</button>
+                <button class="close-btn" onclick="closeAdminPanel()">×</button>
             </div>
             <div class="modal-body">
                 <div id="loginSection">
@@ -921,7 +921,7 @@
                         </div>
 
                         <div style="margin-top: 1.5rem; padding: 1rem; background: #fef3c7; border: 1px solid #fbbf24; border-radius: 8px;">
-                            <strong style="color: #92400e;">ðŸ“Š Note:</strong>
+                            <strong style="color: #92400e;">📊 Note:</strong>
                             <p style="margin: 0.5rem 0 0 0; color: #92400e; font-size: 0.875rem;">Analytics tracking starts from your first visitor after this update. Data is stored locally in the visitor's browser.</p>
                         </div>
                     </div>
@@ -972,7 +972,7 @@
                                 <input type="text" id="productName" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="productPrice">Wholesale Price (â‚¹)</label>
+                                <label for="productPrice">Wholesale Price (₹)</label>
                                 <input type="number" id="productPrice" class="form-control" value="0" required>
                             </div>
                             <div class="form-group">
@@ -993,7 +993,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="productEmoji">Emoji</label>
-                                <input type="text" id="productEmoji" class="form-control" placeholder="ðŸ‘Ÿ" maxlength="2" required>
+                                <input type="text" id="productEmoji" class="form-control" placeholder="👟" maxlength="2" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Add Product</button>
                         </form>
@@ -1075,15 +1075,15 @@
                         <h4>Quick Edit Individual Fields</h4>
                         <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">Update single fields instantly without affecting other content.</p>
                         <div style="display: grid; gap: 1rem;">
-                            <button class="btn btn-secondary" onclick="quickEditField('heroTitle', 'Hero Title')" style="background: var(--color-accent); color: white; text-align: left;">âœï¸ Edit Hero Title</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('heroSubtitle', 'Hero Subtitle')" style="background: var(--color-accent); color: white; text-align: left;">âœï¸ Edit Hero Subtitle</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('badge1Text', 'Badge 1 Text')" style="background: var(--color-accent); color: white; text-align: left;">âœï¸ Edit Badge 1</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('badge2Text', 'Badge 2 Text')" style="background: var(--color-accent); color: white; text-align: left;">âœï¸ Edit Badge 2</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('badge3Text', 'Badge 3 Text')" style="background: var(--color-accent); color: white; text-align: left;">âœï¸ Edit Badge 3</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('contactFormTitle', 'Contact Form Title')" style="background: var(--color-accent); color: white; text-align: left;">âœï¸ Edit Contact Title</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('locationText', 'Location')" style="background: var(--color-accent); color: white; text-align: left;">âœï¸ Edit Location</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('phoneText', 'Phone Number')" style="background: var(--color-accent); color: white; text-align: left;">âœï¸ Edit Phone</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('emailText', 'Email Address')" style="background: var(--color-accent); color: white; text-align: left;">âœï¸ Edit Email</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('heroTitle', 'Hero Title')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Hero Title</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('heroSubtitle', 'Hero Subtitle')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Hero Subtitle</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('badge1Text', 'Badge 1 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 1</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('badge2Text', 'Badge 2 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 2</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('badge3Text', 'Badge 3 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 3</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('contactFormTitle', 'Contact Form Title')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Contact Title</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('locationText', 'Location')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Location</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('phoneText', 'Phone Number')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Phone</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('emailText', 'Email Address')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Email</button>
                         </div>
                     </div>
 
@@ -1095,27 +1095,27 @@
                             <h4 style="margin-bottom: 1rem;">Add New Section</h4>
                             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
                                 <button class="btn btn-primary" onclick="addSection('hero')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">ðŸŽ¯</span>
+                                    <span style="font-size: 2rem;">🎯</span>
                                     <span>Hero Banner</span>
                                 </button>
                                 <button class="btn btn-primary" onclick="addSection('card')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">ðŸƒ</span>
+                                    <span style="font-size: 2rem;">🃏</span>
                                     <span>Card</span>
                                 </button>
                                 <button class="btn btn-primary" onclick="addSection('text')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">ðŸ“</span>
+                                    <span style="font-size: 2rem;">📝</span>
                                     <span>Text Block</span>
                                 </button>
                                 <button class="btn btn-primary" onclick="addSection('image')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">ðŸ–¼ï¸</span>
+                                    <span style="font-size: 2rem;">🖼️</span>
                                     <span>Image</span>
                                 </button>
                                 <button class="btn btn-primary" onclick="addSection('gallery')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">ðŸŽ¨</span>
+                                    <span style="font-size: 2rem;">🎨</span>
                                     <span>Gallery</span>
                                 </button>
                                 <button class="btn btn-primary" onclick="addSection('spacer')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">â¬œ</span>
+                                    <span style="font-size: 2rem;">⬜</span>
                                     <span>Spacer</span>
                                 </button>
                             </div>
@@ -1143,11 +1143,11 @@
 
                         <div class="form-group">
                             <label for="assistantGreeting">Welcome Message</label>
-                            <textarea id="assistantGreeting" class="form-control" rows="4" placeholder="Enter welcome message...">ðŸ‘‹ Hi! I\'m your Harish Footwear assistant. I can help you with:
-â€¢ Product information
-â€¢ Contact details
-â€¢ Bulk order inquiries
-â€¢ Location and hours
+                            <textarea id="assistantGreeting" class="form-control" rows="4" placeholder="Enter welcome message...">👋 Hi! I\'m your Harish Footwear assistant. I can help you with:
+• Product information
+• Contact details
+• Bulk order inquiries
+• Location and hours
 
 How can I assist you today?</textarea>
                             <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">This message appears when visitors open the chat</p>
@@ -1155,7 +1155,7 @@ How can I assist you today?</textarea>
 
                             <div class="form-group">
                                 <label for="assistantTitle">Assistant Name</label>
-                                <input type="text" id="assistantTitle" class="form-control" value="Harish Assistant ðŸ¤–">
+                                <input type="text" id="assistantTitle" class="form-control" value="Harish Assistant 🤖">
                                 <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">The name displayed in the chat header</p>
                             </div>
 
@@ -1171,7 +1171,7 @@ How can I assist you today?</textarea>
                         <hr style="margin: 2rem 0;">
 
                         <div style="background: #fef3c7; padding: 1rem; border-radius: 8px; border: 1px solid #fbbf24;">
-                            <strong style="color: #92400e;">ðŸ’¡ Assistant Features:</strong>
+                            <strong style="color: #92400e;">💡 Assistant Features:</strong>
                             <ul style="margin: 0.5rem 0 0 1.5rem; color: #92400e; font-size: 0.875rem;">
                                 <li>Answers questions about products, contact info, location</li>
                                 <li>Provides bulk order information</li>
@@ -1213,7 +1213,7 @@ How can I assist you today?</textarea>
         // ------------------------------------------------------------------
         const firebaseConfig = {
             // Extracted from your previous code
-            apiKey: "AIzasyDWPorADXyÅ‚em4El5xAU4x_n3aeuXzA",
+            apiKey: "AIzasyDWPorADXyłem4El5xAU4x_n3aeuXzA",
             authDomain: "harishfootwear-5986c.firebaseapp.com",
             projectId: "harishfootwear-5986c",
             storageBucket: "harishfootwear-5986c.appspot.com",
@@ -1254,22 +1254,22 @@ How can I assist you today?</textarea>
         };
         // Website Content settings (Loads from Firestore settings/website document)
         let websiteContent = {
-            heroTitle: 'Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices âœ¨',
+            heroTitle: 'Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨',
             heroSubtitle: 'Explore Harish Footwear, the ultimate wholesale distributor for top brands like Nike, Adidas, Puma, and more. Providing quality footwear for all styles, occasions and budgets.',
             badge1Text: 'Top Brands',
-            badge1Icon: 'ðŸ†',
+            badge1Icon: '🏆',
             badge2Text: 'Wholesale Prices',
-            badge2Icon: 'ðŸ’°',
+            badge2Icon: '💰',
             badge3Text: 'Bulk Orders',
-            badge3Icon: 'ðŸ“¦',
+            badge3Icon: '📦',
             contactFormTitle: 'Contact Harish Footwear',
             contactFormSubtitle: 'Get amazing deals on bulk orders and elevate your footwear collection by connecting with HARISH FOOTWEAR now - Fill the contact form or call -6393191774',
             locationText: 'Bansdih, UP-277202',
             phoneText: '+91 6393191774',
             emailText: 'harishfootwear950@gmail.com',
-            footerText1: 'Â© 2025 Harish Footwear. All rights reserved.',
+            footerText1: '© 2025 Harish Footwear. All rights reserved.',
             footerText2: 'Wholesale Distributor - Nike, Adidas, Puma & More',
-            footerText3: 'ðŸŒ Website Live & Ready for Business'
+            footerText3: '🌐 Website Live & Ready for Business'
         };
 
         let isLoggedIn = false;
@@ -1281,8 +1281,8 @@ How can I assist you today?</textarea>
         // AI Assistant settings (Now saved in Firestore: config/assistant document)
         let assistantSettings = {
             enabled: true,
-            greeting: 'ðŸ‘‹ Hi! I\'m your Harish Footwear assistant. I can help you with:\n\nâ€¢ Product information\nâ€¢ Contact details\nâ€¢ Bulk order inquiries\nâ€¢ Location and hours\n\nHow can I assist you today?',
-            title: 'Harish Assistant ðŸ¤–',
+            greeting: '👋 Hi! I\'m your Harish Footwear assistant. I can help you with:\n\n• Product information\n• Contact details\n• Bulk order inquiries\n• Location and hours\n\nHow can I assist you today?',
+            title: 'Harish Assistant 🤖',
             subtitle: 'Ask me anything!'
         };
         
@@ -1298,8 +1298,8 @@ How can I assist you today?</textarea>
             grid.innerHTML = products.map((product, index) => `
                 <div class="product-card" data-product-id="${product.id}">
                     <div class="product-controls">
-                        <button class="product-control-btn" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''} title="Move Up">â¬†</button>
-                        <button class="product-control-btn" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''} title="Move Down">â¬‡</button>
+                        <button class="product-control-btn" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''} title="Move Up">⬆</button>
+                        <button class="product-control-btn" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''} title="Move Down">⬇</button>
                     </div>
                     <div class="product-image">
                         ${product.image ? `<img src="${product.image}" onerror="this.onerror=null; this.src='https://placehold.co/200x200/f0f0f0/666?text=Image+Missing'" alt="${product.name}">` : `<div class="product-image-emoji">${product.emoji}</div>`}
@@ -1309,7 +1309,7 @@ How can I assist you today?</textarea>
                         <h3 class="product-name">${product.name}</h3>
                         ${product.article ? `<div class="product-article">Article: ${product.article}</div>` : ''}
                         ${product.description ? `<div class="product-description">${product.description}</div>` : ''}
-                        <div class="product-price">â‚¹${product.price}</div>
+                        <div class="product-price">₹${product.price}</div>
                     </div>
                 </div>
             `).join('');
@@ -1318,8 +1318,8 @@ How can I assist you today?</textarea>
         // --- R - Read (Load Products) - FIXED SORT ORDER ---
         async function loadSavedProducts() {
             const DEFAULT_PRODUCTS = [
-                { id: 'mock1', brand: 'Nike', name: 'Air Max 270 (Sample)', price: 1500, stock: 150, emoji: 'ðŸ‘Ÿ', image: '', article: 'NK-270', description: 'Lightweight air cushion model.', orderIndex: 0, timestamp: firebase.firestore.FieldValue.serverTimestamp() },
-                { id: 'mock2', brand: 'Adidas', name: 'Ultraboost (Sample)', price: 2000, stock: 120, emoji: 'ðŸ‘Ÿ', image: '', article: 'AD-UB22', description: 'Energy returning running shoe.', orderIndex: 1, timestamp: firebase.firestore.FieldValue.serverTimestamp() },
+                { id: 'mock1', brand: 'Nike', name: 'Air Max 270 (Sample)', price: 1500, stock: 150, emoji: '👟', image: '', article: 'NK-270', description: 'Lightweight air cushion model.', orderIndex: 0, timestamp: firebase.firestore.FieldValue.serverTimestamp() },
+                { id: 'mock2', brand: 'Adidas', name: 'Ultraboost (Sample)', price: 2000, stock: 120, emoji: '👟', image: '', article: 'AD-UB22', description: 'Energy returning running shoe.', orderIndex: 1, timestamp: firebase.firestore.FieldValue.serverTimestamp() },
             ];
 
             try {
@@ -1399,12 +1399,12 @@ How can I assist you today?</textarea>
             tbody.innerHTML = products.map((product, index) => `
                 <tr>
                     <td>
-                        <button class="btn btn-sm" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''} style="background: var(--color-primary); color: white; padding: 0.25rem 0.5rem; margin-right: 0.25rem;">â¬†</button>
-                        <button class="btn btn-sm" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''} style="background: var(--color-primary); color: white; padding: 0.25rem 0.5rem; margin-right: 0.25rem;">â¬‡</button>
+                        <button class="btn btn-sm" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''} style="background: var(--color-primary); color: white; padding: 0.25rem 0.5rem; margin-right: 0.25rem;">⬆</button>
+                        <button class="btn btn-sm" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''} style="background: var(--color-primary); color: white; padding: 0.25rem 0.5rem; margin-right: 0.25rem;">⬇</button>
                     </td>
                     <td>${product.emoji} ${product.brand}</td>
                     <td>${product.name}</td>
-                    <td>â‚¹${product.price}</td>
+                    <td>₹${product.price}</td>
                     <td>${product.stock}</td>
                     <td class="action-btns">
                         <button class="btn btn-primary btn-sm" onclick="editProduct('${product.id}')">Edit</button>
@@ -1432,7 +1432,7 @@ How can I assist you today?</textarea>
                 name: document.getElementById('productName').value,
                 price: parseInt(document.getElementById('productPrice').value) || 0,
                 stock: parseInt(document.getElementById('productStock').value),
-                emoji: document.getElementById('productEmoji').value || 'ðŸ‘Ÿ',
+                emoji: document.getElementById('productEmoji').value || '👟',
                 image: document.getElementById('productImage').value,
                 article: document.getElementById('productArticle').value,
                 description: document.getElementById('productDescription').value,
@@ -2216,8 +2216,8 @@ How can I assist you today?</textarea>
                 // Note: The move buttons only rely on local array swap right now.
                 const moveBtns = isLoggedIn ? `
                     <div class="product-controls" style="position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 0.5rem; z-index: 10;">
-                        <button class="product-control-btn" onclick="moveSection('${id}', 'up')" title="Move Up">â¬†</button>
-                        <button class="product-control-btn" onclick="moveSection('${id}', 'down')" title="Move Down">â¬‡</button>
+                        <button class="product-control-btn" onclick="moveSection('${id}', 'up')" title="Move Up">⬆</button>
+                        <button class="product-control-btn" onclick="moveSection('${id}', 'down')" title="Move Down">⬇</button>
                     </div>
                 ` : '';
 
@@ -2262,8 +2262,8 @@ How can I assist you today?</textarea>
                         </div>
                     </div>
                     <div class="action-btns">
-                        <button class="btn btn-sm" onclick="moveSection('${section.id}', 'up')" ${index === 0 ? 'disabled' : ''} style="background: var(--color-primary); color: white;">â¬†</button>
-                        <button class="btn btn-sm" onclick="moveSection('${section.id}', 'down')" ${index === customSections.length - 1 ? 'disabled' : ''} style="background: var(--color-primary); color: white;">â¬‡</button>
+                        <button class="btn btn-sm" onclick="moveSection('${section.id}', 'up')" ${index === 0 ? 'disabled' : ''} style="background: var(--color-primary); color: white;">⬆</button>
+                        <button class="btn btn-sm" onclick="moveSection('${section.id}', 'down')" ${index === customSections.length - 1 ? 'disabled' : ''} style="background: var(--color-primary); color: white;">⬇</button>
                         <button class="btn btn-primary btn-sm" onclick="editSection('${section.id}')">Edit</button>
                         <button class="btn btn-danger btn-sm" onclick="deleteSection('${section.id}')">Delete</button>
                     </div>
@@ -2331,8 +2331,8 @@ How can I assist you today?</textarea>
         async function loadAssistantSettings() {
             const DEFAULT_SETTINGS = {
                 enabled: true,
-                greeting: 'ðŸ‘‹ Hi! I\'m your Harish Footwear assistant. I can help you with:\n\nâ€¢ Product information\nâ€¢ Contact details\nâ€¢ Bulk order inquiries\nâ€¢ Location and hours\n\nHow can I assist you today?',
-                title: 'Harish Assistant ðŸ¤–',
+                greeting: '👋 Hi! I\'m your Harish Footwear assistant. I can help you with:\n\n• Product information\n• Contact details\n• Bulk order inquiries\n• Location and hours\n\nHow can I assist you today?',
+                title: 'Harish Assistant 🤖',
                 subtitle: 'Ask me anything!'
             };
             
@@ -2355,7 +2355,7 @@ How can I assist you today?</textarea>
             // Convert new settings for UI display
             let plainTextGreeting = assistantSettings.greeting
                 .replace(/<ul>/g, '').replace(/<\/ul>/g, '')
-                .replace(/<li>/g, 'â€¢ ').replace(/<\/li>/g, '\n')
+                .replace(/<li>/g, '• ').replace(/<\/li>/g, '\n')
                 .replace(/<br>/g, '\n').trim();
             document.getElementById('assistantGreeting').value = plainTextGreeting;
             
@@ -2373,8 +2373,8 @@ How can I assist you today?</textarea>
         async function resetAssistantSettings() {
             const DEFAULT_SETTINGS = {
                 enabled: true,
-                greeting: 'ðŸ‘‹ Hi! I\'m your Harish Footwear assistant. I can help you with:\n\nâ€¢ Product information\nâ€¢ Contact details\nâ€¢ Bulk order inquiries\nâ€¢ Location and hours\n\nHow can I assist you today?',
-                title: 'Harish Assistant ðŸ¤–',
+                greeting: '👋 Hi! I\'m your Harish Footwear assistant. I can help you with:\n\n• Product information\n• Contact details\n• Bulk order inquiries\n• Location and hours\n\nHow can I assist you today?',
+                title: 'Harish Assistant 🤖',
                 subtitle: 'Ask me anything!'
             };
 
@@ -2411,7 +2411,7 @@ How can I assist you today?</textarea>
 
                 if (introAndList.length > 1) {
                     listHtmlOutput = '<ul>' + introAndList[1].split('\n').map(item => {
-                        return `<li>${item.replace('â€¢', '').trim()}</li>`;
+                        return `<li>${item.replace('•', '').trim()}</li>`;
                     }).join('') + '</ul>';
                 }
 
@@ -2439,27 +2439,27 @@ How can I assist you today?</textarea>
             const productBrands = [...new Set(products.map(p => p.brand.toLowerCase()))];
             
             if (question.includes('contact') || question.includes('phone') || question.includes('call') || question.includes('number')) {
-                response = `ðŸ“ž You can reach us at:<br><strong>${websiteContent.phoneText}</strong><br><br>ðŸ“§ Email: ${websiteContent.emailText}<br><br>We're available during business hours!`;
+                response = `📞 You can reach us at:<br><strong>${websiteContent.phoneText}</strong><br><br>📧 Email: ${websiteContent.emailText}<br><br>We're available during business hours!`;
             } else if (question.includes('location') || question.includes('address') || question.includes('where')) {
-                response = `ðŸ“ We're located at:<br><strong>${websiteContent.locationText}</strong><br><br>Visit us for wholesale deals on premium footwear!`;
+                response = `📍 We're located at:<br><strong>${websiteContent.locationText}</strong><br><br>Visit us for wholesale deals on premium footwear!`;
             } else if (question.includes('product') || question.includes('brand') || question.includes('shoe') || question.includes('footwear')) {
-                const brandList = productBrands.map(b => `â€¢ ${b.charAt(0).toUpperCase() + b.slice(1)}`).join('<br>');
-                response = `ðŸ‘Ÿ We offer premium footwear from top brands like:<br>${brandList || 'â€¢ No brands listed yet'}<br><br>Check our collection above!`;
+                const brandList = productBrands.map(b => `• ${b.charAt(0).toUpperCase() + b.slice(1)}`).join('<br>');
+                response = `👟 We offer premium footwear from top brands like:<br>${brandList || '• No brands listed yet'}<br><br>Check our collection above!`;
             } else if (productNames.some(name => question.includes(name))) {
                 const matchedProduct = products.find(p => question.includes(p.name.toLowerCase()));
                 if (matchedProduct) {
-                    response = `â„¹ï¸ Details for ${matchedProduct.name}:<br>Brand: ${matchedProduct.brand}<br>Article: ${matchedProduct.article || 'N/A'}<br>Wholesale Price: â‚¹${matchedProduct.price}<br>Stock: ${matchedProduct.stock}<br><br>${matchedProduct.description || 'No detailed description available. Contact us for bulk inquiry!'}`;
+                    response = `ℹ️ Details for ${matchedProduct.name}:<br>Brand: ${matchedProduct.brand}<br>Article: ${matchedProduct.article || 'N/A'}<br>Wholesale Price: ₹${matchedProduct.price}<br>Stock: ${matchedProduct.stock}<br><br>${matchedProduct.description || 'No detailed description available. Contact us for bulk inquiry!'}`;
                 }
             } else if (question.includes('price') || question.includes('cost') || question.includes('wholesale')) {
-                response = 'ðŸ’° We offer competitive wholesale prices for bulk orders!<br><br>Contact us for a custom quote:<br>ðŸ“ž ' + websiteContent.phoneText + '<br><br>The more you order, the better the deal!';
+                response = '💰 We offer competitive wholesale prices for bulk orders!<br><br>Contact us for a custom quote:<br>📞 ' + websiteContent.phoneText + '<br><br>The more you order, the better the deal!';
             } else if (question.includes('bulk') || question.includes('order') || question.includes('quantity')) {
-                response = 'ðŸ“¦ Bulk Orders Welcome!<br><br>We specialize in wholesale distribution. Contact us to discuss:<br>â€¢ Minimum order quantities<br>â€¢ Volume discounts<br>â€¢ Delivery options<br><br>ðŸ“ž Call: ' + websiteContent.phoneText;
+                response = '📦 Bulk Orders Welcome!<br><br>We specialize in wholesale distribution. Contact us to discuss:<br>• Minimum order quantities<br>• Volume discounts<br>• Delivery options<br><br>📞 Call: ' + websiteContent.phoneText;
             } else if (question.includes('hours') || question.includes('time') || question.includes('open')) {
-                response = 'ðŸ•’ Business Hours:<br>Contact us anytime through:<br>ðŸ“ž Phone: ' + websiteContent.phoneText + '<br>ðŸ“§ Email: ' + websiteContent.emailText + '<br><br>We\'ll get back to you promptly!';
+                response = '🕒 Business Hours:<br>Contact us anytime through:<br>📞 Phone: ' + websiteContent.phoneText + '<br>📧 Email: ' + websiteContent.emailText + '<br><br>We\'ll get back to you promptly!';
             } else if (question.includes('hello') || question.includes('hi') || question.includes('hey')) {
-                response = 'ðŸ‘‹ Hello! Welcome to Harish Footwear!<br><br>How can I help you today? I can provide information about:<br>â€¢ Our products<br>â€¢ Contact details<br>â€¢ Bulk orders<br>â€¢ Location<br><br>Just ask!';
+                response = '👋 Hello! Welcome to Harish Footwear!<br><br>How can I help you today? I can provide information about:<br>• Our products<br>• Contact details<br>• Bulk orders<br>• Location<br><br>Just ask!';
             } else {
-                response = 'ðŸ¤” I\'m here to help! I can assist with:<br><br>â€¢ Product information<br>â€¢ Contact details\nâ€¢ Bulk order inquiries\nâ€¢ Location & directions\n\nTry asking about products, contact info, or bulk orders!';
+                response = '🤔 I\'m here to help! I can assist with:<br><br>• Product information<br>• Contact details\n• Bulk order inquiries\n• Location & directions\n\nTry asking about products, contact info, or bulk orders!';
             }
 
             setTimeout(() => {
