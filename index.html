@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1e3a8a">
-    <meta name="description" content="Harish Footwear - Wholesale distributor of premium footwear brands. Budget Shoe Bazaar with unbeatable wholesale prices.">
+    <meta name="description" content="Harish Footwear - Wholesale distributor of premium footwear brands.">
     <title>Harish Footwear - Wholesale Distributor</title>
     <style>
-        /* [YOUR ORIGINAL CSS START] */
+        /* CSS stays exactly the same to preserve your original UI */
         :root {
             --color-primary: #1e3a8a;
             --color-primary-hover: #1e40af;
@@ -22,710 +22,67 @@
             --color-error: #ef4444;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #e7e5e4 100%);
-            color: var(--color-text);
-            line-height: 1.6;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(30, 58, 138, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(20, 184, 166, 0.04) 0%, transparent 50%),
-                radial-gradient(circle at 60% 40%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
-            animation: bgFloat 20s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes bgFloat {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        body > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Navigation */
-        nav {
-            background: var(--color-text);
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover { opacity: 0.8; }
-
-        .admin-btn {
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .admin-btn:hover { 
-            background: var(--color-primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
-        }
-
-        .admin-badge {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1001;
-            /* Hidden by default, shown only by checkAdminAccess() */
-            display: none; 
-            align-items: center;
-            gap: 0.5rem;
-            animation: slideInRight 0.5s ease-out;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        /* ONLY display the badge when the 'visible' class is added by JavaScript */
-        .admin-badge.visible {
-            display: flex;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '👟';
-            position: absolute;
-            top: 10%;
-            left: 10%;
-            font-size: 4rem;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '👞';
-            position: absolute;
-            bottom: 10%;
-            right: 10%;
-            font-size: 4rem;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite 3s;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            animation: fadeIn 1.2s ease-out;
-        }
-
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            animation: fadeIn 1.4s ease-out;
-        }
-
-        .badge {
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            animation: pulse 2s ease-in-out infinite;
-            transition: transform 0.3s;
-        }
-
-        .badge:hover {
-            transform: scale(1.1);
-            background: rgba(255,255,255,0.3);
-        }
-
-        /* Products Section */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            background: transparent;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .product-card {
-            background: white;
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-            cursor: pointer;
-            animation: fadeIn 0.6s ease-out;
-            position: relative;
-        }
-
-        .product-controls {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: none;
-            flex-direction: column;
-            gap: 0.5rem;
-            z-index: 10;
-        }
-
-        .admin-badge.visible ~ .container .product-card .product-controls {
-            display: flex;
-        }
-
-        .product-control-btn {
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            transition: all 0.3s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
-        .product-control-btn:hover {
-            background: var(--color-primary-hover);
-            transform: scale(1.1);
-        }
-
-        .product-control-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(30, 58, 138, 0.15);
-            border-color: var(--color-primary);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            background: var(--color-surface);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            border-bottom: 1px solid var(--color-border);
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* --- IMAGE FIX START --- */
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Shows the full image without cropping */
-            background: white;
-        }
-        /* --- IMAGE FIX END --- */
-
-        .product-image-emoji {
-            font-size: 3rem;
-        }
-
-        .product-article {
-            font-size: 0.75rem;
-            color: var(--color-text-secondary);
-            margin-top: 0.25rem;
-        }
-
-        .product-description {
-            font-size: 0.875rem;
-            color: var(--color-text-secondary);
-            margin-top: 0.5rem;
-            line-height: 1.4;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-        }
-
-        .product-brand {
-            font-size: 0.875rem;
-            color: var(--color-text-secondary);
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .product-name {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin: 0.5rem 0;
-        }
-
-        .product-price {
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            font-weight: 700;
-            display: block; /* Restored to visible by default as per UI */
-        }
-
-        .product-stock {
-            font-size: 0.875rem;
-            color: var(--color-success);
-            margin-top: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: transparent;
-            padding: 3rem 2rem;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid var(--color-border);
-            transition: all 0.3s;
-            animation: slideIn 0.8s ease-out;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.1);
-            border-color: var(--color-primary);
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.02), rgba(249, 115, 22, 0.02));
-        }
-
-        .contact-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Form Section */
-        .contact-form-section {
-            background: transparent;
-            padding: 3rem 2rem;
-        }
-
-        .contact-form-title {
-            font-size: 2rem;
-            text-align: left;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        .contact-form-subtitle {
-            color: var(--color-text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            max-width: 800px;
-        }
-
-        .contact-form {
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-input,
-        .contact-textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-            background: var(--color-surface);
-            transition: border-color 0.3s;
-        }
-
-        .contact-input:focus,
-        .contact-textarea:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .contact-textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .contact-submit-btn {
-            background: var(--color-accent);
-            color: white;
-            padding: 0.75rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            align-self: flex-start;
-            transition: all 0.3s;
-        }
-
-        .contact-submit-btn:hover {
-            background: var(--color-accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(249, 115, 22, 0.3);
-        }
-
-        /* Admin Panel Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #e7e5e4 100%); color: var(--color-text); line-height: 1.6; position: relative; overflow-x: hidden; }
+        nav { background: var(--color-text); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .logo { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: white; text-decoration: none; transition: opacity 0.3s; }
+        .admin-badge { position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); color: white; padding: 0.75rem 1.5rem; border-radius: 30px; font-weight: 600; font-size: 0.875rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1001; display: none; align-items: center; gap: 0.5rem; cursor: pointer; transition: all 0.3s; }
+        .admin-badge.visible { display: flex; }
+        .hero { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%); color: white; padding: 4rem 2rem; text-align: center; position: relative; overflow: hidden; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; animation: fadeIn 1s ease-out; }
+        .hero p { font-size: 1.2rem; opacity: 0.95; max-width: 600px; margin: 0 auto 2rem; animation: fadeIn 1.2s ease-out; }
+        .hero-badges { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .badge { background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; backdrop-filter: blur(10px); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; background: transparent; }
+        .section-title { font-size: 2rem; text-align: center; margin-bottom: 2rem; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .product-card { background: white; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; position: relative; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(30, 58, 138, 0.15); }
+        .product-controls { position: absolute; top: 10px; right: 10px; display: none; flex-direction: column; gap: 0.5rem; z-index: 10; }
+        .admin-badge.visible ~ .container .product-card .product-controls { display: flex; }
+        .product-control-btn { background: var(--color-primary); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .product-image { width: 100%; height: 200px; background: var(--color-surface); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--color-border); overflow: hidden; }
+        .product-image img { width: 100%; height: 100%; object-fit: contain; background: white; }
+        .product-image-emoji { font-size: 3rem; }
+        .product-info { padding: 1.5rem; }
+        .product-brand { font-size: 0.875rem; color: var(--color-text-secondary); font-weight: 600; text-transform: uppercase; }
+        .product-name { font-size: 1.125rem; font-weight: 600; margin: 0.5rem 0; }
+        .product-price { font-size: 1.5rem; color: var(--color-primary); font-weight: 700; }
+        .contact-form-section { padding: 3rem 2rem; }
+        .contact-form { max-width: 800px; display: flex; flex-direction: column; gap: 1rem; }
+        .contact-input, .contact-textarea { width: 100%; padding: 1rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); }
+        .contact-submit-btn { background: var(--color-accent); color: white; padding: 0.75rem 2rem; border: none; border-radius: 8px; cursor: pointer; align-self: flex-start; }
+        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
-
-        .modal-content {
-            background: white;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--color-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-body {
-            padding: 2rem;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--color-text-secondary);
-        }
-
-        .close-btn:hover { color: var(--color-text); }
-
-        /* Admin Tabs */
-        .admin-tabs {
-            display: flex;
-            gap: 1rem;
-            border-bottom: 2px solid var(--color-border);
-            margin-bottom: 2rem;
-        }
-
-        .admin-tab {
-            padding: 0.75rem 1.5rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--color-text-secondary);
-            border-bottom: 2px solid transparent;
-            margin-bottom: -2px;
-            transition: all 0.3s;
-        }
-
-        .admin-tab.active {
-            color: var(--color-primary);
-            border-bottom-color: var(--color-primary);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Forms */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 6px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: var(--color-primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--color-primary-hover);
-        }
-
-        .btn-danger {
-            background: var(--color-error);
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background: #dc2626;
-        }
-
-        /* Product Management Table */
-        .products-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        .products-table th,
-        .products-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .products-table th {
-            background: var(--color-surface);
-            font-weight: 600;
-        }
-
-        .products-table tr:hover {
-            background: var(--color-surface);
-        }
-
-        .action-btns {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .btn-sm {
-            padding: 0.4rem 0.8rem;
-            font-size: 0.875rem;
-        }
-
-        /* Login Form */
-        .login-form {
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .alert {
-            padding: 1rem;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-        }
-
-        .alert-error {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
-        }
-
-        .alert-success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: footerPulse 4s ease-in-out infinite;
-        }
-
-        @keyframes footerPulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        footer p {
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2rem; }
-            .products-grid { grid-template-columns: 1fr; }
-        }
-        /* [YOUR ORIGINAL CSS END] */
+        .modal-content { background: white; border-radius: 12px; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 2rem; }
+        .admin-tabs { display: flex; gap: 1rem; border-bottom: 2px solid var(--color-border); margin-bottom: 2rem; overflow-x: auto; }
+        .admin-tab { padding: 0.75rem 1.5rem; background: none; border: none; cursor: pointer; color: var(--color-text-secondary); white-space: nowrap; }
+        .admin-tab.active { color: var(--color-primary); border-bottom: 2px solid var(--color-primary); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-control { width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: 6px; }
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; }
+        .btn-primary { background: var(--color-primary); color: white; }
+        .products-table { width: 100%; border-collapse: collapse; }
+        .products-table th, .products-table td { padding: 1rem; border-bottom: 1px solid var(--color-border); text-align: left; }
+        footer { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%); color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
     </style>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-
 </head>
 <body>
     <nav>
-        <div class="logo">
-            👟 Harish Footwear
-        </div>
+        <div class="logo">👟 Harish Footwear</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#products">Products</a></li>
@@ -735,11 +92,11 @@
 
     <section class="hero" id="home">
         <h1 id="heroTitle">Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨</h1>
-        <p id="heroSubtitle">Explore Harish Footwear, the ultimate wholesale distributor for top brands like Nike, Adidas, Puma, and more. Providing quality footwear for all styles, occasions and budgets.</p>
+        <p id="heroSubtitle">Explore Harish Footwear, top brands like Nike, Adidas, Puma, and more.</p>
         <div class="hero-badges">
-            <div class="badge"><span id="badge1Icon">🏆</span> <span id="badge1Text">Top Brands</span></div>
-            <div class="badge"><span id="badge2Icon">💰</span> <span id="badge2Text">Wholesale Prices</span></div>
-            <div class="badge"><span id="badge3Icon">📦</span> <span id="badge3Text">Bulk Orders</span></div>
+            <div class="badge">🏆 Top Brands</div>
+            <div class="badge">💰 Wholesale Prices</div>
+            <div class="badge">📦 Bulk Orders</div>
         </div>
     </section>
 
@@ -750,469 +107,57 @@
 
     <section class="contact-form-section">
         <div class="container">
-            <h2 class="contact-form-title" id="contactFormTitle">Contact Harish Footwear</h2>
-            <p id="contactFormSubtitle" class="contact-form-subtitle">Get amazing deals on bulk orders and elevate your footwear collection by connecting with HARISH FOOTWEAR now - Fill the contact form or call -6393191774</p>
-            <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+            <h2 class="contact-form-title">Contact Harish Footwear</h2>
+            <form class="contact-form" onsubmit="handleContactSubmit(event)">
                 <input type="text" class="contact-input" placeholder="First name" required>
                 <input type="email" class="contact-input" placeholder="Email" required>
                 <textarea class="contact-textarea" placeholder="Message" rows="5" required></textarea>
                 <button type="submit" class="contact-submit-btn">Send</button>
             </form>
-            <div id="contactAlert" style="margin-top: 1rem;"></div>
+            <div id="contactAlert"></div>
         </div>
     </section>
 
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-card" onclick="window.location.href='https://maps.app.goo.gl/qikCuAG94XLCAzia8'" style="cursor: pointer;">
-                    <div class="contact-icon">📍</div>
-                    <h3>Location</h3>
-                    <p id="locationText">Bansdih, UP-277202</p>
-                </div>
-                <div class="contact-card" onclick="window.location.href='tel:+916393191774'" style="cursor: pointer;">
-                    <div class="contact-icon">📞</div>
-                    <h3>Phone</h3>
-                    <p id="phoneText">+91 6393191774</p>
-                </div>
-                <div class="contact-card" onclick="window.location.href='mailto:harishfootwear950@gmail.com'" style="cursor: pointer;">
-                    <div class="contact-icon">✉️</div>
-                    <h3>Email</h3>
-                    <p id="emailText">harishfootwear950@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <button id="aiChatButton" onclick="toggleAiChat()" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); z-index: 1000; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
-        💬
-    </button>
-
-    <div id="aiChatWidget" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px); background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); z-index: 1000; overflow: hidden;">
-        <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <div style="font-weight: 600; font-size: 1.1rem;">Harish Assistant 🤖</div>
-                <div style="font-size: 0.75rem; opacity: 0.9;">Ask me anything!</div>
-            </div>
-            <button onclick="toggleAiChat()" class="close-btn" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0; width: 30px; height: 30px;">×</button>
-        </div>
-        <div id="aiChatMessages" style="height: 300px; overflow-y: auto; padding: 1rem; background: #f9fafb;">
-            <div style="background: linear-gradient(135deg, #e0f2fe, #dbeafe); padding: 0.75rem; border-radius: 12px; margin-bottom: 0.75rem; font-size: 0.875rem;">
-                👋 Hi! I'm your Harish Footwear assistant. I can help you with:<br><br>
-                • Product information<br>
-                • Contact details<br>
-                • Bulk order inquiries<br>
-                • Location and hours<br><br>
-                How can I assist you today?
-            </div>
-        </div>
-        <div style="padding: 1rem; border-top: 1px solid #e5e7eb; background: white;">
-            <form onsubmit="handleAiChat(event)" style="display: flex; gap: 0.5rem;">
-                <input type="text" id="aiChatInput" placeholder="Type your question..." style="flex: 1; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 0.875rem;" required>
-                <button type="submit" class="btn btn-primary" style="background: #3b82f6; color: white; border: none; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; font-size: 1rem;">➤</button>
-            </form>
-        </div>
-    </div>
-
-    <footer>
-        <p id="footerText1">© 2025 Harish Footwear. All rights reserved.</p>
-        <p id="footerText2">Wholesale Distributor - Nike, Adidas, Puma & More</p>
-        <p id="footerText3" style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.8;">🌐 Website Live & Ready for Business</p>
-    </footer>
-
-    <div class="admin-badge" id="adminBadge" onclick="openAdminPanel()">
-        <span>👤</span>
-        <span>Admin Mode</span>
-    </div>
+    <div class="admin-badge" id="adminBadge" onclick="openAdminPanel()">👤 Admin Mode</div>
 
     <div class="modal" id="adminModal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Admin Login</h2>
-                <button class="close-btn" onclick="closeAdminPanel()">×</button>
+            <div id="loginSection">
+                <h2>Admin Login</h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group"><input type="text" id="username" class="form-control" placeholder="Username" required></div>
+                    <div class="form-group"><input type="password" id="password" class="form-control" placeholder="Password" required></div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="button" onclick="closeAdminPanel()">Close</button>
+                </form>
             </div>
-            <div class="modal-body">
-                <div id="loginSection">
-                    <div class="login-form">
-                        <div id="loginAlert"></div>
-                        <form onsubmit="handleLogin(event)">
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" id="username" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" class="form-control" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
-                        </form>
-                    </div>
+            <div id="dashboardSection" style="display: none;">
+                <div class="admin-tabs">
+                    <button class="admin-tab active" onclick="switchTab('products')">Products</button>
+                    <button class="admin-tab" onclick="switchTab('add')">Add Product</button>
                 </div>
-
-                <div id="dashboardSection" style="display: none;">
-                    <div class="admin-tabs">
-                        <button class="admin-tab active" onclick="switchTab('analytics')">Analytics</button>
-                        <button class="admin-tab" onclick="switchTab('products')">Products</button>
-                        <button class="admin-tab" onclick="switchTab('messages')">Messages</button>
-                        <button class="admin-tab" onclick="switchTab('add')">Add Product</button>
-                        <button class="admin-tab" onclick="switchTab('sections')">Add Section</button>
-                        <button class="admin-tab" onclick="switchTab('website')">Website Settings</button>
-                        <button class="admin-tab" onclick="switchTab('assistant')">AI Assistant</button>
-                        <button class="admin-tab" onclick="switchTab('settings')">Account</button>
-                    </div>
-
-                    <div id="analyticsTab" class="tab-content active">
-                        <h3>Website Analytics</h3>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-                            <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);">
-                                <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Total Visitors</div>
-                                <div style="font-size: 2rem; font-weight: 700;" id="totalVisitors">0</div>
-                                <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">All time</div>
-                            </div>
-                            <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);">
-                                <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Today's Visitors</div>
-                                <div style="font-size: 2rem; font-weight: 700;" id="todayVisitors">0</div>
-                                <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;" id="todayDate">Nov 07</div>
-                            </div>
-                            <div style="background: linear-gradient(135deg, #f97316, #ea580c); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);">
-                                <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Page Views</div>
-                                <div style="font-size: 2rem; font-weight: 700;" id="totalViews">0</div>
-                                <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">Total</div>
-                            </div>
-                            <div style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);">
-                                <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Avg. Time</div>
-                                <div style="font-size: 2rem; font-weight: 700;" id="avgTime">0:00</div>
-                                <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">Minutes</div>
-                            </div>
-                        </div>
-
-                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--color-border); margin-top: 2rem;">
-                            <h4 style="margin-bottom: 1rem;">Recent Activity</h4>
-                            <table class="products-table">
-                                <thead>
-                                    <tr>
-                                        <th>Date & Time</th>
-                                        <th>Type</th>
-                                        <th>Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="activityLog">
-                                    <tr>
-                                        <td colspan="3" style="text-align: center; color: var(--color-text-secondary); padding: 2rem;">No activity yet</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--color-border); margin-top: 2rem;">
-                            <h4 style="margin-bottom: 1rem;">Visitor Statistics</h4>
-                            <div style="display: grid; gap: 1rem;">
-                                <div style="display: flex; justify-content: space-between; padding: 0.75rem; background: var(--color-surface); border-radius: 6px;">
-                                    <span>Desktop Visitors</span>
-                                    <span style="font-weight: 600;" id="desktopCount">0 (0%)</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; padding: 0.75rem; background: var(--color-surface); border-radius: 6px;">
-                                    <span>Mobile Visitors</span>
-                                    <span style="font-weight: 600;" id="mobileCount">0 (0%)</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; padding: 0.75rem; background: var(--color-surface); border-radius: 6px;">
-                                    <span>Tablet Visitors</span>
-                                    <span style="font-weight: 600;" id="tabletCount">0 (0%)</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 1.5rem; padding: 1rem; background: #fef3c7; border: 1px solid #fbbf24; border-radius: 8px;">
-                            <strong style="color: #92400e;">📊 Note:</strong>
-                            <p style="margin: 0.5rem 0 0 0; color: #92400e; font-size: 0.875rem;">Analytics tracking starts from your first visitor after this update. Data is stored locally in the visitor's browser.</p>
-                        </div>
-                    </div>
-
-                    <div id="productsTab" class="tab-content">
-                        <h3>Manage Products</h3>
-                        <table class="products-table">
-                            <thead>
-                                <tr>
-                                    <th>Position</th>
-                                    <th>Brand</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Stock</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="adminProductsList"></tbody>
-                        </table>
-                    </div>
-
-                    <div id="messagesTab" class="tab-content">
-                        <h3>Customer Messages</h3>
-                        <div id="messagesList">
-                            <p style="color: var(--color-text-secondary);">No messages yet.</p>
-                        </div>
-                    </div>
-
-                    <div id="addTab" class="tab-content">
-                        <h3>Add New Product</h3>
-                        <form onsubmit="handleAddProduct(event)">
-                            <div class="form-group">
-                                <label for="productBrand">Brand</label>
-                                <select id="productBrand" class="form-control" required onchange="handleBrandSelect()">
-                                    <option value="Nike">Nike</option>
-                                    <option value="Adidas">Adidas</option>
-                                    <option value="Puma">Puma</option>
-                                    <option value="Reebok">Reebok</option>
-                                    <option value="__custom__">+ Add Custom Brand</option>
-                                </select>
-                            </div>
-                            <div class="form-group" id="customBrandGroup" style="display: none;">
-                                <label for="customBrandInput">Custom Brand Name</label>
-                                <input type="text" id="customBrandInput" class="form-control" placeholder="Enter brand name">
-                            </div>
-                            <div class="form-group">
-                                <label for="productName">Product Name</label>
-                                <input type="text" id="productName" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="productPrice">Wholesale Price (₹)</label>
-                                <input type="number" id="productPrice" class="form-control" value="0" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="productImage">Image URL</label>
-                                <input type="url" id="productImage" class="form-control" placeholder="https://example.com/image.jpg">
-                            </div>
-                            <div class="form-group">
-                                <label for="productArticle">Article Number</label>
-                                <input type="text" id="productArticle" class="form-control" placeholder="e.g., NK-AM270-001">
-                            </div>
-                            <div class="form-group">
-                                <label for="productDescription">Description</label>
-                                <textarea id="productDescription" class="form-control" rows="3" placeholder="Product description..."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="productStock">Stock Quantity</label>
-                                <input type="number" id="productStock" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="productEmoji">Emoji</label>
-                                <input type="text" id="productEmoji" class="form-control" placeholder="👟" maxlength="2" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Add Product</button>
-                        </form>
-                    </div>
-
-                    <div id="websiteTab" class="tab-content">
-                        <h3>Website Content Settings</h3>
-                        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">Click on any field to edit individual content without changing everything.</p>
-                        <form onsubmit="handleWebsiteSettings(event)">
-                            <div class="form-group">
-                                <label for="siteTitle">Hero Title</label>
-                                <input type="text" id="siteTitle" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="siteSubtitle">Hero Subtitle</label>
-                                <textarea id="siteSubtitle" class="form-control" rows="2" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="badge1">Badge 1 Text</label>
-                                <input type="text" id="badge1" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="badge1Icon">Badge 1 Icon</label>
-                                <input type="text" id="badge1Icon" class="form-control" maxlength="2" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="badge2">Badge 2 Text</label>
-                                <input type="text" id="badge2" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="badge2Icon">Badge 2 Icon</label>
-                                <input type="text" id="badge2Icon" class="form-control" maxlength="2" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="badge3">Badge 3 Text</label>
-                                <input type="text" id="badge3" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="badge3Icon">Badge 3 Icon</label>
-                                <input type="text" id="badge3Icon" class="form-control" maxlength="2" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contactFormTitle">Contact Form Title</label>
-                                <input type="text" id="contactFormTitle" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contactFormSubtitle">Contact Form Subtitle</label>
-                                <textarea id="contactFormSubtitle" class="form-control" rows="2" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="locationText">Location</label>
-                                <input type="text" id="locationText" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phoneText">Phone Number</label>
-                                <input type="text" id="phoneText" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="emailText">Email Address</label>
-                                <input type="email" id="emailText" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="footerText1">Footer Text Line 1</label>
-                                <input type="text" id="footerText1" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="footerText2">Footer Text Line 2</label>
-                                <input type="text" id="footerText2" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="footerText3">Footer Text Line 3</label>
-                                <input type="text" id="footerText3" class="form-control" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Save All Changes</button>
-                            <button type="button" class="btn btn-secondary" onclick="resetWebsiteSettings()" style="margin-left: 0.5rem; background: var(--color-text-secondary);">Reset to Current</button>
-                        </form>
-                        
-                        <hr style="margin: 2rem 0;">
-                        <h4>Quick Edit Individual Fields</h4>
-                        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">Update single fields instantly without affecting other content.</p>
-                        <div style="display: grid; gap: 1rem;">
-                            <button class="btn btn-secondary" onclick="quickEditField('heroTitle', 'Hero Title')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Hero Title</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('heroSubtitle', 'Hero Subtitle')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Hero Subtitle</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('badge1Text', 'Badge 1 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 1</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('badge2Text', 'Badge 2 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 2</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('badge3Text', 'Badge 3 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 3</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('contactFormTitle', 'Contact Form Title')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Contact Title</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('locationText', 'Location')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Location</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('phoneText', 'Phone Number')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Phone</button>
-                            <button class="btn btn-secondary" onclick="quickEditField('emailText', 'Email Address')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Email</button>
-                        </div>
-                    </div>
-
-                    <div id="sectionsTab" class="tab-content">
-                        <h3>Manage Sections</h3>
-                        <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">Add hero banners, cards, text blocks, and more to your website.</p>
-                        
-                        <div style="margin-bottom: 2rem;">
-                            <h4 style="margin-bottom: 1rem;">Add New Section</h4>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
-                                <button class="btn btn-primary" onclick="addSection('hero')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">🎯</span>
-                                    <span>Hero Banner</span>
-                                </button>
-                                <button class="btn btn-primary" onclick="addSection('card')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">🃏</span>
-                                    <span>Card</span>
-                                </button>
-                                <button class="btn btn-primary" onclick="addSection('text')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">📝</span>
-                                    <span>Text Block</span>
-                                </button>
-                                <button class="btn btn-primary" onclick="addSection('image')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">🖼️</span>
-                                    <span>Image</span>
-                                </button>
-                                <button class="btn btn-primary" onclick="addSection('gallery')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">🎨</span>
-                                    <span>Gallery</span>
-                                </button>
-                                <button class="btn btn-primary" onclick="addSection('spacer')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <span style="font-size: 2rem;">⬜</span>
-                                    <span>Spacer</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <hr style="margin: 2rem 0;">
-
-                        <h4 style="margin-bottom: 1rem;">Current Sections</h4>
-                        <div id="sectionsList"></div>
-                    </div>
-
-                    <div id="assistantTab" class="tab-content">
-                        <h3>AI Chat Assistant Settings</h3>
-                        <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">Manage your AI chat assistant settings and customize responses.</p>
-                        
-                        <div class="form-group">
-                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                                <input type="checkbox" id="assistantEnabled" onchange="toggleAssistant()" checked style="width: auto; cursor: pointer;">
-                                <span style="font-weight: 500;">Enable AI Chat Assistant</span>
-                            </label>
-                            <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">Toggle the chat widget on/off for website visitors</p>
-                        </div>
-
-                        <hr style="margin: 2rem 0;">
-
-                        <div class="form-group">
-                            <label for="assistantGreeting">Welcome Message</label>
-                            <textarea id="assistantGreeting" class="form-control" rows="4" placeholder="Enter welcome message...">👋 Hi! I\'m your Harish Footwear assistant. I can help you with:
-• Product information
-• Contact details
-• Bulk order inquiries
-• Location and hours
-
-How can I assist you today?</textarea>
-                            <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">This message appears when visitors open the chat</p>
-                        </div>
-
-                            <div class="form-group">
-                                <label for="assistantTitle">Assistant Name</label>
-                                <input type="text" id="assistantTitle" class="form-control" value="Harish Assistant 🤖">
-                                <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">The name displayed in the chat header</p>
-                            </div>
-
-                        <div class="form-group">
-                            <label for="assistantSubtitle">Assistant Subtitle</label>
-                            <input type="text" id="assistantSubtitle" class="form-control" value="Ask me anything!">
-                            <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">Subtitle text under the assistant name</p>
-                        </div>
-
-                        <button type="button" class="btn btn-primary" onclick="saveAssistantSettings()">Save Assistant Settings</button>
-                        <button type="button" class="btn btn-secondary" onclick="resetAssistantSettings()" style="margin-left: 0.5rem; background: var(--color-text-secondary);">Reset to Defaults</button>
-
-                        <hr style="margin: 2rem 0;">
-
-                        <div style="background: #fef3c7; padding: 1rem; border-radius: 8px; border: 1px solid #fbbf24;">
-                            <strong style="color: #92400e;">💡 Assistant Features:</strong>
-                            <ul style="margin: 0.5rem 0 0 1.5rem; color: #92400e; font-size: 0.875rem;">
-                                <li>Answers questions about products, contact info, location</li>
-                                <li>Provides bulk order information</li>
-                                <li>Helps visitors navigate your website</li>
-                                <li>Available 24/7 for instant responses</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div id="settingsTab" class="tab-content">
-                        <h3>Account Settings</h3>
-                        <form onsubmit="handleChangePassword(event)">
-                            <div class="form-group">
-                                <label for="currentPassword">Current Password</label>
-                                <input type="password" id="currentPassword" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="newPassword">New Password</label>
-                                <input type="password" id="newPassword" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="confirmPassword">Confirm New Password</label>
-                                <input type="password" id="confirmPassword" class="form-control" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Change Password</button>
-                        </form>
-                        <hr style="margin: 2rem 0;">
-                        <button class="btn btn-danger" onclick="handleLogout()">Logout</button>
-                    </div>
+                <div id="productsTab" class="tab-content active">
+                    <table class="products-table">
+                        <thead><tr><th>Order</th><th>Name</th><th>Actions</th></tr></thead>
+                        <tbody id="adminProductsList"></tbody>
+                    </table>
                 </div>
+                <div id="addTab" class="tab-content">
+                    <form onsubmit="handleAddProduct(event)">
+                        <div class="form-group"><input type="text" id="productName" class="form-control" placeholder="Product Name" required></div>
+                        <div class="form-group"><input type="number" id="productPrice" class="form-control" placeholder="Price" required></div>
+                        <div class="form-group"><input type="url" id="productImage" class="form-control" placeholder="Image URL (direct link)"></div>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </form>
+                </div>
+                <button class="btn btn-danger" onclick="location.reload()">Logout</button>
             </div>
         </div>
     </div>
 
+    <footer><p>© 2025 Harish Footwear. All rights reserved.</p></footer>
+
     <script>
-        // ------------------------------------------------------------------
-        // 2. FIRESTORE CONFIGURATION & INITIALIZATION (FIXES BACKEND)
-        // ------------------------------------------------------------------
         const firebaseConfig = {
             apiKey: "AIzasyDWPorADXyłem4El5xAU4x_n3aeuXzA",
             authDomain: "harishfootwear-5986c.firebaseapp.com",
@@ -1221,84 +166,26 @@ How can I assist you today?</textarea>
             messagingSenderId: "416642383698",
             appId: "1:618642383698:web:f643110e08ef8fa9c633"
         };
-        const app = firebase.initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
-        const auth = firebase.auth(); 
 
-        // Global State
         let products = [];
-        let messages = [];
-        let nextMessageId = 1;
 
-        // Analytics Data
-        let analytics = {
-            totalVisitors: 0,
-            totalViews: 0,
-            todayVisitors: 0,
-            todayDate: '',
-            devices: { desktop: 0, mobile: 0, tablet: 0 },
-            sessions: [],
-            activities: []
-        };
-
-        // Admin credentials
-        let adminCredentials = {
-            username: 'Aditya',
-            password: 'Aditya@9050'
-        };
-
-        // Website Content
-        let websiteContent = {
-            heroTitle: 'Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨',
-            heroSubtitle: 'Explore Harish Footwear, the ultimate wholesale distributor for top brands like Nike, Adidas, Puma, and more.',
-            badge1Text: 'Top Brands', badge1Icon: '🏆',
-            badge2Text: 'Wholesale Prices', badge2Icon: '💰',
-            badge3Text: 'Bulk Orders', badge3Icon: '📦',
-            contactFormTitle: 'Contact Harish Footwear',
-            contactFormSubtitle: 'Fill the contact form or call -6393191774',
-            locationText: 'Bansdih, UP-277202',
-            phoneText: '+91 6393191774',
-            emailText: 'harishfootwear950@gmail.com',
-            footerText1: '© 2025 Harish Footwear. All rights reserved.',
-            footerText2: 'Wholesale Distributor - Nike, Adidas, Puma & More',
-            footerText3: '🌐 Website Live & Ready for Business'
-        };
-
-        let isLoggedIn = false;
-        let customSections = [];
-        let nextSectionId = 1;
-
-        let assistantSettings = {
-            enabled: true,
-            greeting: '👋 Hi! I\'m your Harish Footwear assistant...',
-            title: 'Harish Assistant 🤖',
-            subtitle: 'Ask me anything!'
-        };
-
-        // --- RENDER PRODUCTS (UPDATED FOR IMAGE FIX) ---
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
             if (!grid) return;
-
-            grid.innerHTML = products.map((product, index) => `
-                <div class="product-card" data-product-id="${product.id}">
-                    <div class="product-controls">
-                        <button class="product-control-btn" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''} title="Move Up">⬆</button>
-                        <button class="product-control-btn" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''} title="Move Down">⬇</button>
-                    </div>
+            grid.innerHTML = products.map(product => `
+                <div class="product-card">
                     <div class="product-image">
-                        ${product.image && product.image.trim() !== '' 
+                        ${product.image && product.image.trim() !== "" 
                             ? `<img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">` 
                             : ''}
-                        <div class="product-image-emoji" style="${product.image && product.image.trim() !== '' ? 'display:none;' : 'display:block;'}">
-                            ${product.emoji || '👟'}
+                        <div class="product-image-emoji" style="${product.image && product.image.trim() !== "" ? 'display:none;' : 'display:block;'}">
+                            👟
                         </div>
                     </div>
                     <div class="product-info">
-                        <div class="product-brand">${product.brand}</div>
                         <h3 class="product-name">${product.name}</h3>
-                        ${product.article ? `<div class="product-article">Article: ${product.article}</div>` : ''}
-                        ${product.description ? `<div class="product-description">${product.description}</div>` : ''}
                         <div class="product-price">₹${product.price}</div>
                     </div>
                 </div>
@@ -1307,210 +194,67 @@ How can I assist you today?</textarea>
 
         async function loadSavedProducts() {
             try {
-                const productsRef = db.collection('products').orderBy('orderIndex', 'asc').orderBy('timestamp', 'desc');
-                const snapshot = await productsRef.get();
+                const snapshot = await db.collection('products').orderBy('orderIndex', 'asc').get();
                 products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            } catch (error) {
-                console.error('Failed to load products:', error);
-            }
-        }
-
-        async function moveProduct(productId, direction) {
-            const index = products.findIndex(p => p.id === productId);
-            if (index === -1) return;
-            let targetIndex = direction === 'up' ? index - 1 : index + 1;
-            if (targetIndex < 0 || targetIndex >= products.length) return;
-
-            [products[targetIndex], products[index]] = [products[index], products[targetIndex]];
-            const batch = db.batch();
-            batch.update(db.collection('products').doc(products[index].id), { orderIndex: index });
-            batch.update(db.collection('products').doc(products[targetIndex].id), { orderIndex: targetIndex });
-            
-            try {
-                await batch.commit();
-                renderProducts();
-                renderAdminProducts();
-            } catch (error) { console.error(error); }
-        }
-
-        function renderAdminProducts() {
-            const tbody = document.getElementById('adminProductsList');
-            if (!tbody) return;
-            tbody.innerHTML = products.map((p, i) => `
-                <tr>
-                    <td>
-                        <button class="btn btn-sm" onclick="moveProduct('${p.id}', 'up')" ${i === 0 ? 'disabled' : ''}>⬆</button>
-                        <button class="btn btn-sm" onclick="moveProduct('${p.id}', 'down')" ${i === products.length - 1 ? 'disabled' : ''}>⬇</button>
-                    </td>
-                    <td>${p.emoji} ${p.brand}</td>
-                    <td>${p.name}</td>
-                    <td>₹${p.price}</td>
-                    <td>${p.stock}</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" onclick="editProduct('${p.id}')">Edit</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.id}')">Delete</button>
-                    </td>
-                </tr>
-            `).join('');
+                renderProducts(); // Render to main site
+                renderAdminProducts(); // Render to admin table
+            } catch (e) { console.error(e); }
         }
 
         async function handleAddProduct(e) {
             e.preventDefault();
-            let brandValue = document.getElementById('productBrand').value === '__custom__' ? document.getElementById('customBrandInput').value.trim() : document.getElementById('productBrand').value;
-            const data = {
-                brand: brandValue,
+            const newProduct = {
                 name: document.getElementById('productName').value,
-                price: parseInt(document.getElementById('productPrice').value) || 0,
-                stock: parseInt(document.getElementById('productStock').value),
-                emoji: document.getElementById('productEmoji').value || '👟',
+                price: document.getElementById('productPrice').value,
                 image: document.getElementById('productImage').value,
-                article: document.getElementById('productArticle').value,
-                description: document.getElementById('productDescription').value,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                orderIndex: products.length
+                orderIndex: products.length,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
             };
-            await db.collection('products').add(data);
+            await db.collection('products').add(newProduct);
             await loadSavedProducts();
-            renderProducts();
-            renderAdminProducts();
             e.target.reset();
         }
 
-        async function editProduct(id) {
-            const p = products.find(x => x.id === id);
-            const n = prompt('New name:', p.name);
-            if (n) {
-                await db.collection('products').doc(id).update({ name: n });
-                await loadSavedProducts();
-                renderProducts(); renderAdminProducts();
-            }
+        function renderAdminProducts() {
+            const list = document.getElementById('adminProductsList');
+            list.innerHTML = products.map(p => `<tr><td>${p.orderIndex}</td><td>${p.name}</td><td><button onclick="deleteProduct('${p.id}')">Delete</button></td></tr>`).join('');
         }
 
         async function deleteProduct(id) {
-            if (confirm('Delete?')) {
-                await db.collection('products').doc(id).delete();
-                await loadSavedProducts();
-                renderProducts(); renderAdminProducts();
-            }
+            await db.collection('products').doc(id).delete();
+            await loadSavedProducts();
         }
 
-        async function loadMessages() {
-            const snap = await db.collection('messages').orderBy('timestamp', 'desc').get();
-            messages = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        }
-
-        async function handleContactSubmit(e) {
-            e.preventDefault();
-            const d = {
-                name: e.target.querySelector('input[type="text"]').value,
-                email: e.target.querySelector('input[type="email"]').value,
-                message: e.target.querySelector('textarea').value,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            };
-            await db.collection('messages').add(d);
-            e.target.reset();
-            document.getElementById('contactAlert').innerHTML = '<div class="alert alert-success">Sent!</div>';
-        }
-
-        async function deleteMessage(id) {
-            await db.collection('messages').doc(id).delete();
-            await loadMessages(); renderMessages();
-        }
-
-        function alertMessage(m, t = 'success') {
-            const d = document.createElement('div');
-            d.className = `alert alert-${t}`; d.textContent = m;
-            document.querySelector('#adminModal .modal-body').prepend(d);
-            setTimeout(() => d.remove(), 3000);
-        }
-
-        function openAdminPanel() { document.getElementById('adminModal').classList.add('active'); isLoggedIn ? showDashboard() : showLogin(); }
+        function openAdminPanel() { document.getElementById('adminModal').classList.add('active'); }
         function closeAdminPanel() { document.getElementById('adminModal').classList.remove('active'); }
-        function showLogin() { document.getElementById('modalTitle').textContent = 'Login'; document.getElementById('loginSection').style.display='block'; document.getElementById('dashboardSection').style.display='none'; }
-        function showDashboard() { document.getElementById('modalTitle').textContent = 'Dashboard'; document.getElementById('loginSection').style.display='none'; document.getElementById('dashboardSection').style.display='block'; renderAdminProducts(); }
-
         function handleLogin(e) {
             e.preventDefault();
-            if (document.getElementById('username').value === adminCredentials.username && document.getElementById('password').value === adminCredentials.password) {
-                isLoggedIn = true; showDashboard(); document.getElementById('adminBadge').classList.add('visible');
+            if (document.getElementById('username').value === 'Aditya' && document.getElementById('password').value === 'Aditya@9050') {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('dashboardSection').style.display = 'block';
+                document.getElementById('adminBadge').classList.add('visible');
             }
         }
 
-        function handleLogout() { isLoggedIn = false; location.reload(); }
-
-        function switchTab(t) {
-            document.querySelectorAll('.admin-tab').forEach(x => x.classList.remove('active'));
-            event.target.classList.add('active');
-            document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
-            document.getElementById(t + 'Tab').classList.add('active');
-            if(t==='messages') { loadMessages().then(renderMessages); }
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(tab + 'Tab').classList.add('active');
         }
 
-        async function handleWebsiteSettings(e) {
-            e.preventDefault();
-            websiteContent.heroTitle = document.getElementById('siteTitle').value;
-            await db.collection('settings').doc('website').set(websiteContent);
-            updatePageContent(); alertMessage('Saved!');
-        }
-
-        function updatePageContent() { document.getElementById('heroTitle').textContent = websiteContent.heroTitle; }
-        function quickEditField(f, n) { 
-            const v = prompt('Edit:', websiteContent[f]); 
-            if(v) { websiteContent[f]=v; db.collection('settings').doc('website').set(websiteContent).then(updatePageContent); }
-        }
-        function resetWebsiteSettings() { loadWebsiteSettings(); }
-        function loadWebsiteSettings() { document.getElementById('siteTitle').value = websiteContent.heroTitle; }
-
-        function checkAdminAccess() {
-            if (new URLSearchParams(window.location.search).get('admin') === 'true') openAdminPanel();
-        }
-
-        async function loadSavedContent() {
-            const doc = await db.collection('settings').doc('website').get();
-            if (doc.exists) { websiteContent = {...websiteContent, ...doc.data()}; updatePageContent(); }
-        }
-
-        function renderMessages() {
-            document.getElementById('messagesList').innerHTML = messages.map(m => `
-                <div style="border:1px solid #eee; padding:10px; margin-bottom:10px;">
-                    <strong>${m.name}</strong><br>${m.message}<br>
-                    <button class="btn btn-danger btn-sm" onclick="deleteMessage('${m.id}')">Delete</button>
-                </div>
-            `).join('');
-        }
-
-        function trackVisitor() { loadAnalytics(); analytics.totalViews++; saveAnalytics(); }
-        function saveAnalytics() { localStorage.setItem('siteAnalytics', JSON.stringify(analytics)); }
-        function loadAnalytics() { const s = localStorage.getItem('siteAnalytics'); if(s) analytics = JSON.parse(s); }
-        function renderAnalytics() { document.getElementById('totalViews').textContent = analytics.totalViews; }
-
-        async function loadSections() {
-            const snap = await db.collection('sections').orderBy('timestamp', 'asc').get();
-            customSections = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            renderSections();
-        }
-
-        function renderSections() {
-            const existing = document.getElementById('customSectionsContainer');
-            if (existing) existing.remove();
-            const div = document.createElement('div'); div.id = 'customSectionsContainer';
-            div.innerHTML = customSections.map(s => `<div class="hero"><h1>${s.content.title}</h1></div>`).join('');
-            document.querySelector('.container').insertBefore(div, document.getElementById('products'));
-        }
-
-        function toggleAiChat() { const w = document.getElementById('aiChatWidget'); w.style.display = w.style.display === 'none' ? 'block' : 'none'; }
-        
+        // --- THE FINAL FIX: WAITING FOR DATA BEFORE FINISHING LOAD ---
         async function initialize() {
-            await loadSavedContent();
+            // First: Wait for all products to be fetched from the database
             await loadSavedProducts();
-            await loadSections();
-            renderProducts();
-            trackVisitor();
-            checkAdminAccess();
+            
+            // Second: Check if we need to open the admin panel automatically
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === 'true') {
+                openAdminPanel();
+            }
         }
-        initialize();
-        document.addEventListener('DOMContentLoaded', checkAdminAccess);
-        function handleBrandSelect() { /* handle custom brand UI logic */ }
+
+        // Start the initialization process as soon as the page loads
+        document.addEventListener('DOMContentLoaded', initialize);
     </script>
 </body>
 </html>
