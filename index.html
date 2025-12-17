@@ -7,6 +7,7 @@
     <meta name="description" content="Harish Footwear - Wholesale distributor of premium footwear brands. Budget Shoe Bazaar with unbeatable wholesale prices.">
     <title>Harish Footwear - Wholesale Distributor</title>
     <style>
+        /* [YOUR ORIGINAL CSS START] */
         :root {
             --color-primary: #1e3a8a;
             --color-primary-hover: #1e40af;
@@ -79,6 +80,7 @@
             z-index: 1;
         }
 
+        /* Navigation */
         nav {
             background: var(--color-text);
             color: white;
@@ -111,6 +113,23 @@
 
         .nav-links a:hover { opacity: 0.8; }
 
+        .admin-btn {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .admin-btn:hover { 
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+        }
+
         .admin-badge {
             position: fixed;
             top: 20px;
@@ -131,13 +150,22 @@
             transition: all 0.3s;
         }
 
-        .admin-badge.visible { display: flex; }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(100px); }
-            to { opacity: 1; transform: translateX(0); }
+        .admin-badge.visible {
+            display: flex;
         }
 
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%);
             color: white;
@@ -147,70 +175,543 @@
             overflow: hidden;
         }
 
-        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; animation: fadeIn 1s ease-out; }
+        .hero::before {
+            content: '👟';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            font-size: 4rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
 
-        .hero p { font-size: 1.2rem; opacity: 0.95; max-width: 600px; margin: 0 auto 2rem; animation: fadeIn 1.2s ease-out; }
+        .hero::after {
+            content: '👞';
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            font-size: 4rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite 3s;
+        }
 
-        .hero-badges { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; animation: fadeIn 1.4s ease-out; }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
+        }
 
-        .badge { background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; backdrop-filter: blur(10px); animation: pulse 2s ease-in-out infinite; transition: transform 0.3s; }
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeIn 1.2s ease-out;
+        }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; background: transparent; }
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            animation: fadeIn 1.4s ease-out;
+        }
 
-        .section-title { font-size: 2rem; text-align: center; margin-bottom: 2rem; }
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            animation: pulse 2s ease-in-out infinite;
+            transition: transform 0.3s;
+        }
 
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .badge:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.3);
+        }
 
-        .product-card { background: white; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; animation: fadeIn 0.6s ease-out; position: relative; }
+        /* Products Section */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: transparent;
+        }
 
-        .product-controls { position: absolute; top: 10px; right: 10px; display: none; flex-direction: column; gap: 0.5rem; z-index: 10; }
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
 
-        .admin-badge.visible ~ .container .product-card .product-controls { display: flex; }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
 
-        .product-control-btn { background: var(--color-primary); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2); transition: all 0.3s; }
+        .product-card {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            cursor: pointer;
+            animation: fadeIn 0.6s ease-out;
+            position: relative;
+        }
 
-        .product-image { width: 100%; height: 200px; background: var(--color-surface); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--color-border); overflow: hidden; position: relative; }
+        .product-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 10;
+        }
 
-        /* IMAGE DISPLAY FIX */
-        .product-image img { width: 100%; height: 100%; object-fit: contain; background-color: #fff; display: block; }
-        .product-image-emoji { font-size: 3rem; }
+        .admin-badge.visible ~ .container .product-card .product-controls {
+            display: flex;
+        }
 
-        .product-info { padding: 1.5rem; }
-        .product-brand { font-size: 0.875rem; color: var(--color-text-secondary); font-weight: 600; text-transform: uppercase; }
-        .product-name { font-size: 1.125rem; font-weight: 600; margin: 0.5rem 0; }
-        .product-article { font-size: 0.75rem; color: var(--color-text-secondary); }
-        .product-description { font-size: 0.875rem; color: var(--color-text-secondary); margin-top: 0.5rem; line-height: 1.4; }
+        .product-control-btn {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
 
-        .contact-form-section { padding: 3rem 2rem; }
-        .contact-form { max-width: 800px; display: flex; flex-direction: column; gap: 1rem; }
-        .contact-input, .contact-textarea { width: 100%; padding: 1rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); }
-        .contact-submit-btn { background: var(--color-accent); color: white; padding: 0.75rem 2rem; border: none; border-radius: 8px; cursor: pointer; align-self: flex-start; }
+        .product-control-btn:hover {
+            background: var(--color-primary-hover);
+            transform: scale(1.1);
+        }
 
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-        .contact-card { background: white; padding: 2rem; border-radius: 12px; text-align: center; border: 1px solid var(--color-border); transition: all 0.3s; }
+        .product-control-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(30, 58, 138, 0.15);
+            border-color: var(--color-primary);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: var(--color-surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-bottom: 1px solid var(--color-border);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* IMAGE FIX START */
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Shows full shoe without cutting edges */
+            background-color: #fff;
+            display: block;
+        }
+        /* IMAGE FIX END */
+
+        .product-image-emoji {
+            font-size: 3rem;
+        }
+
+        .product-article {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .product-description {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-top: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-brand {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .product-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            display: block; /* Original display value */
+        }
+
+        .product-stock {
+            font-size: 0.875rem;
+            color: var(--color-success);
+            margin-top: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: transparent;
+            padding: 3rem 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            transition: all 0.3s;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.1);
+            border-color: var(--color-primary);
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.02), rgba(249, 115, 22, 0.02));
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            background: transparent;
+            padding: 3rem 2rem;
+        }
+
+        .contact-form-title {
+            font-size: 2rem;
+            text-align: left;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .contact-form-subtitle {
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+
+        .contact-form {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-input,
+        .contact-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: var(--color-surface);
+            transition: border-color 0.3s;
+        }
+
+        .contact-input:focus,
+        .contact-textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .contact-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-submit-btn {
+            background: var(--color-accent);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: all 0.3s;
+        }
+
+        .contact-submit-btn:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(249, 115, 22, 0.3);
+        }
+
+        /* Admin Panel Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
         .modal.active { display: flex; }
-        .modal-content { background: white; border-radius: 12px; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 2rem; }
 
-        .admin-tabs { display: flex; gap: 1rem; border-bottom: 2px solid var(--color-border); margin-bottom: 2rem; overflow-x: auto; }
-        .admin-tab { padding: 0.75rem 1.5rem; background: none; border: none; cursor: pointer; color: var(--color-text-secondary); white-space: nowrap; }
-        .admin-tab.active { color: var(--color-primary); border-bottom: 2px solid var(--color-primary); }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
 
-        .form-group { margin-bottom: 1.5rem; }
-        .form-control { width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: 6px; }
-        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; }
-        .btn-primary { background: var(--color-primary); color: white; }
-        .btn-danger { background: var(--color-error); color: white; }
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        .products-table { width: 100%; border-collapse: collapse; }
-        .products-table th, .products-table td { padding: 1rem; border-bottom: 1px solid var(--color-border); text-align: left; }
+        .modal-body {
+            padding: 2rem;
+        }
 
-        footer { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%); color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text-secondary);
+        }
 
-        @media (max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 2rem; } }
+        .close-btn:hover { color: var(--color-text); }
+
+        /* Admin Tabs */
+        .admin-tabs {
+            display: flex;
+            gap: 1rem;
+            border-bottom: 2px solid var(--color-border);
+            margin-bottom: 2rem;
+        }
+
+        .admin-tab {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.3s;
+        }
+
+        .admin-tab.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .btn-danger {
+            background: var(--color-error);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        /* Product Management Table */
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .products-table th,
+        .products-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .products-table th {
+            background: var(--color-surface);
+            font-weight: 600;
+        }
+
+        .products-table tr:hover {
+            background: var(--color-surface);
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.875rem;
+        }
+
+        /* Login Form */
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: footerPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes footerPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        footer p {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
     </style>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
@@ -252,7 +753,7 @@
                 <textarea class="contact-textarea" placeholder="Message" rows="5" required></textarea>
                 <button type="submit" class="contact-submit-btn">Send</button>
             </form>
-            <div id="contactAlert"></div>
+            <div id="contactAlert" style="margin-top: 1rem;"></div>
         </div>
     </section>
 
@@ -260,10 +761,12 @@
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-card" onclick="window.location.href='tel:+916393191774'">
+                    <div class="contact-icon">📞</div>
                     <h3>Phone</h3>
                     <p id="phoneText">+91 6393191774</p>
                 </div>
                 <div class="contact-card" onclick="window.location.href='mailto:harishfootwear950@gmail.com'">
+                    <div class="contact-icon">✉️</div>
                     <h3>Email</h3>
                     <p id="emailText">harishfootwear950@gmail.com</p>
                 </div>
@@ -271,76 +774,73 @@
         </div>
     </section>
 
-    <button id="aiChatButton" onclick="toggleAiChat()" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: #3b82f6; color: white; border: none; cursor: pointer; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">💬</button>
+    <button id="aiChatButton" onclick="toggleAiChat()" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); z-index: 1000; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">💬</button>
 
-    <div id="aiChatWidget" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; background: white; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); z-index: 1000; overflow: hidden;">
-        <div style="background: #3b82f6; color: white; padding: 1rem;">Harish Assistant 🤖</div>
-        <div id="aiChatMessages" style="height: 300px; overflow-y: auto; padding: 1rem;"></div>
-        <form onsubmit="handleAiChat(event)" style="display: flex; padding: 1rem; border-top: 1px solid #eee;">
-            <input type="text" id="aiChatInput" placeholder="Ask me something..." style="flex: 1; padding: 0.5rem;" required>
-            <button type="submit">➤</button>
-        </form>
-    </div>
-
-    <div class="admin-badge" id="adminBadge" onclick="openAdminPanel()">👤 Admin Mode</div>
-
-    <div class="modal" id="adminModal">
-        <div class="modal-content">
-            <div id="loginSection">
-                <h2>Admin Login</h2>
-                <form onsubmit="handleLogin(event)">
-                    <div class="form-group"><input type="text" id="username" class="form-control" placeholder="Username" required></div>
-                    <div class="form-group"><input type="password" id="password" class="form-control" placeholder="Password" required></div>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                    <button type="button" onclick="closeAdminPanel()">Close</button>
-                </form>
-            </div>
-            <div id="dashboardSection" style="display: none;">
-                <div class="admin-tabs">
-                    <button class="admin-tab active" onclick="switchTab('products')">Products</button>
-                    <button class="admin-tab" onclick="switchTab('add')">Add Product</button>
-                    <button class="admin-tab" onclick="switchTab('sections')">Add Section</button>
-                    <button class="admin-tab" onclick="switchTab('website')">Website Settings</button>
-                    <button class="admin-tab" onclick="switchTab('assistant')">AI Assistant</button>
-                    <button class="admin-tab" onclick="switchTab('messages')">Messages</button>
-                </div>
-                <div id="productsTab" class="tab-content active">
-                    <table class="products-table">
-                        <thead><tr><th>Order</th><th>Name</th><th>Actions</th></tr></thead>
-                        <tbody id="adminProductsList"></tbody>
-                    </table>
-                </div>
-                <div id="addTab" class="tab-content">
-                    <form onsubmit="handleAddProduct(event)">
-                        <div class="form-group"><select id="productBrand" class="form-control"><option value="Nike">Nike</option><option value="Adidas">Adidas</option><option value="Puma">Puma</option></select></div>
-                        <div class="form-group"><input type="text" id="productName" class="form-control" placeholder="Product Name" required></div>
-                        <div class="form-group"><input type="number" id="productPrice" class="form-control" placeholder="Price" required></div>
-                        <div class="form-group"><input type="url" id="productImage" class="form-control" placeholder="Image URL (direct link)"></div>
-                        <div class="form-group"><input type="text" id="productStock" class="form-control" placeholder="Stock Quantity"></div>
-                        <button type="submit" class="btn btn-primary">Add Product</button>
-                    </form>
-                </div>
-                <div id="sectionsTab" class="tab-content">
-                    <button onclick="addSection('hero')">Add Hero Banner</button>
-                    <div id="sectionsList"></div>
-                </div>
-                <div id="websiteTab" class="tab-content">
-                    <form onsubmit="handleWebsiteSettings(event)">
-                        <input type="text" id="siteTitle" class="form-control" placeholder="Hero Title">
-                        <button type="submit">Save</button>
-                    </form>
-                </div>
-                <div id="assistantTab" class="tab-content">
-                    <input type="checkbox" id="assistantEnabled"> Enable Assistant
-                    <button onclick="saveAssistantSettings()">Save</button>
-                </div>
-                <div id="messagesTab" class="tab-content"><div id="messagesList"></div></div>
-                <button class="btn btn-danger" onclick="handleLogout()">Logout</button>
-            </div>
+    <div id="aiChatWidget" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px); background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); z-index: 1000; overflow: hidden;">
+        <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 1rem;">Harish Assistant 🤖</div>
+        <div id="aiChatMessages" style="height: 300px; overflow-y: auto; padding: 1rem; background: #f9fafb;"></div>
+        <div style="padding: 1rem; border-top: 1px solid #e5e7eb; background: white;">
+            <form onsubmit="handleAiChat(event)" style="display: flex; gap: 0.5rem;">
+                <input type="text" id="aiChatInput" placeholder="Type your question..." style="flex: 1; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 0.875rem;" required>
+                <button type="submit" style="background: #3b82f6; color: white; border: none; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer;">➤</button>
+            </form>
         </div>
     </div>
 
     <footer><p>© 2025 Harish Footwear. All rights reserved.</p></footer>
+
+    <div class="admin-badge" id="adminBadge" onclick="openAdminPanel()"><span>👤</span> Admin Mode</div>
+
+    <div class="modal" id="adminModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Admin Login</h2>
+                <button class="close-btn" onclick="closeAdminPanel()">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="loginSection">
+                    <div class="login-form">
+                        <div id="loginAlert"></div>
+                        <form onsubmit="handleLogin(event)">
+                            <div class="form-group"><label>Username</label><input type="text" id="username" class="form-control" required></div>
+                            <div class="form-group"><label>Password</label><input type="password" id="password" class="form-control" required></div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="dashboardSection" style="display: none;">
+                    <div class="admin-tabs">
+                        <button class="admin-tab active" onclick="switchTab('products')">Products</button>
+                        <button class="admin-tab" onclick="switchTab('add')">Add Product</button>
+                        <button class="admin-tab" onclick="switchTab('sections')">Add Section</button>
+                        <button class="admin-tab" onclick="switchTab('website')">Website Settings</button>
+                        <button class="admin-tab" onclick="switchTab('assistant')">AI Assistant</button>
+                    </div>
+                    <div id="productsTab" class="tab-content active">
+                        <table class="products-table">
+                            <thead><tr><th>Brand</th><th>Name</th><th>Actions</th></tr></thead>
+                            <tbody id="adminProductsList"></tbody>
+                        </table>
+                    </div>
+                    <div id="addTab" class="tab-content">
+                        <form onsubmit="handleAddProduct(event)">
+                            <div class="form-group"><label>Brand</label><select id="productBrand" class="form-control"><option value="Nike">Nike</option><option value="Adidas">Adidas</option><option value="Puma">Puma</option></select></div>
+                            <div class="form-group"><label>Product Name</label><input type="text" id="productName" class="form-control" required></div>
+                            <div class="form-group"><label>Wholesale Price (₹)</label><input type="number" id="productPrice" class="form-control" required></div>
+                            <div class="form-group"><label>Image URL</label><input type="url" id="productImage" class="form-control" placeholder="https://example.com/image.jpg"></div>
+                            <div class="form-group"><label>Stock Quantity</label><input type="number" id="productStock" class="form-control" required></div>
+                            <button type="submit" class="btn btn-primary">Add Product</button>
+                        </form>
+                    </div>
+                    <div id="sectionsTab" class="tab-content"><div id="sectionsList"></div><button onclick="addSection('hero')">Add Section</button></div>
+                    <div id="websiteTab" class="tab-content"><form onsubmit="handleWebsiteSettings(event)"><input type="text" id="siteTitle" class="form-control" required><button type="submit">Save</button></form></div>
+                    <div id="assistantTab" class="tab-content"><input type="checkbox" id="assistantEnabled"><button onclick="saveAssistantSettings()">Save Assistant</button></div>
+                    <button class="btn btn-danger" onclick="handleLogout()" style="margin-top: 2rem;">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         const firebaseConfig = {
@@ -351,20 +851,20 @@
             messagingSenderId: "416642383698",
             appId: "1:618642383698:web:f643110e08ef8fa9c633"
         };
-        const app = firebase.initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
         let products = [];
         let customSections = [];
         let isLoggedIn = false;
-        let assistantSettings = { enabled: true, greeting: "Hello!" };
-        let websiteContent = { heroTitle: "Welcome" };
+        let websiteContent = { heroTitle: 'Budget Shoe Bazaar' };
+        let assistantSettings = { enabled: true, greeting: 'Hi!' };
 
-        /* RENDERING PRODUCTS WITH IMAGE FIX */
+        /* RENDER PRODUCTS FIX START */
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
             if (!grid) return;
-            grid.innerHTML = products.map((product, index) => `
+            grid.innerHTML = products.map((product) => `
                 <div class="product-card">
                     <div class="product-controls">
                         <button class="product-control-btn" onclick="moveProduct('${product.id}', 'up')">⬆</button>
@@ -386,14 +886,13 @@
                 </div>
             `).join('');
         }
+        /* RENDER PRODUCTS FIX END */
 
         async function loadSavedProducts() {
-            try {
-                const snapshot = await db.collection('products').orderBy('orderIndex', 'asc').get();
-                products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                renderProducts();
-                renderAdminProducts();
-            } catch (e) { console.error(e); }
+            const snap = await db.collection('products').orderBy('orderIndex', 'asc').get();
+            products = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            renderProducts();
+            renderAdminProducts();
         }
 
         async function handleAddProduct(e) {
@@ -401,9 +900,9 @@
             const newProduct = {
                 brand: document.getElementById('productBrand').value,
                 name: document.getElementById('productName').value,
-                price: document.getElementById('productPrice').value,
+                price: parseInt(document.getElementById('productPrice').value),
                 image: document.getElementById('productImage').value,
-                stock: document.getElementById('productStock').value,
+                stock: parseInt(document.getElementById('productStock').value),
                 orderIndex: products.length,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             };
@@ -425,7 +924,7 @@
 
         function renderAdminProducts() {
             const list = document.getElementById('adminProductsList');
-            list.innerHTML = products.map(p => `<tr><td>${p.orderIndex}</td><td>${p.name}</td><td><button onclick="deleteProduct('${p.id}')">Delete</button></td></tr>`).join('');
+            list.innerHTML = products.map(p => `<tr><td>${p.brand}</td><td>${p.name}</td><td><button onclick="deleteProduct('${p.id}')">Delete</button></td></tr>`).join('');
         }
 
         async function deleteProduct(id) {
@@ -433,7 +932,6 @@
             loadSavedProducts();
         }
 
-        /* ADMIN PANEL LOGIC */
         function openAdminPanel() { document.getElementById('adminModal').classList.add('active'); }
         function closeAdminPanel() { document.getElementById('adminModal').classList.remove('active'); }
         function handleLogin(e) {
@@ -453,28 +951,17 @@
             event.target.classList.add('active');
         }
 
-        /* SECTION AND ASSISTANT STORAGE */
-        async function addSection(type) {
-            const title = prompt("Enter Title");
-            await db.collection('sections').add({ type, content: { title }, timestamp: firebase.firestore.FieldValue.serverTimestamp() });
-            loadSections();
-        }
         async function loadSections() {
             const snap = await db.collection('sections').orderBy('timestamp', 'asc').get();
             customSections = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             renderSections();
         }
+
         function renderSections() {
             const cont = document.getElementById('customSectionsContainer') || document.createElement('div');
             cont.id = 'customSectionsContainer';
             cont.innerHTML = customSections.map(s => `<div class="hero"><h1>${s.content.title}</h1></div>`).join('');
             document.querySelector('.container').prepend(cont);
-        }
-
-        async function saveAssistantSettings() {
-            const enabled = document.getElementById('assistantEnabled').checked;
-            await db.collection('config').doc('assistant').set({ enabled });
-            alert("Saved");
         }
 
         function toggleAiChat() { 
@@ -485,8 +972,8 @@
         async function initialize() {
             await loadSavedProducts();
             await loadSections();
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('admin') === 'true') openAdminPanel();
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('admin') === 'true') openAdminPanel();
         }
         initialize();
     </script>
