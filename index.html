@@ -171,16 +171,22 @@
 
         let products = [];
 
+        // --- SPECIFIC FIX FOR IMAGE VISIBILITY ON MAIN SITE ---
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
             if (!grid) return;
-            grid.innerHTML = products.map(product => `
+            
+            grid.innerHTML = products.map(product => {
+                // Ensure image field is cleaned and checked
+                const hasImage = product.image && product.image.trim() !== "";
+                
+                return `
                 <div class="product-card">
                     <div class="product-image">
-                        ${product.image && product.image.trim() !== "" 
+                        ${hasImage 
                             ? `<img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">` 
                             : ''}
-                        <div class="product-image-emoji" style="${product.image && product.image.trim() !== "" ? 'display:none;' : 'display:block;'}">
+                        <div class="product-image-emoji" style="${hasImage ? 'display:none;' : 'display:block;'}">
                             👟
                         </div>
                     </div>
@@ -189,15 +195,15 @@
                         <div class="product-price">₹${product.price}</div>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
         }
 
         async function loadSavedProducts() {
             try {
                 const snapshot = await db.collection('products').orderBy('orderIndex', 'asc').get();
                 products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                renderProducts(); // Render to main site
-                renderAdminProducts(); // Render to admin table
+                renderProducts(); 
+                renderAdminProducts(); 
             } catch (e) { console.error(e); }
         }
 
@@ -217,6 +223,7 @@
 
         function renderAdminProducts() {
             const list = document.getElementById('adminProductsList');
+            if (!list) return;
             list.innerHTML = products.map(p => `<tr><td>${p.orderIndex}</td><td>${p.name}</td><td><button onclick="deleteProduct('${p.id}')">Delete</button></td></tr>`).join('');
         }
 
@@ -227,6 +234,7 @@
 
         function openAdminPanel() { document.getElementById('adminModal').classList.add('active'); }
         function closeAdminPanel() { document.getElementById('adminModal').classList.remove('active'); }
+        
         function handleLogin(e) {
             e.preventDefault();
             if (document.getElementById('username').value === 'Aditya' && document.getElementById('password').value === 'Aditya@9050') {
@@ -241,19 +249,14 @@
             document.getElementById(tab + 'Tab').classList.add('active');
         }
 
-        // --- THE FINAL FIX: WAITING FOR DATA BEFORE FINISHING LOAD ---
         async function initialize() {
-            // First: Wait for all products to be fetched from the database
             await loadSavedProducts();
-            
-            // Second: Check if we need to open the admin panel automatically
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('admin') === 'true') {
                 openAdminPanel();
             }
         }
 
-        // Start the initialization process as soon as the page loads
         document.addEventListener('DOMContentLoaded', initialize);
     </script>
 </body>
