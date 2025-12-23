@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="theme-color" content="#1e3a8a">
     <meta name="description" content="Harish Footwear - Wholesale distributor of premium footwear brands. Budget Shoe Bazaar with unbeatable wholesale prices.">
     <title>Harish Footwear - Wholesale Distributor</title>
@@ -142,7 +143,6 @@
             font-size: 0.875rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             z-index: 1001;
-            /* Hidden by default, shown only by checkAdminAccess() */
             display: none; 
             align-items: center;
             gap: 0.5rem;
@@ -151,20 +151,13 @@
             transition: all 0.3s;
         }
 
-        /* ONLY display the badge when the 'visible' class is added by JavaScript */
         .admin-badge.visible {
             display: flex;
         }
 
         @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         /* Hero Section */
@@ -272,7 +265,7 @@
             display: none;
             flex-direction: column;
             gap: 0.5rem;
-            z-index: 10;
+            z-index: 20; 
         }
 
         .admin-badge.visible ~ .container .product-card .product-controls {
@@ -311,32 +304,35 @@
             border-color: var(--color-primary);
         }
 
+        /* --- FIXED IMAGE CSS START --- */
         .product-image {
             width: 100%;
             height: 200px;
             background: var(--color-surface);
-            display: flex;
+            display: flex; /* Centers content */
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
             border-bottom: 1px solid var(--color-border);
             overflow: hidden;
             position: relative;
         }
 
-        /* --- IMAGE FIX START --- */
         .product-image img {
-         width: 100%;
-         height: 100%;
-         object-fit: contain;
-         background: #ffffff;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Shows full image */
+            display: block;
         }
 
-        /* --- IMAGE FIX END --- */
-
-        .product-image-emoji {
+        .product-emoji {
             font-size: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
         }
+        /* --- FIXED IMAGE CSS END --- */
 
         .product-article {
             font-size: 0.75rem;
@@ -372,7 +368,7 @@
             font-size: 1.5rem;
             color: var(--color-primary);
             font-weight: 700;
-            display: block;
+            display: block; 
         }
 
         .product-stock {
@@ -720,6 +716,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
 </head>
 <body>
     <nav>
@@ -1002,6 +999,94 @@
                         </form>
                     </div>
 
+                    <div id="websiteTab" class="tab-content">
+                        <h3>Website Content Settings</h3>
+                        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">Click on any field to edit individual content without changing everything.</p>
+                        <form onsubmit="handleWebsiteSettings(event)">
+                            <div class="form-group">
+                                <label for="siteTitle">Hero Title</label>
+                                <input type="text" id="siteTitle" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="siteSubtitle">Hero Subtitle</label>
+                                <textarea id="siteSubtitle" class="form-control" rows="2" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="badge1">Badge 1 Text</label>
+                                <input type="text" id="badge1" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="badge1Icon">Badge 1 Icon</label>
+                                <input type="text" id="badge1Icon" class="form-control" maxlength="2" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="badge2">Badge 2 Text</label>
+                                <input type="text" id="badge2" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="badge2Icon">Badge 2 Icon</label>
+                                <input type="text" id="badge2Icon" class="form-control" maxlength="2" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="badge3">Badge 3 Text</label>
+                                <input type="text" id="badge3" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="badge3Icon">Badge 3 Icon</label>
+                                <input type="text" id="badge3Icon" class="form-control" maxlength="2" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactFormTitle">Contact Form Title</label>
+                                <input type="text" id="contactFormTitle" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactFormSubtitle">Contact Form Subtitle</label>
+                                <textarea id="contactFormSubtitle" class="form-control" rows="2" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="locationText">Location</label>
+                                <input type="text" id="locationText" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneText">Phone Number</label>
+                                <input type="text" id="phoneText" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emailText">Email Address</label>
+                                <input type="email" id="emailText" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="footerText1">Footer Text Line 1</label>
+                                <input type="text" id="footerText1" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="footerText2">Footer Text Line 2</label>
+                                <input type="text" id="footerText2" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="footerText3">Footer Text Line 3</label>
+                                <input type="text" id="footerText3" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save All Changes</button>
+                            <button type="button" class="btn btn-secondary" onclick="resetWebsiteSettings()" style="margin-left: 0.5rem; background: var(--color-text-secondary);">Reset to Current</button>
+                        </form>
+                        
+                        <hr style="margin: 2rem 0;">
+                        <h4>Quick Edit Individual Fields</h4>
+                        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">Update single fields instantly without affecting other content.</p>
+                        <div style="display: grid; gap: 1rem;">
+                            <button class="btn btn-secondary" onclick="quickEditField('heroTitle', 'Hero Title')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Hero Title</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('heroSubtitle', 'Hero Subtitle')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Hero Subtitle</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('badge1Text', 'Badge 1 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 1</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('badge2Text', 'Badge 2 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 2</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('badge3Text', 'Badge 3 Text')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Badge 3</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('contactFormTitle', 'Contact Form Title')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Contact Title</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('locationText', 'Location')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Location</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('phoneText', 'Phone Number')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Phone</button>
+                            <button class="btn btn-secondary" onclick="quickEditField('emailText', 'Email Address')" style="background: var(--color-accent); color: white; text-align: left;">✏️ Edit Email</button>
+                        </div>
+                    </div>
+
                     <div id="sectionsTab" class="tab-content">
                         <h3>Manage Sections</h3>
                         <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">Add hero banners, cards, text blocks, and more to your website.</p>
@@ -1058,7 +1143,7 @@
 
                         <div class="form-group">
                             <label for="assistantGreeting">Welcome Message</label>
-                            <textarea id="assistantGreeting" class="form-control" rows="4" placeholder="Enter welcome message...">👋 Hi! I\'m your Harish Footwear assistant. I can help you with:
+                            <textarea id="assistantGreeting" class="form-control" rows="4" placeholder="Enter welcome message...">👋 Hi! I'm your Harish Footwear assistant. I can help you with:
 • Product information
 • Contact details
 • Bulk order inquiries
@@ -1068,11 +1153,11 @@ How can I assist you today?</textarea>
                             <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">This message appears when visitors open the chat</p>
                         </div>
 
-                        <div class="form-group">
-                            <label for="assistantTitle">Assistant Name</label>
-                            <input type="text" id="assistantTitle" class="form-control" value="Harish Assistant 🤖">
-                            <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">The name displayed in the chat header</p>
-                        </div>
+                            <div class="form-group">
+                                <label for="assistantTitle">Assistant Name</label>
+                                <input type="text" id="assistantTitle" class="form-control" value="Harish Assistant 🤖">
+                                <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">The name displayed in the chat header</p>
+                            </div>
 
                         <div class="form-group">
                             <label for="assistantSubtitle">Assistant Subtitle</label>
@@ -1187,47 +1272,53 @@ How can I assist you today?</textarea>
             subtitle: 'Ask me anything!'
         };
 
-       // REPLACE your existing renderProducts() with this version
-function renderProducts() {
-  const grid = document.getElementById('productsGrid');
-  if (!grid) return;
+        // --- RENDER PRODUCTS (FINAL FIXED VERSION) ---
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            if (!grid) return;
 
-  grid.innerHTML = (products || []).map((product, index) => {
-    const imageUrl = (product.image || '').trim();
-    const hasImage = imageUrl !== '';
+            grid.innerHTML = (products || []).map((product, index) => {
+                const imageUrl = (product.image || '').trim();
+                const hasImage = imageUrl !== '';
+                const emoji = product.emoji || '👟';
+                
+                // If there IS an image URL, we show image by default (display: block) and hide emoji (display: none)
+                // If there IS NO image URL, we hide image (display: none) and show emoji (display: flex)
+                const imgDisplay = hasImage ? 'block' : 'none';
+                const emojiDisplay = hasImage ? 'none' : 'flex';
 
-    return `
-      <div class="product-card" data-product-id="${product.id}">
-        <div class="product-controls">
-          <button class="product-control-btn" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''} title="Move Up">⬆</button>
-          <button class="product-control-btn" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''} title="Move Down">⬇</button>
-        </div>
+                return `
+                    <div class="product-card" data-product-id="${product.id}">
+                        <div class="product-controls">
+                            <button class="product-control-btn" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''} title="Move Up">⬆</button>
+                            <button class="product-control-btn" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''} title="Move Down">⬇</button>
+                        </div>
 
-        <div class="product-image">
-          ${hasImage ? `
-            <img
-              src="${imageUrl}"
-              alt="${product.name || ''}"
-              onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='flex';}"
-            >
-          ` : ''}
-          <div class="product-image-emoji" style="${hasImage ? 'display:none; align-items:center; justify-content:center;' : 'display:flex; align-items:center; justify-content:center;'}">
-            ${product.emoji || '👟'}
-          </div>
-        </div>
+                        <div class="product-image">
+                             <div class="product-emoji" style="display: ${emojiDisplay};">
+                                ${emoji}
+                            </div>
 
-        <div class="product-info">
-          <div class="product-brand">${product.brand || ''}</div>
-          <h3 class="product-name">${product.name || ''}</h3>
-          ${product.article ? `<div class="product-article">Article: ${product.article}</div>` : ''}
-          ${product.description ? `<div class="product-description">${product.description}</div>` : ''}
-          <div class="product-price">₹${product.price || 0}</div>
-          <div class="product-stock">${product.stock || 0} in stock</div>
-        </div>
-      </div>
-    `;
-  }).join('');
-}
+                             <img 
+                                src="${imageUrl}" 
+                                alt="${product.name || ''}"
+                                style="display: ${imgDisplay};"
+                                onerror="this.style.display='none'; this.previousElementSibling.style.display='flex';"
+                            >
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-brand">${product.brand || ''}</div>
+                            <h3 class="product-name">${product.name || ''}</h3>
+                            ${product.article ? `<div class="product-article">Article: ${product.article}</div>` : ''}
+                            ${product.description ? `<div class="product-description">${product.description}</div>` : ''}
+                            <div class="product-price">₹${product.price || 0}</div>
+                            <div class="product-stock">${product.stock || 0} in stock</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
 
 
         async function loadSavedProducts() {
@@ -1391,8 +1482,8 @@ function renderProducts() {
         }
 
         async function loadSavedContent() {
-            const docSnap = await db.collection('settings').doc('website').get();
-            if (docSnap.exists) { websiteContent = {...websiteContent, ...docSnap.data()}; updatePageContent(); }
+            const doc = await db.collection('settings').doc('website').get();
+            if (doc.exists) { websiteContent = {...websiteContent, ...doc.data()}; updatePageContent(); }
         }
 
         function renderMessages() {
