@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="theme-color" content="#1e3a8a">
-    <meta name="description" content="Harish Footwear - Wholesale distributor of premium footwear brands. Budget Shoe Bazaar with unbeatable wholesale prices.">
+    <meta name="description" content="Harish Footwear - Wholesale distributor of premium footwear brands.">
     <title>Harish Footwear - Wholesale Distributor</title>
     <style>
-        /* --- CSS STYLES --- */
+        /* [YOUR ORIGINAL CSS START] */
         :root {
             --color-primary: #1e3a8a;
             --color-primary-hover: #1e40af;
@@ -23,9 +23,24 @@
             --color-error: #ef4444;
         }
 
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,8 +50,38 @@
             background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #e7e5e4 100%);
             color: var(--color-text);
             line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
         }
 
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(30, 58, 138, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(20, 184, 166, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 60% 40%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes bgFloat {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        body > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
         nav {
             background: var(--color-text);
             color: white;
@@ -47,13 +92,84 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover { opacity: 0.8; }
+
+        .admin-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1001;
+            display: block; 
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%);
             color: white;
             padding: 4rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Products Section */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -64,6 +180,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
         }
 
         .product-card {
@@ -71,153 +188,186 @@
             border: 1px solid var(--color-border);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
             position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(30, 58, 138, 0.15);
         }
 
         .product-image {
             width: 100%;
             height: 200px;
+            background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #fff;
+            border-bottom: 1px solid var(--color-border);
             position: relative;
+            overflow: hidden;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            display: block;
         }
 
-        .product-emoji-fallback {
-            font-size: 3rem;
+        .product-image-emoji {
+            font-size: 4rem;
             display: none;
         }
 
-        /* Get In Touch Section */
-        .contact-section {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
+        .product-info { padding: 1.5rem; }
+        .product-brand { font-size: 0.875rem; color: var(--color-text-secondary); font-weight: 600; text-transform: uppercase; }
+        .product-name { font-size: 1.125rem; font-weight: 600; margin: 0.5rem 0; }
+        .product-price { font-size: 1.5rem; color: var(--color-primary); font-weight: 700; }
+        .product-stock { font-size: 0.875rem; color: var(--color-success); margin-top: 0.5rem; }
 
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+        /* --- CONTACT & GET IN TOUCH STYLES --- */
+        .contact-section {
+            background: transparent;
+            padding: 3rem 2rem;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .contact-card {
             background: white;
             padding: 2.5rem 1.5rem;
-            border-radius: 15px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
         }
 
         .contact-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            border-color: var(--color-primary);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        .contact-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #d14d72; /* Match pin/phone icon color in screenshot */
-        }
+        .contact-icon { font-size: 2.5rem; margin-bottom: 1rem; color: #d14d72; }
 
-        .contact-card h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
-        }
-
-        .contact-card p {
-            color: var(--color-text-secondary);
-            font-size: 0.95rem;
-        }
-
+        /* --- FOOTER STYLES --- */
         footer {
-            background: linear-gradient(90deg, #1e3a8a, #f97316);
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%);
             color: white;
             text-align: center;
-            padding: 2.5rem;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+        footer p { margin-bottom: 0.5rem; }
+
+        /* Admin Modal */
+        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
-        .modal-content { background: white; padding: 2rem; border-radius: 12px; width: 90%; max-width: 500px; }
+        .modal-content { background: white; border-radius: 12px; width: 90%; max-width: 600px; padding: 2rem; max-height: 90vh; overflow-y: auto; }
         .form-group { margin-bottom: 1rem; }
-        .form-control { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; }
-        .btn-primary { background: var(--color-primary); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; }
+        .form-control { width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: 6px; }
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; }
+        .btn-primary { background: var(--color-primary); color: white; }
     </style>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
-
     <nav>
         <div class="logo">👟 Harish Footwear</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
     <section class="hero" id="home">
-        <h1>Budget Shoe Bazaar ✨</h1>
-        <p>Wholesale Footwear at Unbeatable Prices</p>
+        <h1 id="heroTitle">Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨</h1>
+        <p id="heroSubtitle">Explore Harish Footwear, the ultimate wholesale distributor for top brands like Nike, Adidas, Puma, and more.</p>
+        <div class="hero-badges">
+            <div class="badge">🏆 Top Brands</div>
+            <div class="badge">💰 Wholesale Prices</div>
+            <div class="badge">📦 Bulk Orders</div>
+        </div>
     </section>
 
     <div class="container" id="products">
-        <h2 style="text-align: center; margin-bottom: 2rem;">Our Premium Collection</h2>
+        <h2 class="section-title" style="text-align: center; margin-bottom: 2.5rem;">Our Premium Collection</h2>
         <div class="products-grid" id="productsGrid"></div>
     </div>
 
-    <section class="contact-section">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <div class="contact-icon">📍</div>
-                <h3>Location</h3>
-                <p>Bansdih, UP-277202</p>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">📞</div>
-                <h3>Phone</h3>
-                <p>+91 6393191774</p>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">✉️</div>
-                <h3>Email</h3>
-                <p>harishfootwear950@gmail.com</p>
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>Bansdih, UP-277202</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Phone</h3>
+                    <p>+91 6393191774</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p>harishfootwear950@gmail.com</p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2025 Harish Footwear. All rights reserved.</p>
-        <p>Wholesale Distributor - Nike, Adidas, Puma & More</p>
-        <p>🌐 Website Live & Ready for Business</p>
+        <p id="footerText1">© 2025 Harish Footwear. All rights reserved.</p>
+        <p id="footerText2">Wholesale Distributor - Nike, Adidas, Puma & More</p>
+        <p id="footerText3" style="font-size: 0.875rem; opacity: 0.8;">🌐 Website Live & Ready for Business</p>
     </footer>
 
-    <div class="admin-badge" style="position: fixed; bottom: 20px; left: 20px; cursor: pointer; background: #333; color: white; padding: 10px; border-radius: 50px;" onclick="openAdmin()">👤 Admin</div>
+    <div class="admin-badge" id="adminBadge" onclick="openAdminPanel()">
+        <span>👤</span> <span>Admin Mode</span>
+    </div>
 
     <div class="modal" id="adminModal">
         <div class="modal-content">
-            <h2>Add Product</h2>
-            <form onsubmit="addProduct(event)">
-                <div class="form-group"><input type="text" id="pBrand" class="form-control" placeholder="Brand" required></div>
-                <div class="form-group"><input type="text" id="pName" class="form-control" placeholder="Product Name" required></div>
-                <div class="form-group"><input type="number" id="pPrice" class="form-control" placeholder="Price" required></div>
-                <div class="form-group"><input type="url" id="pImage" class="form-control" placeholder="Image URL"></div>
-                <div class="form-group"><input type="text" id="pEmoji" class="form-control" placeholder="Emoji Fallback (e.g. 👟)"></div>
-                <button type="submit" class="btn-primary">Add</button>
-                <button type="button" onclick="closeAdmin()">Close</button>
-            </form>
+            <div id="loginSection">
+                <h2 style="margin-bottom: 1.5rem;">Admin Login</h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group"><input type="text" id="username" class="form-control" placeholder="Username" required></div>
+                    <div class="form-group"><input type="password" id="password" class="form-control" placeholder="Password" required></div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                </form>
+            </div>
+
+            <div id="dashboardSection" style="display: none;">
+                <h2 style="margin-bottom: 1.5rem;">Add New Product</h2>
+                <form onsubmit="handleAddProduct(event)">
+                    <div class="form-group"><label>Brand</label><input type="text" id="pBrand" class="form-control" required></div>
+                    <div class="form-group"><label>Product Name</label><input type="text" id="pName" class="form-control" required></div>
+                    <div class="form-group"><label>Price</label><input type="number" id="pPrice" class="form-control" required></div>
+                    <div class="form-group"><label>Image URL</label><input type="url" id="pImage" class="form-control" placeholder="https://..."></div>
+                    <div class="form-group"><label>Stock</label><input type="number" id="pStock" class="form-control" required></div>
+                    <div class="form-group"><label>Emoji Fallback</label><input type="text" id="pEmoji" class="form-control" value="👟"></div>
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                    <button type="button" class="btn" onclick="closeAdminPanel()" style="background:#eee;">Close</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -233,47 +383,69 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
+        let products = [];
+
         function renderProducts() {
-            db.collection("products").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
-                const grid = document.getElementById("productsGrid");
-                grid.innerHTML = snapshot.docs.map(doc => {
-                    const data = doc.data();
-                    const imgUrl = data.image ? data.image.trim() : "";
-                    return `
-                        <div class="product-card">
-                            <div class="product-image">
-                                ${imgUrl ? `<img src="${imgUrl}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">` : ''}
-                                <div class="product-emoji-fallback" style="display: ${imgUrl ? 'none' : 'block'}">${data.emoji || '👟'}</div>
-                            </div>
-                            <div class="product-info" style="padding: 1.5rem;">
-                                <strong>${data.brand}</strong>
-                                <p>${data.name}</p>
-                                <div style="color: var(--color-primary); font-weight: bold; font-size: 1.2rem;">₹${data.price}</div>
-                            </div>
+            const grid = document.getElementById('productsGrid');
+            if (!grid) return;
+            if (products.length === 0) { grid.innerHTML = "<p>Loading products...</p>"; return; }
+
+            grid.innerHTML = products.map((product) => {
+                const imgUrl = product.image ? product.image.trim() : "";
+                const emoji = product.emoji || "👟";
+                const imageHtml = imgUrl !== "" 
+                    ? `<img src="${imgUrl}" alt="${product.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">`
+                    : "";
+                const emojiHtml = `<div class="product-image-emoji" style="display: ${imgUrl === "" ? 'block' : 'none'};">${emoji}</div>`;
+
+                return `
+                    <div class="product-card">
+                        <div class="product-image">${imageHtml}${emojiHtml}</div>
+                        <div class="product-info">
+                            <div class="product-brand">${product.brand || ''}</div>
+                            <h3 class="product-name">${product.name || ''}</h3>
+                            <div class="product-price">₹${product.price || 0}</div>
+                            <div class="product-stock">${product.stock || 0} in stock</div>
                         </div>
-                    `;
-                }).join('');
-            });
+                    </div>`;
+            }).join('');
         }
 
-        async function addProduct(e) {
+        async function loadSavedProducts() {
+            try {
+                const snapshot = await db.collection('products').orderBy('timestamp', 'desc').get();
+                products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                renderProducts();
+            } catch (e) { console.error(e); }
+        }
+
+        async function handleAddProduct(e) {
             e.preventDefault();
-            await db.collection("products").add({
-                brand: document.getElementById("pBrand").value,
-                name: document.getElementById("pName").value,
-                price: document.getElementById("pPrice").value,
-                image: document.getElementById("pImage").value,
-                emoji: document.getElementById("pEmoji").value,
+            await db.collection('products').add({
+                brand: document.getElementById('pBrand').value,
+                name: document.getElementById('pName').value,
+                price: parseInt(document.getElementById('pPrice').value),
+                image: document.getElementById('pImage').value,
+                stock: parseInt(document.getElementById('pStock').value),
+                emoji: document.getElementById('pEmoji').value,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             });
-            e.target.reset();
-            closeAdmin();
+            alert("Product Added!");
+            loadSavedProducts();
         }
 
-        function openAdmin() { document.getElementById('adminModal').classList.add('active'); }
-        function closeAdmin() { document.getElementById('adminModal').classList.remove('active'); }
+        function openAdminPanel() { document.getElementById('adminModal').classList.add('active'); }
+        function closeAdminPanel() { document.getElementById('adminModal').classList.remove('active'); }
+        
+        function handleLogin(e) {
+            e.preventDefault();
+            if(document.getElementById('username').value === 'Aditya' && document.getElementById('password').value === 'Aditya@9050') {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('dashboardSection').style.display = 'block';
+            }
+        }
 
-        renderProducts();
+        loadSavedProducts();
     </script>
 </body>
 </html>
