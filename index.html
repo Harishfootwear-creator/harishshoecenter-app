@@ -354,7 +354,7 @@
     </div>
 </section>
 
-<!-- Custom sections will be rendered here -->
+<!-- Custom sections from Add Section tab -->
 <div class="container" id="customSectionsContainer"></div>
 
 <button id="aiChatButton" onclick="toggleAiChat()" style="position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;border:none;font-size:1.5rem;cursor:pointer;box-shadow:0 4px 12px rgba(37,99,235,.4);z-index:1000;display:flex;align-items:center;justify-content:center;">
@@ -1176,10 +1176,12 @@ function addSection(type) {
 function updateSectionTitle(id, value) {
     const s = customSections.find(x => x.id === id);
     if (s) s.title = value;
+    renderSections();
 }
 function updateSectionContent(id, value) {
     const s = customSections.find(x => x.id === id);
     if (s) s.content = value;
+    renderSections();
 }
 function moveSection(id, direction) {
     const index = customSections.findIndex(s => s.id === id);
@@ -1260,7 +1262,9 @@ function renderSections() {
                     </div>
                 </div>`;
         }
-        if (s.type === 'spacer') return `<div style="height:40px;"></div>`;
+        if (s.type === 'spacer') {
+            return `<div style="height:40px;"></div>`;
+        }
         return `
             <div style="max-width:800px;margin:2rem auto;text-align:center;">
                 <h3>${s.title || 'New Section'}</h3>
