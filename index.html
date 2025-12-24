@@ -8,7 +8,6 @@
     <title>Harish Footwear - Wholesale Distributor</title>
 
     <style>
-        /* ----------------- GLOBAL & THEME ----------------- */
         :root {
             --color-primary: #1e3a8a;
             --color-primary-hover: #1e40af;
@@ -73,12 +72,8 @@
             50% { opacity: 0.7; }
         }
 
-        body > * {
-            position: relative;
-            z-index: 1;
-        }
+        body > * { position: relative; z-index: 1; }
 
-        /* ----------------- NAVIGATION ----------------- */
         nav {
             background: var(--color-text);
             color: white;
@@ -111,23 +106,6 @@
 
         .nav-links a:hover { opacity: 0.8; }
 
-        .admin-btn {
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .admin-btn:hover { 
-            background: var(--color-primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
-        }
-
         .admin-badge {
             position: fixed;
             top: 20px;
@@ -148,16 +126,13 @@
             transition: all 0.3s;
         }
 
-        .admin-badge.visible {
-            display: flex;
-        }
+        .admin-badge.visible { display: flex; }
 
         @keyframes slideInRight {
             from { opacity: 0; transform: translateX(100px); }
             to { opacity: 1; transform: translateX(0); }
         }
 
-        /* ----------------- HERO ----------------- */
         .hero {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%);
             color: white;
@@ -218,12 +193,8 @@
             transition: transform 0.3s;
         }
 
-        .badge:hover {
-            transform: scale(1.1);
-            background: rgba(255,255,255,0.3);
-        }
+        .badge:hover { transform: scale(1.1); background: rgba(255,255,255,0.3); }
 
-        /* ----------------- PRODUCTS ----------------- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -285,15 +256,8 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        .product-control-btn:hover {
-            background: var(--color-primary-hover);
-            transform: scale(1.1);
-        }
-
-        .product-control-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+        .product-control-btn:hover { background: var(--color-primary-hover); transform: scale(1.1); }
+        .product-control-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
         .product-card:hover {
             transform: translateY(-8px);
@@ -321,9 +285,7 @@
             display: block;
         }
 
-        .product-image-emoji {
-            font-size: 3rem;
-        }
+        .product-image-emoji { font-size: 3rem; }
 
         .product-article {
             font-size: 0.75rem;
@@ -338,9 +300,7 @@
             line-height: 1.4;
         }
 
-        .product-info {
-            padding: 1.5rem;
-        }
+        .product-info { padding: 1.5rem; }
 
         .product-brand {
             font-size: 0.875rem;
@@ -368,7 +328,6 @@
             margin-top: 0.5rem;
         }
 
-        /* ----------------- CONTACT & GET IN TOUCH ----------------- */
         .contact-section {
             background: transparent;
             padding: 3rem 2rem;
@@ -399,10 +358,7 @@
             background: linear-gradient(135deg, rgba(30, 58, 138, 0.02), rgba(249, 115, 22, 0.02));
         }
 
-        .contact-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+        .contact-icon { font-size: 2rem; margin-bottom: 1rem; }
 
         .contact-form-section {
             background: transparent;
@@ -449,10 +405,7 @@
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
-        .contact-textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
+        .contact-textarea { resize: vertical; min-height: 120px; }
 
         .contact-submit-btn {
             background: var(--color-accent);
@@ -473,7 +426,6 @@
             box-shadow: 0 6px 16px rgba(249, 115, 22, 0.3);
         }
 
-        /* ----------------- MODAL / ADMIN ----------------- */
         .modal {
             display: none;
             position: fixed;
@@ -506,9 +458,7 @@
             align-items: center;
         }
 
-        .modal-body {
-            padding: 2rem;
-        }
+        .modal-body { padding: 2rem; }
 
         .close-btn {
             background: none;
@@ -549,6 +499,7 @@
 
         .form-group { margin-bottom: 1.5rem; }
         .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+
         .form-control {
             width: 100%;
             padding: 0.75rem;
@@ -557,6 +508,7 @@
             font-size: 1rem;
             font-family: inherit;
         }
+
         .form-control:focus {
             outline: none;
             border-color: var(--color-primary);
@@ -571,29 +523,30 @@
             cursor: pointer;
             transition: all 0.3s;
         }
+
         .btn-primary { background: var(--color-primary); color: white; }
         .btn-primary:hover { background: var(--color-primary-hover); }
+
         .btn-danger { background: var(--color-error); color: white; }
         .btn-danger:hover { background: #dc2626; }
+
+        .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.875rem; }
 
         .products-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 1rem;
         }
+
         .products-table th,
         .products-table td {
             padding: 1rem;
             text-align: left;
             border-bottom: 1px solid var(--color-border);
         }
-        .products-table th {
-            background: var(--color-surface);
-            font-weight: 600;
-        }
-        .products-table tr:hover { background: var(--color-surface); }
 
-        .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.875rem; }
+        .products-table th { background: var(--color-surface); font-weight: 600; }
+        .products-table tr:hover { background: var(--color-surface); }
 
         .login-form { max-width: 400px; margin: 0 auto; }
 
@@ -602,18 +555,19 @@
             border-radius: 6px;
             margin-bottom: 1rem;
         }
+
         .alert-error {
             background: #fee2e2;
             color: #991b1b;
             border: 1px solid #fecaca;
         }
+
         .alert-success {
             background: #d1fae5;
             color: #065f46;
             border: 1px solid #a7f3d0;
         }
 
-        /* ----------------- FOOTER ----------------- */
         footer {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f97316 100%);
             color: white;
@@ -640,10 +594,7 @@
             50% { opacity: 1; }
         }
 
-        footer p {
-            position: relative;
-            z-index: 1;
-        }
+        footer p { position: relative; z-index: 1; }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -657,750 +608,1018 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
-    <!-- --------------- NAV ---------------- -->
-    <nav>
-        <div class="logo">
-            👟 Harish Footwear
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<nav>
+    <div class="logo">👟 Harish Footwear</div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
-    <!-- --------------- HERO ---------------- -->
-    <section class="hero" id="home">
-        <h1 id="heroTitle">Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨</h1>
-        <p id="heroSubtitle">Explore Harish Footwear, the ultimate wholesale distributor for top brands like Nike, Adidas, Puma, and more. Providing quality footwear for all styles, occasions and budgets.</p>
-        <div class="hero-badges">
-            <div class="badge"><span id="badge1Icon">🏆</span> <span id="badge1Text">Top Brands</span></div>
-            <div class="badge"><span id="badge2Icon">💰</span> <span id="badge2Text">Wholesale Prices</span></div>
-            <div class="badge"><span id="badge3Icon">📦</span> <span id="badge3Text">Bulk Orders</span></div>
-        </div>
-    </section>
-
-    <!-- --------------- PRODUCTS GRID ---------------- -->
-    <div class="container" id="products">
-        <h2 class="section-title">Our Premium Collection</h2>
-        <div class="products-grid" id="productsGrid"></div>
+<section class="hero" id="home">
+    <h1 id="heroTitle">Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨</h1>
+    <p id="heroSubtitle">Explore Harish Footwear, the ultimate wholesale distributor for top brands like Nike, Adidas, Puma, and more. Providing quality footwear for all styles, occasions and budgets.</p>
+    <div class="hero-badges">
+        <div class="badge"><span id="badge1Icon">🏆</span> <span id="badge1Text">Top Brands</span></div>
+        <div class="badge"><span id="badge2Icon">💰</span> <span id="badge2Text">Wholesale Prices</span></div>
+        <div class="badge"><span id="badge3Icon">📦</span> <span id="badge3Text">Bulk Orders</span></div>
     </div>
+</section>
 
-    <!-- --------------- CONTACT FORM ---------------- -->
-    <section class="contact-form-section">
-        <div class="container">
-            <h2 class="contact-form-title" id="contactFormTitle">Contact Harish Footwear</h2>
-            <p id="contactFormSubtitle" class="contact-form-subtitle">
-                Get amazing deals on bulk orders and elevate your footwear collection by connecting with HARISH FOOTWEAR now - Fill the contact form or call -6393191774
-            </p>
-            <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
-                <input type="text" class="contact-input" placeholder="First name" required>
-                <input type="email" class="contact-input" placeholder="Email" required>
-                <textarea class="contact-textarea" placeholder="Message" rows="5" required></textarea>
-                <button type="submit" class="contact-submit-btn">Send</button>
-            </form>
-            <div id="contactAlert" style="margin-top: 1rem;"></div>
-        </div>
-    </section>
+<div class="container" id="products">
+    <h2 class="section-title">Our Premium Collection</h2>
+    <div class="products-grid" id="productsGrid"></div>
+</div>
 
-    <!-- --------------- GET IN TOUCH CARDS ---------------- -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-card" onclick="window.location.href='https://share.google/XIU7RJGhg3sTFikFE'" style="cursor: pointer;">
-                    <div class="contact-icon">📍</div>
-                    <h3>Location</h3>
-                    <p id="locationText">Bansdih, UP-277202</p>
-                </div>
-                <div class="contact-card" onclick="window.location.href='tel:+916393191774'" style="cursor: pointer;">
-                    <div class="contact-icon">📞</div>
-                    <h3>Phone</h3>
-                    <p id="phoneText">+91 6393191774</p>
-                </div>
-                <div class="contact-card" onclick="window.location.href='mailto:harishfootwear950@gmail.com'" style="cursor: pointer;">
-                    <div class="contact-icon">✉️</div>
-                    <h3>Email</h3>
-                    <p id="emailText">harishfootwear950@gmail.com</p>
-                </div>
+<section class="contact-form-section">
+    <div class="container">
+        <h2 class="contact-form-title" id="contactFormTitle">Contact Harish Footwear</h2>
+        <p id="contactFormSubtitle" class="contact-form-subtitle">Get amazing deals on bulk orders and elevate your footwear collection by connecting with HARISH FOOTWEAR now - Fill the contact form or call -6393191774</p>
+        <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+            <input type="text" class="contact-input" placeholder="First name" required>
+            <input type="email" class="contact-input" placeholder="Email" required>
+            <textarea class="contact-textarea" placeholder="Message" rows="5" required></textarea>
+            <button type="submit" class="contact-submit-btn">Send</button>
+        </form>
+        <div id="contactAlert" style="margin-top: 1rem;"></div>
+    </div>
+</section>
+
+<section class="contact-section" id="contact">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-card" onclick="window.location.href='https://maps.app.goo.gl/qikCuAG94XLCAzia8'" style="cursor: pointer;">
+                <div class="contact-icon">📍</div>
+                <h3>Location</h3>
+                <p id="locationText">Bansdih, UP-277202</p>
             </div>
-        </div>
-    </section>
-
-    <!-- --------------- AI CHAT BUTTON + WIDGET ---------------- -->
-    <button id="aiChatButton" onclick="toggleAiChat()" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); z-index: 1000; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
-        💬
-    </button>
-
-    <div id="aiChatWidget" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px); background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); z-index: 1000; overflow: hidden;">
-        <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <div style="font-weight: 600; font-size: 1.1rem;" id="assistantTitleHeader">Harish Assistant 🤖</div>
-                <div style="font-size: 0.75rem; opacity: 0.9;" id="assistantSubtitleHeader">Ask me anything!</div>
+            <div class="contact-card" onclick="window.location.href='tel:+916393191774'" style="cursor: pointer;">
+                <div class="contact-icon">📞</div>
+                <h3>Phone</h3>
+                <p id="phoneText">+91 6393191774</p>
             </div>
-            <button onclick="toggleAiChat()" class="close-btn" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0; width: 30px; height: 30px;">×</button>
-        </div>
-        <div id="aiChatMessages" style="height: 300px; overflow-y: auto; padding: 1rem; background: #f9fafb;">
-            <div id="assistantGreetingBlock" style="background: linear-gradient(135deg, #e0f2fe, #dbeafe); padding: 0.75rem; border-radius: 12px; margin-bottom: 0.75rem; font-size: 0.875rem;">
-                👋 Hi! I'm your Harish Footwear assistant. I can help you with:<br><br>
-                • Product information<br>
-                • Contact details<br>
-                • Bulk order inquiries<br>
-                • Location and hours<br><br>
-                How can I assist you today?
+            <div class="contact-card" onclick="window.location.href='mailto:harishfootwear950@gmail.com'" style="cursor: pointer;">
+                <div class="contact-icon">✉️</div>
+                <h3>Email</h3>
+                <p id="emailText">harishfootwear950@gmail.com</p>
             </div>
-        </div>
-        <div style="padding: 1rem; border-top: 1px solid #e5e7eb; background: white;">
-            <form onsubmit="handleAiChat(event)" style="display: flex; gap: 0.5rem;">
-                <input type="text" id="aiChatInput" placeholder="Type your question..." style="flex: 1; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 0.875rem;" required>
-                <button type="submit" class="btn btn-primary" style="background: #3b82f6; color: white; border: none; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; font-size: 1rem;">➤</button>
-            </form>
         </div>
     </div>
+</section>
 
-    <!-- --------------- FOOTER ---------------- -->
-    <footer>
-        <p id="footerText1">© 2025 Harish Footwear. All rights reserved.</p>
-        <p id="footerText2">Wholesale Distributor - Nike, Adidas, Puma & More</p>
-        <p id="footerText3" style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.8;">🌐 Website Live & Ready for Business</p>
-    </footer>
+<button id="aiChatButton" onclick="toggleAiChat()" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+    💬
+</button>
 
-    <!-- --------------- ADMIN BADGE + MODAL ---------------- -->
-    <div class="admin-badge" id="adminBadge" onclick="openAdminPanel()">
-        <span>👤</span>
-        <span>Admin Mode</span>
+<div id="aiChatWidget" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px); background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); z-index: 1000; overflow: hidden;">
+    <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <div style="font-weight: 600; font-size: 1.1rem;" id="assistantTitleHeader">Harish Assistant 🤖</div>
+            <div style="font-size: 0.75rem; opacity: 0.9;" id="assistantSubtitleHeader">Ask me anything!</div>
+        </div>
+        <button onclick="toggleAiChat()" class="close-btn" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0; width: 30px; height: 30px;">×</button>
     </div>
+    <div id="aiChatMessages" style="height: 300px; overflow-y: auto; padding: 1rem; background: #f9fafb;">
+        <div id="assistantGreetingBlock" style="background: linear-gradient(135deg, #e0f2fe, #dbeafe); padding: 0.75rem; border-radius: 12px; margin-bottom: 0.75rem; font-size: 0.875rem;">
+            👋 Hi! I'm your Harish Footwear assistant. I can help you with:<br><br>
+            • Product information<br>
+            • Contact details<br>
+            • Bulk order inquiries<br>
+            • Location and hours<br><br>
+            How can I assist you today?
+        </div>
+    </div>
+    <div style="padding: 1rem; border-top: 1px solid #e5e7eb; background: white;">
+        <form onsubmit="handleAiChat(event)" style="display: flex; gap: 0.5rem;">
+            <input type="text" id="aiChatInput" placeholder="Type your question..." style="flex: 1; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 0.875rem;" required>
+            <button type="submit" class="btn btn-primary" style="background: #3b82f6; color: white; border: none; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; font-size: 1rem;">➤</button>
+        </form>
+    </div>
+</div>
 
-    <div class="modal" id="adminModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Admin Login</h2>
-                <button class="close-btn" onclick="closeAdminPanel()">×</button>
+<footer>
+    <p id="footerText1">© 2025 Harish Footwear. All rights reserved.</p>
+    <p id="footerText2">Wholesale Distributor - Nike, Adidas, Puma & More</p>
+    <p id="footerText3" style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.8;">🌐 Website Live & Ready for Business</p>
+</footer>
+
+<div class="admin-badge" id="adminBadge" onclick="openAdminPanel()">
+    <span>👤</span><span>Admin Mode</span>
+</div>
+
+<div class="modal" id="adminModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Admin Login</h2>
+            <button class="close-btn" onclick="closeAdminPanel()">×</button>
+        </div>
+        <div class="modal-body">
+            <div id="loginSection">
+                <div class="login-form">
+                    <div id="loginAlert"></div>
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                    </form>
+                </div>
             </div>
-            <div class="modal-body">
-                <!-- Login -->
-                <div id="loginSection">
-                    <div class="login-form">
-                        <div id="loginAlert"></div>
-                        <form onsubmit="handleLogin(event)">
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" id="username" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" class="form-control" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
-                        </form>
-                    </div>
+
+            <div id="dashboardSection" style="display: none;">
+                <div class="admin-tabs">
+                    <button class="admin-tab active" onclick="switchTab('analytics')">Analytics</button>
+                    <button class="admin-tab" onclick="switchTab('products')">Products</button>
+                    <button class="admin-tab" onclick="switchTab('messages')">Messages</button>
+                    <button class="admin-tab" onclick="switchTab('add')">Add Product</button>
+                    <button class="admin-tab" onclick="switchTab('sections')">Add Section</button>
+                    <button class="admin-tab" onclick="switchTab('website')">Website Settings</button>
+                    <button class="admin-tab" onclick="switchTab('assistant')">AI Assistant</button>
+                    <button class="admin-tab" onclick="switchTab('settings')">Account</button>
                 </div>
 
-                <!-- Dashboard -->
-                <div id="dashboardSection" style="display: none;">
-                    <div class="admin-tabs">
-                        <button class="admin-tab active" onclick="switchTab('analytics')">Analytics</button>
-                        <button class="admin-tab" onclick="switchTab('products')">Products</button>
-                        <button class="admin-tab" onclick="switchTab('messages')">Messages</button>
-                        <button class="admin-tab" onclick="switchTab('add')">Add Product</button>
-                        <button class="admin-tab" onclick="switchTab('sections')">Add Section</button>
-                        <button class="admin-tab" onclick="switchTab('website')">Website Settings</button>
-                        <button class="admin-tab" onclick="switchTab('assistant')">AI Assistant</button>
-                        <button class="admin-tab" onclick="switchTab('settings')">Account</button>
-                    </div>
-
-                    <!-- Analytics Tab -->
-                    <div id="analyticsTab" class="tab-content active">
-                        <h3>Website Analytics</h3>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-                            <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);">
-                                <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Total Visitors</div>
-                                <div style="font-size: 2rem; font-weight: 700;" id="totalVisitors">0</div>
-                                <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">All time</div>
-                            </div>
-                            <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);">
-                                <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Today's Visitors</div>
-                                <div style="font-size: 2rem; font-weight: 700;" id="todayVisitors">0</div>
-                                <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;" id="todayDate">Nov 07</div>
-                            </div>
-                            <div style="background: linear-gradient(135deg, #f97316, #ea580c); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);">
-                                <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Page Views</div>
-                                <div style="font-size: 2rem; font-weight: 700;" id="totalViews">0</div>
-                                <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">Total</div>
-                            </div>
-                            <div style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);">
-                                <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Avg. Time</div>
-                                <div style="font-size: 2rem; font-weight: 700;" id="avgTime">0:00</div>
-                                <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">Minutes</div>
-                            </div>
+                <!-- Analytics -->
+                <div id="analyticsTab" class="tab-content active">
+                    <h3>Website Analytics</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                        <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);">
+                            <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Total Visitors</div>
+                            <div style="font-size: 2rem; font-weight: 700;" id="totalVisitors">0</div>
+                            <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">All time</div>
                         </div>
-
-                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--color-border); margin-top: 2rem;">
-                            <h4 style="margin-bottom: 1rem;">Recent Activity</h4>
-                            <table class="products-table">
-                                <thead>
-                                    <tr>
-                                        <th>Date & Time</th>
-                                        <th>Type</th>
-                                        <th>Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="activityLog">
-                                    <tr>
-                                        <td colspan="3" style="text-align: center; color: var(--color-text-secondary); padding: 2rem;">No activity yet</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);">
+                            <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Today's Visitors</div>
+                            <div style="font-size: 2rem; font-weight: 700;" id="todayVisitors">0</div>
+                            <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;" id="todayDate">Nov 07</div>
                         </div>
-
-                        <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--color-border); margin-top: 2rem;">
-                            <h4 style="margin-bottom: 1rem;">Visitor Statistics</h4>
-                            <div style="display: grid; gap: 1rem;">
-                                <div style="display: flex; justify-content: space-between; padding: 0.75rem; background: var(--color-surface); border-radius: 6px;">
-                                    <span>Desktop Visitors</span>
-                                    <span style="font-weight: 600;" id="desktopCount">0 (0%)</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; padding: 0.75rem; background: var(--color-surface); border-radius: 6px;">
-                                    <span>Mobile Visitors</span>
-                                    <span style="font-weight: 600;" id="mobileCount">0 (0%)</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; padding: 0.75rem; background: var(--color-surface); border-radius: 6px;">
-                                    <span>Tablet Visitors</span>
-                                    <span style="font-weight: 600;" id="tabletCount">0 (0%)</span>
-                                </div>
-                            </div>
+                        <div style="background: linear-gradient(135deg, #f97316, #ea580c); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);">
+                            <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Page Views</div>
+                            <div style="font-size: 2rem; font-weight: 700;" id="totalViews">0</div>
+                            <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">Total</div>
                         </div>
-
-                        <div style="margin-top: 1.5rem; padding: 1rem; background: #fef3c7; border: 1px solid #fbbf24; border-radius: 8px;">
-                            <strong style="color: #92400e;">📊 Note:</strong>
-                            <p style="margin: 0.5rem 0 0 0; color: #92400e; font-size: 0.875rem;">Analytics tracking starts from your first visitor after this update. Data is stored locally in the visitor's browser.</p>
+                        <div style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);">
+                            <div style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 0.5rem;">Avg. Time</div>
+                            <div style="font-size: 2rem; font-weight: 700;" id="avgTime">0:00</div>
+                            <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">Minutes</div>
                         </div>
                     </div>
 
-                    <!-- Products Tab -->
-                    <div id="productsTab" class="tab-content">
-                        <h3>Manage Products</h3>
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--color-border); margin-top: 2rem;">
+                        <h4 style="margin-bottom: 1rem;">Recent Activity</h4>
                         <table class="products-table">
                             <thead>
-                                <tr>
-                                    <th>Position</th>
-                                    <th>Brand</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Stock</th>
-                                    <th>Actions</th>
-                                </tr>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Type</th>
+                                <th>Details</th>
+                            </tr>
                             </thead>
-                            <tbody id="adminProductsList"></tbody>
+                            <tbody id="activityLog">
+                            <tr>
+                                <td colspan="3" style="text-align: center; color: var(--color-text-secondary); padding: 2rem;">No activity yet</td>
+                            </tr>
+                            </tbody>
                         </table>
                     </div>
 
-                    <!-- Messages Tab -->
-                    <div id="messagesTab" class="tab-content">
-                        <h3>Customer Messages</h3>
-                        <div id="messagesList">
-                            <p style="color: var(--color-text-secondary);">No messages yet.</p>
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--color-border); margin-top: 2rem;">
+                        <h4 style="margin-bottom: 1rem;">Visitor Statistics</h4>
+                        <div style="display: grid; gap: 1rem;">
+                            <div style="display: flex; justify-content: space-between; padding: 0.75rem; background: var(--color-surface); border-radius: 6px;">
+                                <span>Desktop Visitors</span>
+                                <span style="font-weight: 600;" id="desktopCount">0 (0%)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 0.75rem; background: var(--color-surface); border-radius: 6px;">
+                                <span>Mobile Visitors</span>
+                                <span style="font-weight: 600;" id="mobileCount">0 (0%)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 0.75rem; background: var(--color-surface); border-radius: 6px;">
+                                <span>Tablet Visitors</span>
+                                <span style="font-weight: 600;" id="tabletCount">0 (0%)</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Add Product Tab -->
-                    <div id="addTab" class="tab-content">
-                        <h3>Add New Product</h3>
-                        <form onsubmit="handleAddProduct(event)">
-                            <div class="form-group">
-                                <label for="productBrand">Brand</label>
-                                <select id="productBrand" class="form-control" required onchange="handleBrandSelect()">
-                                    <option value="Nike">Nike</option>
-                                    <option value="Adidas">Adidas</option>
-                                    <option value="Puma">Puma</option>
-                                    <option value="Reebok">Reebok</option>
-                                    <option value="__custom__">+ Add Custom Brand</option>
-                                </select>
-                            </div>
-                            <div class="form-group" id="customBrandGroup" style="display: none;">
-                                <label for="customBrandInput">Custom Brand Name</label>
-                                <input type="text" id="customBrandInput" class="form-control" placeholder="Enter brand name">
-                            </div>
-                            <div class="form-group">
-                                <label for="productName">Product Name</label>
-                                <input type="text" id="productName" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="productPrice">Wholesale Price (₹)</label>
-                                <input type="number" id="productPrice" class="form-control" value="0" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="productImage">Image URL</label>
-                                <input type="url" id="productImage" class="form-control" placeholder="https://example.com/image.jpg">
-                            </div>
-                            <div class="form-group">
-                                <label for="productArticle">Article Number</label>
-                                <input type="text" id="productArticle" class="form-control" placeholder="e.g., NK-AM270-001">
-                            </div>
-                            <div class="form-group">
-                                <label for="productDescription">Description</label>
-                                <textarea id="productDescription" class="form-control" rows="3" placeholder="Product description..."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="productStock">Stock Quantity</label>
-                                <input type="number" id="productStock" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="productEmoji">Emoji</label>
-                                <input type="text" id="productEmoji" class="form-control" placeholder="👟" maxlength="2" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Add Product</button>
-                        </form>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: #fef3c7; border: 1px solid #fbbf24; border-radius: 8px;">
+                        <strong style="color: #92400e;">📊 Note:</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #92400e; font-size: 0.875rem;">
+                            Analytics tracking starts from your first visitor after this update. Data is stored locally in the visitor's browser.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Products -->
+                <div id="productsTab" class="tab-content">
+                    <h3>Manage Products</h3>
+                    <table class="products-table">
+                        <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Brand</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="adminProductsList"></tbody>
+                    </table>
+                </div>
+
+                <!-- Messages -->
+                <div id="messagesTab" class="tab-content">
+                    <h3>Customer Messages</h3>
+                    <div id="messagesList">
+                        <p style="color: var(--color-text-secondary);">No messages yet.</p>
+                    </div>
+                </div>
+
+                <!-- Add Product -->
+                <div id="addTab" class="tab-content">
+                    <h3>Add New Product</h3>
+                    <form onsubmit="handleAddProduct(event)">
+                        <div class="form-group">
+                            <label for="productBrand">Brand</label>
+                            <select id="productBrand" class="form-control" required onchange="handleBrandSelect()">
+                                <option value="Nike">Nike</option>
+                                <option value="Adidas">Adidas</option>
+                                <option value="Puma">Puma</option>
+                                <option value="Reebok">Reebok</option>
+                                <option value="__custom__">+ Add Custom Brand</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="customBrandGroup" style="display: none;">
+                            <label for="customBrandInput">Custom Brand Name</label>
+                            <input type="text" id="customBrandInput" class="form-control" placeholder="Enter brand name">
+                        </div>
+                        <div class="form-group">
+                            <label for="productName">Product Name</label>
+                            <input type="text" id="productName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Wholesale Price (₹)</label>
+                            <input type="number" id="productPrice" class="form-control" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">Image URL</label>
+                            <input type="url" id="productImage" class="form-control" placeholder="https://example.com/image.jpg">
+                        </div>
+                        <div class="form-group">
+                            <label for="productArticle">Article Number</label>
+                            <input type="text" id="productArticle" class="form-control" placeholder="e.g., NK-AM270-001">
+                        </div>
+                        <div class="form-group">
+                            <label for="productDescription">Description</label>
+                            <textarea id="productDescription" class="form-control" rows="3" placeholder="Product description..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="productStock">Stock Quantity</label>
+                            <input type="number" id="productStock" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productEmoji">Emoji</label>
+                            <input type="text" id="productEmoji" class="form-control" placeholder="👟" maxlength="2" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </form>
+                </div>
+
+                <!-- Sections (Add Section) -->
+                <div id="sectionsTab" class="tab-content">
+                    <h3>Manage Sections</h3>
+                    <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+                        Add hero banners, cards, text blocks, and more to your website.
+                    </p>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="margin-bottom: 1rem;">Add New Section</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+                            <button class="btn btn-primary" onclick="addSection('hero')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 2rem;">🎯</span><span>Hero Banner</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="addSection('card')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 2rem;">🃏</span><span>Card</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="addSection('text')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 2rem;">📝</span><span>Text Block</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="addSection('image')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 2rem;">🖼️</span><span>Image</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="addSection('gallery')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 2rem;">🎨</span><span>Gallery</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="addSection('spacer')" style="padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 2rem;">⬜</span><span>Spacer</span>
+                            </button>
+                        </div>
                     </div>
 
-                    <!-- Sections, Website, Assistant, Settings tabs remain same as your original
-                         (for brevity not repeated here, you can keep them identical). -->
-                    <!-- ... you can paste your existing sectionsTab, websiteTab, assistantTab, settingsTab blocks here ... -->
+                    <hr style="margin: 2rem 0;">
+                    <h4 style="margin-bottom: 1rem;">Current Sections</h4>
+                    <div id="sectionsList"></div>
+                </div>
 
+                <!-- Website Settings -->
+                <div id="websiteTab" class="tab-content">
+                    <h3>Website Text & Branding</h3>
+                    <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+                        Update hero text, contact info, and footer without editing code.
+                    </p>
+
+                    <form onsubmit="saveWebsiteSettings(event)">
+                        <h4>Hero Section</h4>
+                        <div class="form-group">
+                            <label for="heroTitleInput">Hero Title</label>
+                            <input id="heroTitleInput" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="heroSubtitleInput">Hero Subtitle</label>
+                            <textarea id="heroSubtitleInput" class="form-control" rows="2"></textarea>
+                        </div>
+
+                        <h4>Badges</h4>
+                        <div class="form-group">
+                            <label for="badge1TextInput">Badge 1 Text</label>
+                            <input id="badge1TextInput" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="badge2TextInput">Badge 2 Text</label>
+                            <input id="badge2TextInput" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="badge3TextInput">Badge 3 Text</label>
+                            <input id="badge3TextInput" class="form-control">
+                        </div>
+
+                        <h4>Contact Section</h4>
+                        <div class="form-group">
+                            <label for="contactFormTitleInput">Contact Title</label>
+                            <input id="contactFormTitleInput" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactFormSubtitleInput">Contact Subtitle</label>
+                            <textarea id="contactFormSubtitleInput" class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="locationTextInput">Location Text</label>
+                            <input id="locationTextInput" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneTextInput">Phone Text</label>
+                            <input id="phoneTextInput" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailTextInput">Email Text</label>
+                            <input id="emailTextInput" class="form-control">
+                        </div>
+
+                        <h4>Footer</h4>
+                        <div class="form-group">
+                            <label for="footerText1Input">Footer Line 1</label>
+                            <input id="footerText1Input" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="footerText2Input">Footer Line 2</label>
+                            <input id="footerText2Input" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="footerText3Input">Footer Line 3</label>
+                            <input id="footerText3Input" class="form-control">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save Website Settings</button>
+                    </form>
+                </div>
+
+                <!-- AI Assistant -->
+                <div id="assistantTab" class="tab-content">
+                    <h3>AI Chat Assistant Settings</h3>
+                    <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+                        Manage your AI chat assistant settings and customize responses.
+                    </p>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" id="assistantEnabled" onchange="toggleAssistant()" checked style="width: auto; cursor: pointer;">
+                            <span style="font-weight: 500;">Enable AI Chat Assistant</span>
+                        </label>
+                        <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                            Toggle the chat widget on/off for website visitors
+                        </p>
+                    </div>
+
+                    <hr style="margin: 2rem 0;">
+
+                    <div class="form-group">
+                        <label for="assistantGreeting">Welcome Message</label>
+                        <textarea id="assistantGreeting" class="form-control" rows="4" placeholder="Enter welcome message...">👋 Hi! I'm your Harish Footwear assistant. I can help you with:
+• Product information
+• Contact details
+• Bulk order inquiries
+• Location and hours
+
+How can I assist you today?</textarea>
+                        <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                            This message appears when visitors open the chat
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assistantTitle">Assistant Name</label>
+                        <input type="text" id="assistantTitle" class="form-control" value="Harish Assistant 🤖">
+                        <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                            The name displayed in the chat header
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assistantSubtitle">Assistant Subtitle</label>
+                        <input type="text" id="assistantSubtitle" class="form-control" value="Ask me anything!">
+                        <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                            Subtitle text under the assistant name
+                        </p>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" onclick="saveAssistantSettings()">Save Assistant Settings</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetAssistantSettings()" style="margin-left: 0.5rem; background: var(--color-text-secondary);">
+                        Reset to Defaults
+                    </button>
+
+                    <hr style="margin: 2rem 0;">
+                    <div style="background: #fef3c7; padding: 1rem; border-radius: 8px; border: 1px solid #fbbf24;">
+                        <strong style="color: #92400e;">💡 Assistant Features:</strong>
+                        <ul style="margin: 0.5rem 0 0 1.5rem; color: #92400e; font-size: 0.875rem;">
+                            <li>Answers questions about products, contact info, location</li>
+                            <li>Provides bulk order information</li>
+                            <li>Helps visitors navigate your website</li>
+                            <li>Available 24/7 for instant responses</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Account -->
+                <div id="settingsTab" class="tab-content">
+                    <h3>Admin Account</h3>
+                    <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+                        Change the username and password used to log in to this dashboard.
+                    </p>
+
+                    <div class="form-group">
+                        <label for="adminUsernameInput">Username</label>
+                        <input id="adminUsernameInput" class="form-control" value="Aditya">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPasswordInput">Password</label>
+                        <input id="adminPasswordInput" class="form-control" type="password" value="Aditya@9050">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="saveAdminCredentials()">Save Account Settings</button>
+                    <button type="button" class="btn btn-danger" onclick="handleLogout()" style="margin-left: 0.5rem;">Logout</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- --------------- MAIN SCRIPT ---------------- -->
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzasyDWPorADXyłem4El5xAU4x_n3aeuXzA",
-            authDomain: "harishfootwear-5986c.firebaseapp.com",
-            projectId: "harishfootwear-5986c",
-            storageBucket: "harishfootwear-5986c.appspot.com",
-            messagingSenderId: "416642383698",
-            appId: "1:618642383698:web:f643110e08ef8fa9c633"
-        };
+<script>
+const firebaseConfig = {
+    apiKey: "AIzasyDWPorADXyłem4El5xAU4x_n3aeuXzA",
+    authDomain: "harishfootwear-5986c.firebaseapp.com",
+    projectId: "harishfootwear-5986c",
+    storageBucket: "harishfootwear-5986c.appspot.com",
+    messagingSenderId: "416642383698",
+    appId: "1:618642383698:web:f643110e08ef8fa9c633"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+let products = [];
+let messages = [];
+let analytics = {
+    totalVisitors: 0,
+    totalViews: 0,
+    todayVisitors: 0,
+    todayDate: '',
+    devices: { desktop: 0, mobile: 0, tablet: 0 },
+    activities: []
+};
+let websiteContent = {
+    heroTitle: 'Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨',
+    heroSubtitle: 'Explore Harish Footwear, the ultimate wholesale distributor for top brands like Nike, Adidas, Puma, and more.',
+    badge1Text: 'Top Brands', badge2Text: 'Wholesale Prices', badge3Text: 'Bulk Orders',
+    contactFormTitle: 'Contact Harish Footwear',
+    contactFormSubtitle: 'Fill the contact form or call -6393191774',
+    locationText: 'Bansdih, UP-277202',
+    phoneText: '+91 6393191774',
+    emailText: 'harishfootwear950@gmail.com',
+    footerText1: '© 2025 Harish Footwear. All rights reserved.',
+    footerText2: 'Wholesale Distributor - Nike, Adidas, Puma & More',
+    footerText3: '🌐 Website Live & Ready for Business'
+};
+let adminCredentials = { username: 'Aditya', password: 'Aditya@9050' };
+let isLoggedIn = false;
+let customSections = [];
+let assistantSettings = {
+    enabled: true,
+    greeting: document.getElementById('assistantGreeting') ? document.getElementById('assistantGreeting').value : '',
+    title: 'Harish Assistant 🤖',
+    subtitle: 'Ask me anything!'
+};
 
-        let products = [];
-        let messages = [];
-        let analytics = {
-            totalVisitors: 0,
-            totalViews: 0,
-            todayVisitors: 0,
-            todayDate: '',
-            devices: { desktop: 0, mobile: 0, tablet: 0 },
-            sessions: [],
-            activities: []
-        };
-
-        let websiteContent = {
-            heroTitle: 'Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨',
-            heroSubtitle: 'Explore Harish Footwear, the ultimate wholesale distributor for top brands like Nike, Adidas, Puma, and more.',
-            badge1Text: 'Top Brands', badge1Icon: '🏆',
-            badge2Text: 'Wholesale Prices', badge2Icon: '💰',
-            badge3Text: 'Bulk Orders', badge3Icon: '📦',
-            contactFormTitle: 'Contact Harish Footwear',
-            contactFormSubtitle: 'Fill the contact form or call -6393191774',
-            locationText: 'Bansdih, UP-277202',
-            phoneText: '+91 6393191774',
-            emailText: 'harishfootwear950@gmail.com',
-            footerText1: '© 2025 Harish Footwear. All rights reserved.',
-            footerText2: 'Wholesale Distributor - Nike, Adidas, Puma & More',
-            footerText3: '🌐 Website Live & Ready for Business'
-        };
-
-        let adminCredentials = { username: 'Aditya', password: 'Aditya@9050' };
-        let isLoggedIn = false;
-
-        /* ---------- PRODUCTS: LOAD + RENDER (FIXED) ---------- */
-        function renderProducts() {
-            const grid = document.getElementById('productsGrid');
-            if (!grid) return;
-
-            if (!products || products.length === 0) {
-                grid.innerHTML = '<p>Loading products...</p>';
-                return;
-            }
-
-            grid.innerHTML = products.map((product, index) => {
-                const imgUrl = product.image ? String(product.image).trim() : '';
-                const emoji = product.emoji || '👟';
-                const hasImage = imgUrl !== '';
-
-                const imageHtml = hasImage
-                    ? `<img src="${imgUrl}" alt="${product.name || ''}"
-                           onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='flex';}">`
-                    : '';
-
-                const emojiHtml = `<div class="product-image-emoji"
-                                     style="display:${hasImage ? 'none' : 'flex'};align-items:center;justify-content:center;">
-                                     ${emoji}
-                                   </div>`;
-
-                return `
-                    <div class="product-card" data-product-id="${product.id}">
-                        <div class="product-controls">
-                            <button class="product-control-btn" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''}>⬆</button>
-                            <button class="product-control-btn" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''}>⬇</button>
-                        </div>
-                        <div class="product-image">
-                            ${imageHtml}
-                            ${emojiHtml}
-                        </div>
-                        <div class="product-info">
-                            <div class="product-brand">${product.brand || ''}</div>
-                            <h3 class="product-name">${product.name || ''}</h3>
-                            ${product.article ? `<div class="product-article">Article: ${product.article}</div>` : ''}
-                            ${product.description ? `<div class="product-description">${product.description}</div>` : ''}
-                            <div class="product-price">₹${product.price || 0}</div>
-                            <div class="product-stock">${product.stock || 0} in stock</div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        async function loadSavedProducts() {
-            try {
-                const productsRef = db.collection('products').orderBy('orderIndex', 'asc').orderBy('timestamp', 'desc');
-                const snapshot = await productsRef.get();
-                products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            } catch (error) {
-                console.error('Failed to load products:', error);
-            }
-        }
-
-        async function moveProduct(productId, direction) {
-            const index = products.findIndex(p => p.id === productId);
-            if (index === -1) return;
-            let targetIndex = direction === 'up' ? index - 1 : index + 1;
-            if (targetIndex < 0 || targetIndex >= products.length) return;
-
-            [products[targetIndex], products[index]] = [products[index], products[targetIndex]];
-            const batch = db.batch();
-            batch.update(db.collection('products').doc(products[index].id), { orderIndex: index });
-            batch.update(db.collection('products').doc(products[targetIndex].id), { orderIndex: targetIndex });
-
-            try {
-                await batch.commit();
-                renderProducts();
-                renderAdminProducts();
-            } catch (error) { console.error(error); }
-        }
-
-        function renderAdminProducts() {
-            const tbody = document.getElementById('adminProductsList');
-            if (!tbody) return;
-            tbody.innerHTML = products.map((p, i) => `
-                <tr>
-                    <td>
-                        <button class="btn btn-sm" onclick="moveProduct('${p.id}', 'up')" ${i === 0 ? 'disabled' : ''}>⬆</button>
-                        <button class="btn btn-sm" onclick="moveProduct('${p.id}', 'down')" ${i === products.length - 1 ? 'disabled' : ''}>⬇</button>
-                    </td>
-                    <td>${p.emoji || '👟'} ${p.brand}</td>
-                    <td>${p.name}</td>
-                    <td>₹${p.price}</td>
-                    <td>${p.stock}</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" onclick="editProduct('${p.id}')">Edit</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.id}')">Delete</button>
-                    </td>
-                </tr>
-            `).join('');
-        }
-
-        async function handleAddProduct(e) {
-            e.preventDefault();
-            const brandSelect = document.getElementById('productBrand');
-            const brandValue = brandSelect.value === '__custom__'
-                ? document.getElementById('customBrandInput').value.trim()
-                : brandSelect.value;
-
-            const data = {
-                brand: brandValue,
-                name: document.getElementById('productName').value,
-                price: parseInt(document.getElementById('productPrice').value) || 0,
-                stock: parseInt(document.getElementById('productStock').value) || 0,
-                emoji: document.getElementById('productEmoji').value || '👟',
-                image: document.getElementById('productImage').value,
-                article: document.getElementById('productArticle').value,
-                description: document.getElementById('productDescription').value,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                orderIndex: products.length
-            };
-
-            await db.collection('products').add(data);
-            await loadSavedProducts();
-            renderProducts();
-            renderAdminProducts();
-            e.target.reset();
-        }
-
-        async function editProduct(id) {
-            const p = products.find(x => x.id === id);
-            const n = prompt('New name:', p.name);
-            if (n) {
-                await db.collection('products').doc(id).update({ name: n });
-                await loadSavedProducts();
-                renderProducts();
-                renderAdminProducts();
-            }
-        }
-
-        async function deleteProduct(id) {
-            if (confirm('Delete?')) {
-                await db.collection('products').doc(id).delete();
-                await loadSavedProducts();
-                renderProducts();
-                renderAdminProducts();
-            }
-        }
-
-        function handleBrandSelect() {
-            const brandSelect = document.getElementById('productBrand');
-            const customGroup = document.getElementById('customBrandGroup');
-            customGroup.style.display = brandSelect.value === '__custom__' ? 'block' : 'none';
-        }
-
-        /* ---------- CONTACT MESSAGES ---------- */
-        async function handleContactSubmit(e) {
-            e.preventDefault();
-            const d = {
-                name: e.target.querySelector('input[type="text"]').value,
-                email: e.target.querySelector('input[type="email"]').value,
-                message: e.target.querySelector('textarea').value,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            };
-            await db.collection('messages').add(d);
-            e.target.reset();
-            document.getElementById('contactAlert').innerHTML = '<div class="alert alert-success">Sent!</div>';
-        }
-
-        async function loadMessages() {
-            const snap = await db.collection('messages').orderBy('timestamp', 'desc').get();
-            messages = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        }
-
-        function renderMessages() {
-            const container = document.getElementById('messagesList');
-            if (!container) return;
-            if (!messages.length) {
-                container.innerHTML = '<p style="color: var(--color-text-secondary);">No messages yet.</p>';
-                return;
-            }
-            container.innerHTML = messages.map(m => `
-                <div style="border: 1px solid var(--color-border); padding: 1rem; border-radius: 8px; margin-bottom: 0.75rem;">
-                    <strong>${m.name}</strong> &lt;${m.email}&gt;<br>
-                    <span style="font-size:0.9rem;">${m.message}</span><br>
-                    <button class="btn btn-danger btn-sm" onclick="deleteMessage('${m.id}')">Delete</button>
+/* ---------- PRODUCTS ---------- */
+function renderProducts() {
+    const grid = document.getElementById('productsGrid');
+    if (!grid) return;
+    if (!products || products.length === 0) {
+        grid.innerHTML = '<p>Loading products...</p>';
+        return;
+    }
+    grid.innerHTML = products.map((product, index) => {
+        const imgUrl = product.image ? String(product.image).trim() : '';
+        const emoji = product.emoji || '👟';
+        const hasImage = imgUrl !== '';
+        const imageHtml = hasImage
+            ? `<img src="${imgUrl}" alt="${product.name || ''}"
+                 onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='flex';}">`
+            : '';
+        const emojiHtml = `<div class="product-image-emoji"
+                               style="display:${hasImage ? 'none' : 'flex'};align-items:center;justify-content:center;">
+                               ${emoji}
+                           </div>`;
+        return `
+            <div class="product-card" data-product-id="${product.id}">
+                <div class="product-controls">
+                    <button class="product-control-btn" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''}>⬆</button>
+                    <button class="product-control-btn" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''}>⬇</button>
                 </div>
-            `).join('');
-        }
+                <div class="product-image">
+                    ${imageHtml}
+                    ${emojiHtml}
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">${product.brand || ''}</div>
+                    <h3 class="product-name">${product.name || ''}</h3>
+                    ${product.article ? `<div class="product-article">Article: ${product.article}</div>` : ''}
+                    ${product.description ? `<div class="product-description">${product.description}</div>` : ''}
+                    <div class="product-price">₹${product.price || 0}</div>
+                    <div class="product-stock">${product.stock || 0} in stock</div>
+                </div>
+            </div>`;
+    }).join('');
+}
 
-        async function deleteMessage(id) {
-            await db.collection('messages').doc(id).delete();
-            await loadMessages();
-            renderMessages();
-        }
+async function loadSavedProducts() {
+    try {
+        const ref = db.collection('products').orderBy('orderIndex', 'asc').orderBy('timestamp', 'desc');
+        const snapshot = await ref.get();
+        products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    } catch (e) { console.error('Failed to load products', e); }
+}
 
-        /* ---------- SIMPLE ANALYTICS (localStorage) ---------- */
-        function loadAnalytics() {
-            const stored = localStorage.getItem('harish_analytics');
-            if (stored) {
-                try { analytics = JSON.parse(stored); } catch (e) {}
-            }
-        }
+async function moveProduct(productId, direction) {
+    const index = products.findIndex(p => p.id === productId);
+    if (index === -1) return;
+    let targetIndex = direction === 'up' ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= products.length) return;
 
-        function saveAnalytics() {
-            localStorage.setItem('harish_analytics', JSON.stringify(analytics));
-        }
+    [products[targetIndex], products[index]] = [products[index], products[targetIndex]];
+    const batch = db.batch();
+    batch.update(db.collection('products').doc(products[index].id), { orderIndex: index });
+    batch.update(db.collection('products').doc(products[targetIndex].id), { orderIndex: targetIndex });
 
-        function trackVisitor() {
-            loadAnalytics();
-            analytics.totalViews += 1;
-            analytics.totalVisitors += 1;
-            const now = new Date();
-            const todayLabel = now.toLocaleDateString('en-IN', { month: 'short', day: '2-digit' });
-            if (analytics.todayDate !== todayLabel) {
-                analytics.todayDate = todayLabel;
-                analytics.todayVisitors = 0;
-            }
-            analytics.todayVisitors += 1;
+    try {
+        await batch.commit();
+        renderProducts();
+        renderAdminProducts();
+    } catch (error) { console.error(error); }
+}
 
-            const ua = navigator.userAgent || '';
-            if (/mobile/i.test(ua)) analytics.devices.mobile += 1;
-            else if (/tablet/i.test(ua)) analytics.devices.tablet += 1;
-            else analytics.devices.desktop += 1;
+function renderAdminProducts() {
+    const tbody = document.getElementById('adminProductsList');
+    if (!tbody) return;
+    tbody.innerHTML = products.map((p, i) => `
+        <tr>
+            <td>
+                <button class="btn btn-sm" onclick="moveProduct('${p.id}', 'up')" ${i === 0 ? 'disabled' : ''}>⬆</button>
+                <button class="btn btn-sm" onclick="moveProduct('${p.id}', 'down')" ${i === products.length - 1 ? 'disabled' : ''}>⬇</button>
+            </td>
+            <td>${p.emoji || '👟'} ${p.brand}</td>
+            <td>${p.name}</td>
+            <td>₹${p.price}</td>
+            <td>${p.stock}</td>
+            <td>
+                <button class="btn btn-primary btn-sm" onclick="editProduct('${p.id}')">Edit</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.id}')">Delete</button>
+            </td>
+        </tr>`).join('');
+}
 
-            saveAnalytics();
-            renderAnalytics();
-        }
+async function handleAddProduct(e) {
+    e.preventDefault();
+    const brandSelect = document.getElementById('productBrand');
+    const brandValue = brandSelect.value === '__custom__'
+        ? document.getElementById('customBrandInput').value.trim()
+        : brandSelect.value;
 
-        function renderAnalytics() {
-            const totalVisitorsEl = document.getElementById('totalVisitors');
-            const totalViewsEl = document.getElementById('totalViews');
-            const todayVisitorsEl = document.getElementById('todayVisitors');
-            const todayDateEl = document.getElementById('todayDate');
-            const desktopCountEl = document.getElementById('desktopCount');
-            const mobileCountEl = document.getElementById('mobileCount');
-            const tabletCountEl = document.getElementById('tabletCount');
+    const data = {
+        brand: brandValue,
+        name: document.getElementById('productName').value,
+        price: parseInt(document.getElementById('productPrice').value) || 0,
+        stock: parseInt(document.getElementById('productStock').value) || 0,
+        emoji: document.getElementById('productEmoji').value || '👟',
+        image: document.getElementById('productImage').value,
+        article: document.getElementById('productArticle').value,
+        description: document.getElementById('productDescription').value,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        orderIndex: products.length
+    };
+    await db.collection('products').add(data);
+    await loadSavedProducts();
+    renderProducts();
+    renderAdminProducts();
+    e.target.reset();
+}
 
-            if (!totalViewsEl) return;
+async function editProduct(id) {
+    const p = products.find(x => x.id === id);
+    const n = prompt('New name:', p.name);
+    if (n) {
+        await db.collection('products').doc(id).update({ name: n });
+        await loadSavedProducts();
+        renderProducts();
+        renderAdminProducts();
+    }
+}
 
-            totalVisitorsEl.textContent = analytics.totalVisitors;
-            totalViewsEl.textContent = analytics.totalViews;
-            todayVisitorsEl.textContent = analytics.todayVisitors;
-            todayDateEl.textContent = analytics.todayDate || '';
+async function deleteProduct(id) {
+    if (confirm('Delete?')) {
+        await db.collection('products').doc(id).delete();
+        await loadSavedProducts();
+        renderProducts();
+        renderAdminProducts();
+    }
+}
 
-            const totalDevices = analytics.devices.desktop + analytics.devices.mobile + analytics.devices.tablet || 1;
-            const pc = (n) => Math.round((n / totalDevices) * 100);
+function handleBrandSelect() {
+    const brandSelect = document.getElementById('productBrand');
+    const customGroup = document.getElementById('customBrandGroup');
+    customGroup.style.display = brandSelect.value === '__custom__' ? 'block' : 'none';
+}
 
-            desktopCountEl.textContent = `${analytics.devices.desktop} (${pc(analytics.devices.desktop)}%)`;
-            mobileCountEl.textContent = `${analytics.devices.mobile} (${pc(analytics.devices.mobile)}%)`;
-            tabletCountEl.textContent = `${analytics.devices.tablet} (${pc(analytics.devices.tablet)}%)`;
-        }
+/* ---------- CONTACT / MESSAGES ---------- */
+async function handleContactSubmit(e) {
+    e.preventDefault();
+    const d = {
+        name: e.target.querySelector('input[type="text"]').value,
+        email: e.target.querySelector('input[type="email"]').value,
+        message: e.target.querySelector('textarea').value,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    await db.collection('messages').add(d);
+    e.target.reset();
+    document.getElementById('contactAlert').innerHTML = '<div class="alert alert-success">Sent!</div>';
+}
 
-        /* ---------- ADMIN PANEL & AUTH ---------- */
-        function openAdminPanel() {
-            document.getElementById('adminModal').classList.add('active');
-            if (isLoggedIn) showDashboard(); else showLogin();
-        }
+async function loadMessages() {
+    const snap = await db.collection('messages').orderBy('timestamp', 'desc').get();
+    messages = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+}
 
-        function closeAdminPanel() {
-            document.getElementById('adminModal').classList.remove('active');
-        }
+function renderMessages() {
+    const container = document.getElementById('messagesList');
+    if (!container) return;
+    if (!messages.length) {
+        container.innerHTML = '<p style="color: var(--color-text-secondary);">No messages yet.</p>';
+        return;
+    }
+    container.innerHTML = messages.map(m => `
+        <div style="border: 1px solid var(--color-border); padding: 1rem; border-radius: 8px; margin-bottom: 0.75rem;">
+            <strong>${m.name}</strong> &lt;${m.email}&gt;<br>
+            <span style="font-size:0.9rem;">${m.message}</span><br>
+            <button class="btn btn-danger btn-sm" onclick="deleteMessage('${m.id}')">Delete</button>
+        </div>`).join('');
+}
 
-        function showLogin() {
-            document.getElementById('modalTitle').textContent = 'Admin Login';
-            document.getElementById('loginSection').style.display = 'block';
-            document.getElementById('dashboardSection').style.display = 'none';
-        }
+async function deleteMessage(id) {
+    await db.collection('messages').doc(id).delete();
+    await loadMessages();
+    renderMessages();
+}
 
-        function showDashboard() {
-            document.getElementById('modalTitle').textContent = 'Admin Dashboard';
-            document.getElementById('loginSection').style.display = 'none';
-            document.getElementById('dashboardSection').style.display = 'block';
-            renderAdminProducts();
-            renderMessages();
-            renderAnalytics();
-        }
+/* ---------- ANALYTICS ---------- */
+function loadAnalytics() {
+    const stored = localStorage.getItem('harish_analytics');
+    if (stored) {
+        try { analytics = JSON.parse(stored); } catch (e) {}
+    }
+}
+function saveAnalytics() {
+    localStorage.setItem('harish_analytics', JSON.stringify(analytics));
+}
+function trackVisitor() {
+    loadAnalytics();
+    analytics.totalViews += 1;
+    analytics.totalVisitors += 1;
+    const now = new Date();
+    const todayLabel = now.toLocaleDateString('en-IN', { month: 'short', day: '2-digit' });
+    if (analytics.todayDate !== todayLabel) {
+        analytics.todayDate = todayLabel;
+        analytics.todayVisitors = 0;
+    }
+    analytics.todayVisitors += 1;
+    const ua = navigator.userAgent || '';
+    if (/mobile/i.test(ua)) analytics.devices.mobile += 1;
+    else if (/tablet/i.test(ua)) analytics.devices.tablet += 1;
+    else analytics.devices.desktop += 1;
+    saveAnalytics();
+    renderAnalytics();
+}
+function renderAnalytics() {
+    const totalVisitorsEl = document.getElementById('totalVisitors');
+    if (!totalVisitorsEl) return;
+    const totalViewsEl = document.getElementById('totalViews');
+    const todayVisitorsEl = document.getElementById('todayVisitors');
+    const todayDateEl = document.getElementById('todayDate');
+    const desktopCountEl = document.getElementById('desktopCount');
+    const mobileCountEl = document.getElementById('mobileCount');
+    const tabletCountEl = document.getElementById('tabletCount');
 
-        function handleLogin(e) {
-            e.preventDefault();
-            const u = document.getElementById('username').value;
-            const p = document.getElementById('password').value;
-            const alertBox = document.getElementById('loginAlert');
+    totalVisitorsEl.textContent = analytics.totalVisitors;
+    totalViewsEl.textContent = analytics.totalViews;
+    todayVisitorsEl.textContent = analytics.todayVisitors;
+    todayDateEl.textContent = analytics.todayDate || '';
 
-            if (u === adminCredentials.username && p === adminCredentials.password) {
-                isLoggedIn = true;
-                alertBox.innerHTML = '<div class="alert alert-success">Login successful!</div>';
-                showDashboard();
-            } else {
-                alertBox.innerHTML = '<div class="alert alert-error">Invalid credentials.</div>';
-            }
-        }
+    const totalDevices = analytics.devices.desktop + analytics.devices.mobile + analytics.devices.tablet || 1;
+    const pc = n => Math.round((n / totalDevices) * 100);
+    desktopCountEl.textContent = `${analytics.devices.desktop} (${pc(analytics.devices.desktop)}%)`;
+    mobileCountEl.textContent = `${analytics.devices.mobile} (${pc(analytics.devices.mobile)}%)`;
+    tabletCountEl.textContent = `${analytics.devices.tablet} (${pc(analytics.devices.tablet)}%)`;
+}
 
-        function handleLogout() {
-            isLoggedIn = false;
-            showLogin();
-        }
+/* ---------- ADMIN PANEL ---------- */
+function openAdminPanel() {
+    document.getElementById('adminModal').classList.add('active');
+    if (isLoggedIn) showDashboard(); else showLogin();
+}
+function closeAdminPanel() {
+    document.getElementById('adminModal').classList.remove('active');
+}
+function showLogin() {
+    document.getElementById('modalTitle').textContent = 'Admin Login';
+    document.getElementById('loginSection').style.display = 'block';
+    document.getElementById('dashboardSection').style.display = 'none';
+}
+function showDashboard() {
+    document.getElementById('modalTitle').textContent = 'Admin Dashboard';
+    document.getElementById('loginSection').style.display = 'none';
+    document.getElementById('dashboardSection').style.display = 'block';
+    renderAdminProducts();
+    renderMessages();
+    renderAnalytics();
+}
+function handleLogin(e) {
+    e.preventDefault();
+    const u = document.getElementById('username').value;
+    const p = document.getElementById('password').value;
+    const alertBox = document.getElementById('loginAlert');
+    if (u === adminCredentials.username && p === adminCredentials.password) {
+        isLoggedIn = true;
+        alertBox.innerHTML = '<div class="alert alert-success">Login successful!</div>';
+        showDashboard();
+    } else {
+        alertBox.innerHTML = '<div class="alert alert-error">Invalid credentials.</div>';
+    }
+}
+function handleLogout() {
+    isLoggedIn = false;
+    showLogin();
+}
+function switchTab(tab) {
+    document.querySelectorAll('.admin-tab').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.querySelector(`.admin-tab[onclick="switchTab('${tab}')"]`).classList.add('active');
+    document.getElementById(tab + 'Tab').classList.add('active');
+    if (tab === 'messages') loadMessages().then(renderMessages);
+    else if (tab === 'analytics') renderAnalytics();
+    else if (tab === 'products') renderAdminProducts();
+}
 
-        function switchTab(tab) {
-            document.querySelectorAll('.admin-tab').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+/* ---------- AI CHAT ---------- */
+function toggleAiChat() {
+    const w = document.getElementById('aiChatWidget');
+    if (!w) return;
+    if (w.style.display === 'none' || !w.style.display) w.style.display = 'block';
+    else w.style.display = 'none';
+}
+function appendChatMessage(text, from = 'user') {
+    const container = document.getElementById('aiChatMessages');
+    const bubble = document.createElement('div');
+    bubble.style.marginBottom = '0.5rem';
+    bubble.style.fontSize = '0.875rem';
+    bubble.style.maxWidth = '90%';
+    bubble.style.padding = '0.6rem 0.8rem';
+    bubble.style.borderRadius = '10px';
+    if (from === 'user') {
+        bubble.style.marginLeft = 'auto';
+        bubble.style.background = '#e5e7eb';
+    } else {
+        bubble.style.background = 'linear-gradient(135deg,#e0f2fe,#dbeafe)';
+    }
+    bubble.textContent = text;
+    container.appendChild(bubble);
+    container.scrollTop = container.scrollHeight;
+}
+function handleAiChat(e) {
+    e.preventDefault();
+    const input = document.getElementById('aiChatInput');
+    const text = input.value.trim();
+    if (!text) return;
+    appendChatMessage(text, 'user');
+    const reply = 'Thanks for your message! For detailed product and bulk order queries, we will contact you on WhatsApp or phone shortly.';
+    appendChatMessage(reply, 'bot');
+    input.value = '';
+}
 
-            document.querySelector(`.admin-tab[onclick="switchTab('${tab}')"]`).classList.add('active');
-            document.getElementById(tab + 'Tab').classList.add('active');
+/* ---------- WEBSITE SETTINGS ---------- */
+async function loadWebsiteSettings() {
+    try {
+        const docSnap = await db.collection('settings').doc('website').get();
+        if (docSnap.exists) websiteContent = { ...websiteContent, ...docSnap.data() };
+    } catch (e) {}
+    updatePageContent();
+    fillWebsiteForm();
+}
+function updatePageContent() {
+    document.getElementById('heroTitle').textContent = websiteContent.heroTitle;
+    document.getElementById('heroSubtitle').textContent = websiteContent.heroSubtitle;
+    document.getElementById('badge1Text').textContent = websiteContent.badge1Text;
+    document.getElementById('badge2Text').textContent = websiteContent.badge2Text;
+    document.getElementById('badge3Text').textContent = websiteContent.badge3Text;
+    document.getElementById('contactFormTitle').textContent = websiteContent.contactFormTitle;
+    document.getElementById('contactFormSubtitle').textContent = websiteContent.contactFormSubtitle;
+    document.getElementById('locationText').textContent = websiteContent.locationText;
+    document.getElementById('phoneText').textContent = websiteContent.phoneText;
+    document.getElementById('emailText').textContent = websiteContent.emailText;
+    document.getElementById('footerText1').textContent = websiteContent.footerText1;
+    document.getElementById('footerText2').textContent = websiteContent.footerText2;
+    document.getElementById('footerText3').textContent = websiteContent.footerText3;
+}
+function fillWebsiteForm() {
+    const w = websiteContent;
+    const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v || ''; };
+    setVal('heroTitleInput', w.heroTitle);
+    setVal('heroSubtitleInput', w.heroSubtitle);
+    setVal('badge1TextInput', w.badge1Text);
+    setVal('badge2TextInput', w.badge2Text);
+    setVal('badge3TextInput', w.badge3Text);
+    setVal('contactFormTitleInput', w.contactFormTitle);
+    setVal('contactFormSubtitleInput', w.contactFormSubtitle);
+    setVal('locationTextInput', w.locationText);
+    setVal('phoneTextInput', w.phoneText);
+    setVal('emailTextInput', w.emailText);
+    setVal('footerText1Input', w.footerText1);
+    setVal('footerText2Input', w.footerText2);
+    setVal('footerText3Input', w.footerText3);
+}
+async function saveWebsiteSettings(e) {
+    e.preventDefault();
+    const getVal = id => document.getElementById(id).value;
+    websiteContent.heroTitle = getVal('heroTitleInput');
+    websiteContent.heroSubtitle = getVal('heroSubtitleInput');
+    websiteContent.badge1Text = getVal('badge1TextInput');
+    websiteContent.badge2Text = getVal('badge2TextInput');
+    websiteContent.badge3Text = getVal('badge3TextInput');
+    websiteContent.contactFormTitle = getVal('contactFormTitleInput');
+    websiteContent.contactFormSubtitle = getVal('contactFormSubtitleInput');
+    websiteContent.locationText = getVal('locationTextInput');
+    websiteContent.phoneText = getVal('phoneTextInput');
+    websiteContent.emailText = getVal('emailTextInput');
+    websiteContent.footerText1 = getVal('footerText1Input');
+    websiteContent.footerText2 = getVal('footerText2Input');
+    websiteContent.footerText3 = getVal('footerText3Input');
+    await db.collection('settings').doc('website').set(websiteContent);
+    updatePageContent();
+    alert('Website settings saved.');
+}
 
-            if (tab === 'messages') {
-                loadMessages().then(renderMessages);
-            } else if (tab === 'analytics') {
-                renderAnalytics();
-            } else if (tab === 'products') {
-                renderAdminProducts();
-            }
-        }
+/* ---------- SECTIONS ---------- */
+function addSection(type) {
+    const id = Date.now().toString();
+    const base = { id, type, title: 'New Section', content: 'Edit this content', position: customSections.length };
+    customSections.push(base);
+    renderSections();
+}
+function renderSections() {
+    const list = document.getElementById('sectionsList');
+    if (!list) return;
+    if (!customSections.length) {
+        list.innerHTML = '<p style="color: var(--color-text-secondary);">No extra sections added yet.</p>';
+        return;
+    }
+    list.innerHTML = customSections.map((s, i) => `
+        <div style="border:1px solid var(--color-border); border-radius:8px; padding:1rem; margin-bottom:0.75rem;">
+            <strong>${i + 1}. [${s.type}]</strong><br>
+            <input class="form-control" value="${s.title}" onchange="updateSectionTitle('${s.id}', this.value)" style="margin:0.5rem 0;">
+            <textarea class="form-control" rows="2" onchange="updateSectionContent('${s.id}', this.value)">${s.content}</textarea>
+            <div style="margin-top:0.5rem;">
+                <button class="btn btn-sm" onclick="moveSection('${s.id}','up')" ${i===0?'disabled':''}>⬆</button>
+                <button class="btn btn-sm" onclick="moveSection('${s.id}','down')" ${i===customSections.length-1?'disabled':''}>⬇</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteSection('${s.id}')">Delete</button>
+            </div>
+        </div>`).join('');
+}
+function updateSectionTitle(id, value) {
+    const s = customSections.find(x => x.id === id);
+    if (s) s.title = value;
+}
+function updateSectionContent(id, value) {
+    const s = customSections.find(x => x.id === id);
+    if (s) s.content = value;
+}
+function moveSection(id, direction) {
+    const index = customSections.findIndex(s => s.id === id);
+    if (index === -1) return;
+    let targetIndex = direction === 'up' ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= customSections.length) return;
+    [customSections[targetIndex], customSections[index]] = [customSections[index], customSections[targetIndex]];
+    renderSections();
+}
+function deleteSection(id) {
+    customSections = customSections.filter(s => s.id !== id);
+    renderSections();
+}
 
-        /* ---------- AI CHAT FRONTEND (simple) ---------- */
-        function toggleAiChat() {
-            const w = document.getElementById('aiChatWidget');
-            if (!w) return;
-            if (w.style.display === 'none' || !w.style.display) w.style.display = 'block';
-            else w.style.display = 'none';
-        }
+/* ---------- ASSISTANT SETTINGS ---------- */
+function loadAssistantSettingsIntoUI() {
+    const g = document.getElementById('assistantGreeting');
+    if (g) g.value = assistantSettings.greeting || g.value;
+    const t = document.getElementById('assistantTitle');
+    if (t) t.value = assistantSettings.title;
+    const st = document.getElementById('assistantSubtitle');
+    if (st) st.value = assistantSettings.subtitle;
+    const chk = document.getElementById('assistantEnabled');
+    if (chk) chk.checked = assistantSettings.enabled;
+    document.getElementById('assistantTitleHeader').textContent = assistantSettings.title;
+    document.getElementById('assistantSubtitleHeader').textContent = assistantSettings.subtitle;
+    document.getElementById('aiChatButton').style.display = assistantSettings.enabled ? 'flex' : 'none';
+    document.getElementById('aiChatWidget').style.display = assistantSettings.enabled ? document.getElementById('aiChatWidget').style.display : 'none';
+}
+function toggleAssistant() {
+    const chk = document.getElementById('assistantEnabled');
+    assistantSettings.enabled = chk.checked;
+    loadAssistantSettingsIntoUI();
+}
+async function saveAssistantSettings() {
+    assistantSettings.greeting = document.getElementById('assistantGreeting').value;
+    assistantSettings.title = document.getElementById('assistantTitle').value;
+    assistantSettings.subtitle = document.getElementById('assistantSubtitle').value;
+    await db.collection('settings').doc('assistant').set(assistantSettings);
+    loadAssistantSettingsIntoUI();
+    alert('Assistant settings saved.');
+}
+function resetAssistantSettings() {
+    assistantSettings = {
+        enabled: true,
+        greeting: "👋 Hi! I'm your Harish Footwear assistant. I can help you with:\n• Product information\n• Contact details\n• Bulk order inquiries\n• Location and hours\n\nHow can I assist you today?",
+        title: 'Harish Assistant 🤖',
+        subtitle: 'Ask me anything!'
+    };
+    loadAssistantSettingsIntoUI();
+}
 
-        function appendChatMessage(text, from = 'user') {
-            const container = document.getElementById('aiChatMessages');
-            const bubble = document.createElement('div');
-            bubble.style.marginBottom = '0.5rem';
-            bubble.style.fontSize = '0.875rem';
-            bubble.style.maxWidth = '90%';
-            bubble.style.padding = '0.6rem 0.8rem';
-            bubble.style.borderRadius = '10px';
+/* ---------- ADMIN ACCOUNT ---------- */
+async function saveAdminCredentials() {
+    adminCredentials.username = document.getElementById('adminUsernameInput').value;
+    adminCredentials.password = document.getElementById('adminPasswordInput').value;
+    await db.collection('settings').doc('admin').set(adminCredentials);
+    alert('Admin credentials updated.');
+}
 
-            if (from === 'user') {
-                bubble.style.marginLeft = 'auto';
-                bubble.style.background = '#e5e7eb';
-            } else {
-                bubble.style.background = 'linear-gradient(135deg,#e0f2fe,#dbeafe)';
-            }
-            bubble.textContent = text;
-            container.appendChild(bubble);
-            container.scrollTop = container.scrollHeight;
-        }
+/* ---------- ADMIN BADGE ---------- */
+function checkAdminAccess() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('admin') === 'true') {
+        document.getElementById('adminBadge').classList.add('visible');
+    }
+}
 
-        function handleAiChat(e) {
-            e.preventDefault();
-            const input = document.getElementById('aiChatInput');
-            const text = input.value.trim();
-            if (!text) return;
-            appendChatMessage(text, 'user');
-
-            // very simple canned reply
-            const reply = 'Thanks for your message! For detailed product and bulk order queries, we will contact you on WhatsApp or phone shortly.';
-            appendChatMessage(reply, 'bot');
-            input.value = '';
-        }
-
-        /* ---------- WEBSITE CONTENT & ADMIN BADGE ---------- */
-        async function loadWebsiteSettings() {
-            try {
-                const docSnap = await db.collection('settings').doc('website').get();
-                if (docSnap.exists) {
-                    websiteContent = { ...websiteContent, ...docSnap.data() };
-                }
-            } catch (e) {}
-            updatePageContent();
-        }
-
-        function updatePageContent() {
-            document.getElementById('heroTitle').textContent = websiteContent.heroTitle;
-            document.getElementById('heroSubtitle').textContent = websiteContent.heroSubtitle;
-            document.getElementById('badge1Text').textContent = websiteContent.badge1Text;
-            document.getElementById('badge2Text').textContent = websiteContent.badge2Text;
-            document.getElementById('badge3Text').textContent = websiteContent.badge3Text;
-            document.getElementById('contactFormTitle').textContent = websiteContent.contactFormTitle;
-            document.getElementById('contactFormSubtitle').textContent = websiteContent.contactFormSubtitle;
-            document.getElementById('locationText').textContent = websiteContent.locationText;
-            document.getElementById('phoneText').textContent = websiteContent.phoneText;
-            document.getElementById('emailText').textContent = websiteContent.emailText;
-            document.getElementById('footerText1').textContent = websiteContent.footerText1;
-            document.getElementById('footerText2').textContent = websiteContent.footerText2;
-            document.getElementById('footerText3').textContent = websiteContent.footerText3;
-        }
-
-        function checkAdminAccess() {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('admin') === 'true') {
-                document.getElementById('adminBadge').classList.add('visible');
-            }
-        }
-
-        /* ---------- INIT ---------- */
-        async function initialize() {
-            await loadWebsiteSettings();
-            await loadSavedProducts();
-            renderProducts();
-            trackVisitor();
-            checkAdminAccess();
-        }
-
-        initialize();
-    </script>
+/* ---------- INIT ---------- */
+async function initialize() {
+    await loadWebsiteSettings();
+    await loadSavedProducts();
+    renderProducts();
+    trackVisitor();
+    checkAdminAccess();
+    loadAssistantSettingsIntoUI();
+}
+initialize();
+</script>
 </body>
 </html>
