@@ -856,31 +856,15 @@ function renderProducts() {
                </div>`
             : '';
 
-        return `
-            <div class="product-card" data-product-id="${product.id}">
-                <div class="product-controls">
-                    <button class="product-control-btn" onclick="moveProduct('${product.id}', 'up')" ${index === 0 ? 'disabled' : ''}>⬆</button>
-                    <button class="product-control-btn" onclick="moveProduct('${product.id}', 'down')" ${index === products.length - 1 ? 'disabled' : ''}>⬇</button>
-                </div>
-                <div class="product-image">
-                    ${imageHtml}
-                    ${emojiHtml}
-                </div>
-                <div class="product-info">
-                    <div class="product-brand">${product.brand || ''}</div>
-                    <h3 class="product-name">${product.name || ''}</h3>
-                    ${product.article ? `<div class="product-article">Article: ${product.article}</div>` : ''}
-                    ${sizesText ? `<div class="product-article">${sizesText}</div>` : ''}
-                    ${catColor}
-                    ${product.description ? `<div class="product-description">${product.description}</div>` : ''}
                     <button type="button"
-                        onclick="window.location.href='tel:+916393191774'"
-                        style="margin-top:0.75rem;padding:0.6rem 1.2rem;border-radius:999px;border:none;background:var(--color-primary);color:#fff;font-size:.9rem;font-weight:500;cursor:pointer;">
-                        Call for price
-                    </button>
-                    <div class="product-stock">${product.stock} in stock</div>
-                </div>
-            </div>`;
+                onclick="window.location.href='tel:+916393191774'"
+                style="margin-top:0.75rem;padding:0.6rem 1.2rem;border-radius:999px;border:none;background:var(--color-primary);color:#fff;font-size:.9rem;font-weight:500;cursor:pointer;">
+                Call for price
+            </button>
+            ${product.stock && product.stock > 0
+                ? `<div class="product-stock">${product.stock} in stock</div>`
+                : ''}
+
     }).join('');
 }
 
