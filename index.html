@@ -36,7 +36,7 @@
             line-height:1.6;
             position:relative;
             overflow-x:hidden;
-            scroll-behavior:smooth; /* smooth scroll */
+            scroll-behavior:smooth;
         }
         body::before{
             content:'';
@@ -149,7 +149,7 @@
         .product-info{padding:1.5rem}
         .product-brand{font-size:.875rem;color:var(--color-text-secondary);font-weight:600;text-transform:uppercase}
         .product-name{font-size:1.125rem;font-weight:600;margin:.5rem 0}
-        .product-price{display:none;} /* hidden, we show Call for price button instead */
+        .product-price{display:none;}
         .product-stock{font-size:.875rem;color:var(--color-success);margin-top:.5rem}
 
         .contact-section{background:transparent;padding:3rem 2rem}
@@ -355,7 +355,6 @@
     </div>
 </section>
 
-<!-- Custom sections from Add Section tab will render here -->
 <div class="container" id="customSectionsContainer"></div>
 
 <button id="aiChatButton" onclick="toggleAiChat()" style="position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;border:none;font-size:1.5rem;cursor:pointer;box-shadow:0 4px 12px rgba(37,99,235,.4);z-index:1000;display:flex;align-items:center;justify-content:center;">
@@ -399,10 +398,7 @@
     <span>👤</span><span>Admin Mode</span>
 </div>
 
-<!-- Admin modal and tabs start here ... (unchanged layout, with updated Add Product tab you already saw) -->
-
 <div class="modal" id="adminModal">
-    <!-- modal-content … (keep exactly as in your current file, including updated Add Product tab from Patch 1) -->
     <div class="modal-content">
         <div class="modal-header">
             <h2 id="modalTitle">Admin Login</h2>
@@ -438,7 +434,6 @@
                     <button class="admin-tab" onclick="switchTab('settings')">Account</button>
                 </div>
 
-                <!-- Analytics Tab -->
                 <div id="analyticsTab" class="tab-content active">
                     <h3>Website Analytics</h3>
                     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem 0;">
@@ -501,7 +496,6 @@
                     </div>
                 </div>
 
-                <!-- Products Tab -->
                 <div id="productsTab" class="tab-content">
                     <h3>Manage Products</h3>
                     <table class="products-table">
@@ -514,7 +508,6 @@
                     </table>
                 </div>
 
-                <!-- Messages Tab -->
                 <div id="messagesTab" class="tab-content">
                     <h3>Customer Messages</h3>
                     <div id="messagesList">
@@ -522,16 +515,15 @@
                     </div>
                 </div>
 
-                <!-- Add Product Tab (updated with extra fields) -->
                 <div id="addTab" class="tab-content">
                     <h3>Add New Product</h3>
                     <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">
-                        Fill all fields and click <strong>Add Product</strong>. Public page will show brand, name, sizes and a “Call for price” button.
+                        All fields are optional. Public page will show brand, name, sizes and a “Call for price” button.
                     </p>
                     <form onsubmit="handleAddProduct(event)">
                         <div class="form-group">
                             <label for="productBrand">Brand</label>
-                            <select id="productBrand" class="form-control" required onchange="handleBrandSelect()">
+                            <select id="productBrand" class="form-control" onchange="handleBrandSelect()">
                                 <option value="Nike">Nike</option>
                                 <option value="Adidas">Adidas</option>
                                 <option value="Puma">Puma</option>
@@ -547,12 +539,12 @@
 
                         <div class="form-group">
                             <label for="productName">Product Name</label>
-                            <input type="text" id="productName" class="form-control" required>
+                            <input type="text" id="productName" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label for="productPrice">Wholesale Price (₹)</label>
-                            <input type="number" id="productPrice" class="form-control" value="0" required>
+                            <input type="number" id="productPrice" class="form-control" value="0">
                         </div>
 
                         <div class="form-group">
@@ -573,6 +565,7 @@
                         <div class="form-group">
                             <label for="productCategory">Category</label>
                             <select id="productCategory" class="form-control">
+                                <option value="">--</option>
                                 <option value="Men">Men</option>
                                 <option value="Women">Women</option>
                                 <option value="Kids">Kids</option>
@@ -602,19 +595,18 @@
 
                         <div class="form-group">
                             <label for="productStock">Stock Quantity</label>
-                            <input type="number" id="productStock" class="form-control" required>
+                            <input type="number" id="productStock" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label for="productEmoji">Emoji</label>
-                            <input type="text" id="productEmoji" class="form-control" placeholder="👟" maxlength="2" required>
+                            <input type="text" id="productEmoji" class="form-control" placeholder="👟" maxlength="2">
                         </div>
 
                         <button type="submit" class="btn btn-primary">Add Product</button>
                     </form>
                 </div>
 
-                <!-- Sections Tab (UI; logic in script) -->
                 <div id="sectionsTab" class="tab-content">
                     <h3>Manage Sections</h3>
                     <p style="color:var(--color-text-secondary);margin-bottom:1.5rem;">
@@ -652,7 +644,6 @@
                     </div>
                 </div>
 
-                <!-- Website Settings Tab (unchanged content bindings) -->
                 <div id="websiteTab" class="tab-content">
                     <h3>Website Text & Branding</h3>
                     <p style="color:var(--color-text-secondary);margin-bottom:1.5rem;">
@@ -719,7 +710,6 @@
                     </form>
                 </div>
 
-                <!-- Assistant Tab -->
                 <div id="assistantTab" class="tab-content">
                     <h3>AI Chat Assistant Settings</h3>
                     <p style="color:var(--color-text-secondary);margin-bottom:1.5rem;">
@@ -771,7 +761,6 @@ we’ll reply quickly from +91 6393191774.</textarea>
                     </button>
                 </div>
 
-                <!-- Settings Tab -->
                 <div id="settingsTab" class="tab-content">
                     <h3>Admin Account</h3>
                     <p style="color:var(--color-text-secondary);margin-bottom:1.5rem;">
@@ -792,6 +781,7 @@ we’ll reply quickly from +91 6393191774.</textarea>
         </div>
     </div>
 </div>
+
 <script>
 const firebaseConfig = {
     apiKey: "AIzasyDWPorADXyłem4El5xAU4x_n3aeuXzA",
@@ -813,7 +803,7 @@ let analytics = {
     todayDate: '',
     devices: { desktop: 0, mobile: 0, tablet: 0 },
     activities: [],
-    last7Days: [] // {dateLabel, views}
+    last7Days: []
 };
 let websiteContent = {
     heroTitle: 'Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨',
@@ -832,8 +822,6 @@ let websiteContent = {
 };
 let adminCredentials = { username: 'Aditya', password: 'Aditya@9050' };
 let isLoggedIn = false;
-
-// sections now persisted in Firestore
 let customSections = [];
 let assistantSettings = {
     enabled: true,
@@ -842,7 +830,6 @@ let assistantSettings = {
     subtitle: 'Ask me anything about footwear!'
 };
 
-/* PRODUCTS */
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
     if (!grid) return;
@@ -862,7 +849,6 @@ function renderProducts() {
                                style="display:${hasImage ? 'none' : 'flex'};align-items:center;justify-content:center;">
                                ${emoji}
                            </div>`;
-
         const sizesText = product.sizes ? `Sizes: ${product.sizes}` : '';
         const catColor = (product.category || product.color)
             ? `<div style="font-size:.8rem;color:var(--color-text-secondary);margin-top:.25rem;">
@@ -957,7 +943,7 @@ async function handleAddProduct(e) {
     const discount = parseInt(document.getElementById('productDiscount').value) || 0;
 
     const data = {
-        brand: brandValue,
+        brand: brandValue || '',
         name: document.getElementById('productName').value.trim(),
         price: wholesalePrice,
         mrp: mrp,
@@ -1007,7 +993,6 @@ function handleBrandSelect() {
     customGroup.style.display = brandSelect.value === '__custom__' ? 'block' : 'none';
 }
 
-/* CONTACT & MESSAGES */
 async function handleContactSubmit(e) {
     e.preventDefault();
     const d = {
@@ -1047,7 +1032,6 @@ async function deleteMessage(id) {
     renderMessages();
 }
 
-/* ANALYTICS */
 function loadAnalytics() {
     const stored = localStorage.getItem('harish_analytics');
     if (stored) {
@@ -1076,7 +1060,6 @@ function trackVisitor() {
     else if (/mobile/i.test(ua)) analytics.devices.mobile += 1;
     else analytics.devices.desktop += 1;
 
-    // simple last-7-days views counter
     if (!Array.isArray(analytics.last7Days)) analytics.last7Days = [];
     const existing = analytics.last7Days.find(d => d.dateLabel === todayLabel);
     if (existing) existing.views += 1;
@@ -1111,7 +1094,6 @@ function renderAnalytics() {
     tabletCountEl.textContent = `${analytics.devices.tablet || 0} (${pc(analytics.devices.tablet || 0)}%)`;
 }
 
-/* ADMIN PANEL */
 function openAdminPanel() {
     document.getElementById('adminModal').classList.add('active');
     if (isLoggedIn) showDashboard(); else showLogin();
@@ -1161,7 +1143,6 @@ function switchTab(tab) {
     else if (tab === 'sections') loadSections();
 }
 
-/* AI CHAT */
 function toggleAiChat() {
     const w = document.getElementById('aiChatWidget');
     if (!w) return;
@@ -1197,7 +1178,6 @@ function handleAiChat(e) {
     input.value = '';
 }
 
-/* WEBSITE SETTINGS */
 async function loadWebsiteSettings() {
     try {
         const docSnap = await db.collection('settings').doc('website').get();
@@ -1259,7 +1239,6 @@ async function saveWebsiteSettings(e) {
     alert('Website settings saved.');
 }
 
-/* SECTIONS – persisted to Firestore */
 async function loadSections() {
     try {
         const snap = await db.collection('sections').orderBy('orderIndex', 'asc').get();
@@ -1318,7 +1297,6 @@ async function deleteSection(id) {
     if (!confirm('Delete this section?')) return;
     await db.collection('sections').doc(id).delete();
     customSections = customSections.filter(s => s.id !== id);
-    // reindex
     const batch = db.batch();
     customSections.forEach((s, i) => {
         s.orderIndex = i;
@@ -1329,7 +1307,6 @@ async function deleteSection(id) {
 }
 
 function renderSections() {
-    // admin list
     const list = document.getElementById('sectionsList');
     if (list) {
         if (!customSections.length) {
@@ -1357,7 +1334,6 @@ function renderSections() {
         }
     }
 
-    // public rendering
     const container = document.getElementById('customSectionsContainer');
     if (!container) return;
     if (!customSections.length) {
@@ -1408,7 +1384,6 @@ function renderSections() {
         if (s.type === 'spacer') {
             return `<div style="height:40px;"></div>`;
         }
-        // text block default
         return `
             <div style="max-width:800px;margin:2rem auto;text-align:center;">
                 <h3>${s.title || 'New Section'}</h3>
@@ -1417,7 +1392,6 @@ function renderSections() {
     }).join('');
 }
 
-// simple inline section editor using prompt
 function openSectionEditor(id) {
     const s = customSections.find(x => x.id === id);
     if (!s) return;
@@ -1427,7 +1401,6 @@ function openSectionEditor(id) {
     updateSection(id, { title: newTitle, content: newContent || '' });
 }
 
-/* ASSISTANT SETTINGS */
 function loadAssistantSettingsIntoUI() {
     const g = document.getElementById('assistantGreeting');
     if (g && assistantSettings.greeting) g.value = assistantSettings.greeting;
@@ -1471,7 +1444,6 @@ function resetAssistantSettings() {
     loadAssistantSettingsIntoUI();
 }
 
-/* ADMIN ACCOUNT */
 async function saveAdminCredentials() {
     adminCredentials.username = document.getElementById('adminUsernameInput').value;
     adminCredentials.password = document.getElementById('adminPasswordInput').value;
@@ -1479,7 +1451,6 @@ async function saveAdminCredentials() {
     alert('Admin credentials updated.');
 }
 
-/* ADMIN BADGE */
 function checkAdminAccess() {
     const params = new URLSearchParams(window.location.search);
     if (params.get('admin') === 'true') {
@@ -1487,32 +1458,23 @@ function checkAdminAccess() {
     }
 }
 
-/* INIT */
 async function initialize() {
     await loadWebsiteSettings();
-
-    // admin credentials and assistant settings from Firestore
     try {
         const adminDoc = await db.collection('settings').doc('admin').get();
         if (adminDoc.exists) adminCredentials = { ...adminCredentials, ...adminDoc.data() };
     } catch (e) {}
-
     try {
         const aDoc = await db.collection('settings').doc('assistant').get();
         if (aDoc.exists) assistantSettings = { ...assistantSettings, ...aDoc.data() };
     } catch (e) {}
-
     loadAssistantSettingsIntoUI();
-
     await loadSavedProducts();
     renderProducts();
-
     await loadSections();
-
     trackVisitor();
     checkAdminAccess();
 }
-
 initialize();
 </script>
 </body>
