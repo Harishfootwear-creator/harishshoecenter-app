@@ -36,6 +36,7 @@
             line-height:1.6;
             position:relative;
             overflow-x:hidden;
+            scroll-behavior:smooth;
         }
         body::before{
             content:'';
@@ -141,14 +142,14 @@
             font-size:3rem;border-bottom:1px solid var(--color-border);
             overflow:hidden;position:relative;
         }
-        .product-image img{width:100%;height:100%;object-fit:contain;display:block}
+        .product-image img{width:100%;height:100%;object-fit:contain;background:#fff;display:block}
         .product-image-emoji{font-size:3rem}
         .product-article{font-size:.75rem;color:var(--color-text-secondary);margin-top:.25rem}
         .product-description{font-size:.875rem;color:var(--color-text-secondary);margin-top:.5rem;line-height:1.4}
         .product-info{padding:1.5rem}
         .product-brand{font-size:.875rem;color:var(--color-text-secondary);font-weight:600;text-transform:uppercase}
         .product-name{font-size:1.125rem;font-weight:600;margin:.5rem 0}
-        .product-price{font-size:1.5rem;color:var(--color-primary);font-weight:700;display:block}
+        .product-price{display:none;}
         .product-stock{font-size:.875rem;color:var(--color-success);margin-top:.5rem}
 
         .contact-section{background:transparent;padding:3rem 2rem}
@@ -364,18 +365,19 @@
     <div style="background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;padding:1rem;display:flex;justify-content:space-between;align-items:center;">
         <div>
             <div style="font-weight:600;font-size:1.1rem;" id="assistantTitleHeader">Harish Assistant 🤖</div>
-            <div style="font-size:.75rem;opacity:.9;" id="assistantSubtitleHeader">Ask me anything!</div>
+            <div style="font-size:.75rem;opacity:.9;" id="assistantSubtitleHeader">Ask me anything about footwear!</div>
         </div>
         <button onclick="toggleAiChat()" class="close-btn" style="background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;padding:0;width:30px;height:30px;">×</button>
     </div>
     <div id="aiChatMessages" style="height:300px;overflow-y:auto;padding:1rem;background:#f9fafb;">
         <div id="assistantGreetingBlock" style="background:linear-gradient(135deg,#e0f2fe,#dbeafe);padding:.75rem;border-radius:12px;margin-bottom:.75rem;font-size:.875rem;">
-            👋 Hi! I'm your Harish Footwear assistant. I can help you with:<br><br>
-            • Product information<br>
-            • Contact details<br>
-            • Bulk order inquiries<br>
-            • Location and hours<br><br>
-            How can I assist you today?
+            👋 Namaste! I’m Harish Footwear’s assistant.<br><br>
+            I can help you with:<br>
+            • Product suggestions<br>
+            • Stock & size availability<br>
+            • Bulk wholesale orders<br>
+            • Shop location & contact<br><br>
+            Type your question here or send your WhatsApp number, we’ll reply quickly from +91 6393191774.
         </div>
     </div>
     <div style="padding:1rem;border-top:1px solid #e5e7eb;background:#fff;">
@@ -443,7 +445,7 @@
                         <div style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 4px 12px rgba(16,185,129,.2);">
                             <div style="font-size:.875rem;opacity:.9;margin-bottom:.5rem;">Today's Visitors</div>
                             <div style="font-size:2rem;font-weight:700;" id="todayVisitors">0</div>
-                            <div style="font-size:.75rem;opacity:.8;margin-top:.5rem;" id="todayDate">Nov 07</div>
+                            <div style="font-size:.75rem;opacity:.8;margin-top:.5rem;" id="todayDate">--</div>
                         </div>
                         <div style="background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 4px 12px rgba(249,115,22,.2);">
                             <div style="font-size:.875rem;opacity:.9;margin-bottom:.5rem;">Page Views</div>
@@ -489,7 +491,7 @@
                     <div style="margin-top:1.5rem;padding:1rem;background:#fef3c7;border:1px solid #fbbf24;border-radius:8px;">
                         <strong style="color:#92400e;">📊 Note:</strong>
                         <p style="margin:.5rem 0 0 0;color:#92400e;font-size:.875rem;">
-                            Analytics tracking starts from your first visitor after this update. Data is stored locally in the visitor's browser.
+                            Analytics tracking is stored locally in each visitor's browser. Data starts from the first visit after this update.
                         </p>
                     </div>
                 </div>
@@ -515,10 +517,13 @@
 
                 <div id="addTab" class="tab-content">
                     <h3>Add New Product</h3>
+                    <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">
+                        All fields are optional. Public page will show brand, name, sizes and a “Call for price” button.
+                    </p>
                     <form onsubmit="handleAddProduct(event)">
                         <div class="form-group">
                             <label for="productBrand">Brand</label>
-                            <select id="productBrand" class="form-control" required onchange="handleBrandSelect()">
+                            <select id="productBrand" class="form-control" onchange="handleBrandSelect()">
                                 <option value="Nike">Nike</option>
                                 <option value="Adidas">Adidas</option>
                                 <option value="Puma">Puma</option>
@@ -526,38 +531,78 @@
                                 <option value="__custom__">+ Add Custom Brand</option>
                             </select>
                         </div>
+
                         <div class="form-group" id="customBrandGroup" style="display:none;">
                             <label for="customBrandInput">Custom Brand Name</label>
                             <input type="text" id="customBrandInput" class="form-control" placeholder="Enter brand name">
                         </div>
+
                         <div class="form-group">
                             <label for="productName">Product Name</label>
-                            <input type="text" id="productName" class="form-control" required>
+                            <input type="text" id="productName" class="form-control">
                         </div>
+
                         <div class="form-group">
                             <label for="productPrice">Wholesale Price (₹)</label>
-                            <input type="number" id="productPrice" class="form-control" value="0" required>
+                            <input type="number" id="productPrice" class="form-control" value="0">
                         </div>
+
+                        <div class="form-group">
+                            <label for="productMrp">MRP (₹)</label>
+                            <input type="number" id="productMrp" class="form-control" value="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productDiscount">Discount (%)</label>
+                            <input type="number" id="productDiscount" class="form-control" value="0" min="0" max="100">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productSizes">Sizes (comma separated)</label>
+                            <input type="text" id="productSizes" class="form-control" placeholder="e.g., 6,7,8,9,10">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productCategory">Category</label>
+                            <select id="productCategory" class="form-control">
+                                <option value="">--</option>
+                                <option value="Men">Men</option>
+                                <option value="Women">Women</option>
+                                <option value="Kids">Kids</option>
+                                <option value="Unisex">Unisex</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productColor">Color</label>
+                            <input type="text" id="productColor" class="form-control" placeholder="e.g., Red/White">
+                        </div>
+
                         <div class="form-group">
                             <label for="productImage">Image URL</label>
                             <input type="url" id="productImage" class="form-control" placeholder="https://example.com/image.jpg">
                         </div>
+
                         <div class="form-group">
                             <label for="productArticle">Article Number</label>
                             <input type="text" id="productArticle" class="form-control" placeholder="e.g., NK-AM270-001">
                         </div>
+
                         <div class="form-group">
                             <label for="productDescription">Description</label>
                             <textarea id="productDescription" class="form-control" rows="3" placeholder="Product description..."></textarea>
                         </div>
+
                         <div class="form-group">
                             <label for="productStock">Stock Quantity</label>
-                            <input type="number" id="productStock" class="form-control" required>
+                            <input type="number" id="productStock" class="form-control">
                         </div>
+
                         <div class="form-group">
                             <label for="productEmoji">Emoji</label>
-                            <input type="text" id="productEmoji" class="form-control" placeholder="👟" maxlength="2" required>
+                            <input type="text" id="productEmoji" class="form-control" placeholder="👟" maxlength="2">
                         </div>
+
                         <button type="submit" class="btn btn-primary">Add Product</button>
                     </form>
                 </div>
@@ -565,34 +610,38 @@
                 <div id="sectionsTab" class="tab-content">
                     <h3>Manage Sections</h3>
                     <p style="color:var(--color-text-secondary);margin-bottom:1.5rem;">
-                        Add hero banners, cards, text blocks, and more to your website.
+                        Add hero banners, cards, text blocks, and more. Sections appear between “Get In Touch” and the footer.
                     </p>
+
                     <div style="margin-bottom:2rem;">
                         <h4 style="margin-bottom:1rem;">Add New Section</h4>
-                        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;">
-                            <button class="btn btn-primary" onclick="addSection('hero')" style="padding:1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;">
-                                <span style="font-size:2rem;">🎯</span><span>Hero Banner</span>
-                            </button>
-                            <button class="btn btn-primary" onclick="addSection('card')" style="padding:1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;">
-                                <span style="font-size:2rem;">🃏</span><span>Card</span>
-                            </button>
-                            <button class="btn btn-primary" onclick="addSection('text')" style="padding:1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;">
-                                <span style="font-size:2rem;">📝</span><span>Text Block</span>
-                            </button>
+                        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;">
                             <button class="btn btn-primary" onclick="addSection('image')" style="padding:1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;">
                                 <span style="font-size:2rem;">🖼️</span><span>Image</span>
                             </button>
                             <button class="btn btn-primary" onclick="addSection('gallery')" style="padding:1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;">
                                 <span style="font-size:2rem;">🎨</span><span>Gallery</span>
                             </button>
+                            <button class="btn btn-primary" onclick="addSection('text')" style="padding:1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;">
+                                <span style="font-size:2rem;">📝</span><span>Text Block</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="addSection('card')" style="padding:1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;">
+                                <span style="font-size:2rem;">🃏</span><span>Card</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="addSection('hero')" style="padding:1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;">
+                                <span style="font-size:2rem;">🎯</span><span>Hero Banner</span>
+                            </button>
                             <button class="btn btn-primary" onclick="addSection('spacer')" style="padding:1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;">
                                 <span style="font-size:2rem;">⬜</span><span>Spacer</span>
                             </button>
                         </div>
                     </div>
+
                     <hr style="margin:2rem 0;">
                     <h4 style="margin-bottom:1rem;">Current Sections</h4>
-                    <div id="sectionsList"></div>
+                    <div id="sectionsList">
+                        <p style="color:var(--color-text-secondary);">No extra sections added yet.</p>
+                    </div>
                 </div>
 
                 <div id="websiteTab" class="tab-content">
@@ -672,51 +721,44 @@
                             <span style="font-weight:500;">Enable AI Chat Assistant</span>
                         </label>
                         <p style="color:var(--color-text-secondary);font-size:.875rem;margin-top:.5rem;">
-                            Toggle the chat widget on/off for website visitors
+                            Toggle the chat widget on/off for website visitors.
                         </p>
                     </div>
                     <hr style="margin:2rem 0;">
                     <div class="form-group">
                         <label for="assistantGreeting">Welcome Message</label>
-                        <textarea id="assistantGreeting" class="form-control" rows="4" placeholder="Enter welcome message...">👋 Hi! I'm your Harish Footwear assistant. I can help you with:
-• Product information
-• Contact details
-• Bulk order inquiries
-• Location and hours
+                        <textarea id="assistantGreeting" class="form-control" rows="4" placeholder="Enter welcome message...">👋 Namaste! I’m Harish Footwear’s assistant.
 
-How can I assist you today?</textarea>
+I can help you with:
+• Product suggestions
+• Stock & size availability
+• Bulk wholesale orders
+• Shop location & contact
+
+Type your question here or send your WhatsApp number,
+we’ll reply quickly from +91 6393191774.</textarea>
                         <p style="color:var(--color-text-secondary);font-size:.875rem;margin-top:.5rem;">
-                            This message appears when visitors open the chat
+                            This message appears when visitors open the chat.
                         </p>
                     </div>
                     <div class="form-group">
                         <label for="assistantTitle">Assistant Name</label>
                         <input type="text" id="assistantTitle" class="form-control" value="Harish Assistant 🤖">
                         <p style="color:var(--color-text-secondary);font-size:.875rem;margin-top:.5rem;">
-                            The name displayed in the chat header
+                            The name displayed in the chat header.
                         </p>
                     </div>
                     <div class="form-group">
                         <label for="assistantSubtitle">Assistant Subtitle</label>
-                        <input type="text" id="assistantSubtitle" class="form-control" value="Ask me anything!">
+                        <input type="text" id="assistantSubtitle" class="form-control" value="Ask me anything about footwear!">
                         <p style="color:var(--color-text-secondary);font-size:.875rem;margin-top:.5rem;">
-                            Subtitle text under the assistant name
+                            Subtitle text under the assistant name.
                         </p>
                     </div>
                     <button type="button" class="btn btn-primary" onclick="saveAssistantSettings()">Save Assistant Settings</button>
                     <button type="button" class="btn btn-secondary" onclick="resetAssistantSettings()" style="margin-left:.5rem;background:var(--color-text-secondary);">
                         Reset to Defaults
                     </button>
-                    <hr style="margin:2rem 0;">
-                    <div style="background:#fef3c7;padding:1rem;border-radius:8px;border:1px solid #fbbf24;">
-                        <strong style="color:#92400e;">💡 Assistant Features:</strong>
-                        <ul style="margin:.5rem 0 0 1.5rem;color:#92400e;font-size:.875rem;">
-                            <li>Answers questions about products, contact info, location</li>
-                            <li>Provides bulk order information</li>
-                            <li>Helps visitors navigate your website</li>
-                            <li>Available 24/7 for instant responses</li>
-                        </ul>
-                    </div>
                 </div>
 
                 <div id="settingsTab" class="tab-content">
@@ -760,7 +802,8 @@ let analytics = {
     todayVisitors: 0,
     todayDate: '',
     devices: { desktop: 0, mobile: 0, tablet: 0 },
-    activities: []
+    activities: [],
+    last7Days: []
 };
 let websiteContent = {
     heroTitle: 'Budget Shoe Bazaar: Wholesale Footwear at Unbeatable Prices ✨',
@@ -782,12 +825,11 @@ let isLoggedIn = false;
 let customSections = [];
 let assistantSettings = {
     enabled: true,
-    greeting: '',
+    greeting: "👋 Namaste! I’m Harish Footwear’s assistant.\n\nI can help you with:\n• Product suggestions\n• Stock & size availability\n• Bulk wholesale orders\n• Shop location & contact\n\nType your question here or send your WhatsApp number,\nwe’ll reply quickly from +91 6393191774.",
     title: 'Harish Assistant 🤖',
-    subtitle: 'Ask me anything!'
+    subtitle: 'Ask me anything about footwear!'
 };
 
-/* PRODUCTS */
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
     if (!grid) return;
@@ -807,6 +849,13 @@ function renderProducts() {
                                style="display:${hasImage ? 'none' : 'flex'};align-items:center;justify-content:center;">
                                ${emoji}
                            </div>`;
+        const sizesText = product.sizes ? `Sizes: ${product.sizes}` : '';
+        const catColor = (product.category || product.color)
+            ? `<div style="font-size:.8rem;color:var(--color-text-secondary);margin-top:.25rem;">
+                   ${(product.category || '')}${product.category && product.color ? ' · ' : ''}${product.color || ''}
+               </div>`
+            : '';
+
         return `
             <div class="product-card" data-product-id="${product.id}">
                 <div class="product-controls">
@@ -821,10 +870,18 @@ function renderProducts() {
                     <div class="product-brand">${product.brand || ''}</div>
                     <h3 class="product-name">${product.name || ''}</h3>
                     ${product.article ? `<div class="product-article">Article: ${product.article}</div>` : ''}
+                    ${sizesText ? `<div class="product-article">${sizesText}</div>` : ''}
+                    ${catColor}
                     ${product.description ? `<div class="product-description">${product.description}</div>` : ''}
-                    <div class="product-price">₹${product.price || 0}</div>
-                    <div class="product-stock">${product.stock || 0} in stock</div>
-                </div>
+                    <button type="button"
+                        onclick="window.location.href='tel:+916393191774'"
+                        style="margin-top:0.75rem;padding:0.6rem 1.2rem;border-radius:999px;border:none;background:var(--color-primary);color:#fff;font-size:.9rem;font-weight:500;cursor:pointer;">
+                         Call for price
+            </button>
+            ${product.stock && product.stock > 0
+                ? `<div class="product-stock">${product.stock} in stock</div>`
+                : ''}                
+              </div>
             </div>`;
     }).join('');
 }
@@ -864,10 +921,10 @@ function renderAdminProducts() {
                 <button class="btn btn-sm" onclick="moveProduct('${p.id}', 'up')" ${i === 0 ? 'disabled' : ''}>⬆</button>
                 <button class="btn btn-sm" onclick="moveProduct('${p.id}', 'down')" ${i === products.length - 1 ? 'disabled' : ''}>⬇</button>
             </td>
-            <td>${p.emoji || '👟'} ${p.brand}</td>
-            <td>${p.name}</td>
-            <td>₹${p.price}</td>
-            <td>${p.stock}</td>
+            <td>${p.emoji || '👟'} ${p.brand || ''}</td>
+            <td>${p.name || ''}</td>
+            <td>₹${p.price || 0}</td>
+            <td>${p.stock || 0}</td>
             <td>
                 <button class="btn btn-primary btn-sm" onclick="editProduct('${p.id}')">Edit</button>
                 <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.id}')">Delete</button>
@@ -877,23 +934,34 @@ function renderAdminProducts() {
 
 async function handleAddProduct(e) {
     e.preventDefault();
+
     const brandSelect = document.getElementById('productBrand');
     const brandValue = brandSelect.value === '__custom__'
         ? document.getElementById('customBrandInput').value.trim()
         : brandSelect.value;
 
+    const wholesalePrice = parseInt(document.getElementById('productPrice').value) || 0;
+    const mrp = parseInt(document.getElementById('productMrp').value) || 0;
+    const discount = parseInt(document.getElementById('productDiscount').value) || 0;
+
     const data = {
-        brand: brandValue,
-        name: document.getElementById('productName').value,
-        price: parseInt(document.getElementById('productPrice').value) || 0,
+        brand: brandValue || '',
+        name: document.getElementById('productName').value.trim(),
+        price: wholesalePrice,
+        mrp: mrp,
+        discount: discount,
+        sizes: document.getElementById('productSizes').value.trim(),
+        category: document.getElementById('productCategory').value,
+        color: document.getElementById('productColor').value.trim(),
         stock: parseInt(document.getElementById('productStock').value) || 0,
         emoji: document.getElementById('productEmoji').value || '👟',
-        image: document.getElementById('productImage').value,
-        article: document.getElementById('productArticle').value,
-        description: document.getElementById('productDescription').value,
+        image: document.getElementById('productImage').value.trim(),
+        article: document.getElementById('productArticle').value.trim(),
+        description: document.getElementById('productDescription').value.trim(),
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         orderIndex: products.length
     };
+
     await db.collection('products').add(data);
     await loadSavedProducts();
     renderProducts();
@@ -903,7 +971,7 @@ async function handleAddProduct(e) {
 
 async function editProduct(id) {
     const p = products.find(x => x.id === id);
-    const n = prompt('New name:', p.name);
+    const n = prompt('New name:', p && p.name ? p.name : '');
     if (n) {
         await db.collection('products').doc(id).update({ name: n });
         await loadSavedProducts();
@@ -913,7 +981,7 @@ async function editProduct(id) {
 }
 
 async function deleteProduct(id) {
-    if (confirm('Delete?')) {
+    if (confirm('Delete this product?')) {
         await db.collection('products').doc(id).delete();
         await loadSavedProducts();
         renderProducts();
@@ -927,7 +995,6 @@ function handleBrandSelect() {
     customGroup.style.display = brandSelect.value === '__custom__' ? 'block' : 'none';
 }
 
-/* CONTACT & MESSAGES */
 async function handleContactSubmit(e) {
     e.preventDefault();
     const d = {
@@ -955,8 +1022,8 @@ function renderMessages() {
     }
     container.innerHTML = messages.map(m => `
         <div style="border:1px solid var(--color-border);padding:1rem;border-radius:8px;margin-bottom:.75rem;">
-            <strong>${m.name}</strong> <${m.email}><br>
-            <span style="font-size:.9rem;">${m.message}</span><br>
+            <strong>${m.name || ''}</strong> &lt;${m.email || ''}&gt;<br>
+            <span style="font-size:.9rem;">${m.message || ''}</span><br>
             <button class="btn btn-danger btn-sm" onclick="deleteMessage('${m.id}')">Delete</button>
         </div>`).join('');
 }
@@ -967,7 +1034,6 @@ async function deleteMessage(id) {
     renderMessages();
 }
 
-/* ANALYTICS */
 function loadAnalytics() {
     const stored = localStorage.getItem('harish_analytics');
     if (stored) {
@@ -981,23 +1047,36 @@ function trackVisitor() {
     loadAnalytics();
     analytics.totalViews += 1;
     analytics.totalVisitors += 1;
+
     const now = new Date();
     const todayLabel = now.toLocaleDateString('en-IN', { month: 'short', day: '2-digit' });
+
     if (analytics.todayDate !== todayLabel) {
         analytics.todayDate = todayLabel;
         analytics.todayVisitors = 0;
     }
     analytics.todayVisitors += 1;
+
     const ua = navigator.userAgent || '';
-    if (/mobile/i.test(ua)) analytics.devices.mobile += 1;
-    else if (/tablet/i.test(ua)) analytics.devices.tablet += 1;
+    if (/tablet/i.test(ua)) analytics.devices.tablet += 1;
+    else if (/mobile/i.test(ua)) analytics.devices.mobile += 1;
     else analytics.devices.desktop += 1;
+
+    if (!Array.isArray(analytics.last7Days)) analytics.last7Days = [];
+    const existing = analytics.last7Days.find(d => d.dateLabel === todayLabel);
+    if (existing) existing.views += 1;
+    else {
+        analytics.last7Days.push({ dateLabel: todayLabel, views: 1 });
+        if (analytics.last7Days.length > 7) analytics.last7Days.shift();
+    }
+
     saveAnalytics();
     renderAnalytics();
 }
 function renderAnalytics() {
     const totalVisitorsEl = document.getElementById('totalVisitors');
     if (!totalVisitorsEl) return;
+
     const totalViewsEl = document.getElementById('totalViews');
     const todayVisitorsEl = document.getElementById('todayVisitors');
     const todayDateEl = document.getElementById('todayDate');
@@ -1005,19 +1084,18 @@ function renderAnalytics() {
     const mobileCountEl = document.getElementById('mobileCount');
     const tabletCountEl = document.getElementById('tabletCount');
 
-    totalVisitorsEl.textContent = analytics.totalVisitors;
-    totalViewsEl.textContent = analytics.totalViews;
-    todayVisitorsEl.textContent = analytics.todayVisitors;
+    totalVisitorsEl.textContent = analytics.totalVisitors || 0;
+    totalViewsEl.textContent = analytics.totalViews || 0;
+    todayVisitorsEl.textContent = analytics.todayVisitors || 0;
     todayDateEl.textContent = analytics.todayDate || '';
 
-    const totalDevices = analytics.devices.desktop + analytics.devices.mobile + analytics.devices.tablet || 1;
+    const totalDevices = (analytics.devices.desktop || 0) + (analytics.devices.mobile || 0) + (analytics.devices.tablet || 0) || 1;
     const pc = n => Math.round((n / totalDevices) * 100);
-    desktopCountEl.textContent = `${analytics.devices.desktop} (${pc(analytics.devices.desktop)}%)`;
-    mobileCountEl.textContent = `${analytics.devices.mobile} (${pc(analytics.devices.mobile)}%)`;
-    tabletCountEl.textContent = `${analytics.devices.tablet} (${pc(analytics.devices.tablet)}%)`;
+    desktopCountEl.textContent = `${analytics.devices.desktop || 0} (${pc(analytics.devices.desktop || 0)}%)`;
+    mobileCountEl.textContent = `${analytics.devices.mobile || 0} (${pc(analytics.devices.mobile || 0)}%)`;
+    tabletCountEl.textContent = `${analytics.devices.tablet || 0} (${pc(analytics.devices.tablet || 0)}%)`;
 }
 
-/* ADMIN PANEL */
 function openAdminPanel() {
     document.getElementById('adminModal').classList.add('active');
     if (isLoggedIn) showDashboard(); else showLogin();
@@ -1064,10 +1142,9 @@ function switchTab(tab) {
     if (tab === 'messages') loadMessages().then(renderMessages);
     else if (tab === 'analytics') renderAnalytics();
     else if (tab === 'products') renderAdminProducts();
-    else if (tab === 'sections') renderSections();
+    else if (tab === 'sections') loadSections();
 }
 
-/* AI CHAT */
 function toggleAiChat() {
     const w = document.getElementById('aiChatWidget');
     if (!w) return;
@@ -1098,12 +1175,11 @@ function handleAiChat(e) {
     const text = input.value.trim();
     if (!text) return;
     appendChatMessage(text, 'user');
-    const reply = 'Thanks for your message! For detailed product and bulk order queries, we will contact you on WhatsApp or phone shortly.';
+    const reply = 'Thanks for your message! For detailed product and bulk order help, please share your WhatsApp number or call us on +91 6393191774.';
     appendChatMessage(reply, 'bot');
     input.value = '';
 }
 
-/* WEBSITE SETTINGS */
 async function loadWebsiteSettings() {
     try {
         const docSnap = await db.collection('settings').doc('website').get();
@@ -1165,40 +1241,41 @@ async function saveWebsiteSettings(e) {
     alert('Website settings saved.');
 }
 
-/* SECTIONS (Updated with Firebase Logic) */
-async function saveSectionsToFirebase() {
+async function loadSections() {
     try {
-        await db.collection('settings').doc('sections').set({ data: customSections });
-    } catch (e) { console.error("Error saving sections: ", e); }
-}
-
-async function loadCustomSections() {
-    try {
-        const doc = await db.collection('settings').doc('sections').get();
-        if (doc.exists) { customSections = doc.data().data || []; }
-    } catch (e) { console.error("Error loading sections: ", e); }
+        const snap = await db.collection('sections').orderBy('orderIndex', 'asc').get();
+        customSections = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    } catch (e) {
+        customSections = [];
+    }
+    renderSections();
 }
 
 async function addSection(type) {
-    const id = Date.now().toString();
-    const base = { id, type, title: 'New Section', content: 'Edit this content', position: customSections.length };
-    customSections.push(base);
-    await saveSectionsToFirebase();
+    const base = {
+        type,
+        title: type.charAt(0).toUpperCase() + type.slice(1),
+        content: '',
+        orderIndex: customSections.length,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    const docRef = await db.collection('sections').add(base);
+    customSections.push({ id: docRef.id, ...base });
     renderSections();
 }
 
-async function updateSectionTitle(id, value) {
-    const s = customSections.find(x => x.id === id);
-    if (s) s.title = value;
-    await saveSectionsToFirebase();
+async function updateSection(id, updates) {
+    const idx = customSections.findIndex(s => s.id === id);
+    if (idx === -1) return;
+    customSections[idx] = { ...customSections[idx], ...updates };
+    await db.collection('sections').doc(id).update(updates);
     renderSections();
 }
-
-async function updateSectionContent(id, value) {
-    const s = customSections.find(x => x.id === id);
-    if (s) s.content = value;
-    await saveSectionsToFirebase();
-    renderSections();
+function updateSectionTitle(id, value) {
+    updateSection(id, { title: value });
+}
+function updateSectionContent(id, value) {
+    updateSection(id, { content: value });
 }
 
 async function moveSection(id, direction) {
@@ -1206,15 +1283,28 @@ async function moveSection(id, direction) {
     if (index === -1) return;
     let targetIndex = direction === 'up' ? index - 1 : index + 1;
     if (targetIndex < 0 || targetIndex >= customSections.length) return;
-    [customSections[targetIndex], customSections[index]] = [customSections[index], customSections[targetIndex]];
-    await saveSectionsToFirebase();
+
+    const a = customSections[index];
+    const b = customSections[targetIndex];
+    [customSections[targetIndex], customSections[index]] = [a, b];
+
+    const batch = db.batch();
+    batch.update(db.collection('sections').doc(a.id), { orderIndex: targetIndex });
+    batch.update(db.collection('sections').doc(b.id), { orderIndex: index });
+    await batch.commit();
     renderSections();
 }
 
 async function deleteSection(id) {
-    if(!confirm('Delete this section?')) return;
+    if (!confirm('Delete this section?')) return;
+    await db.collection('sections').doc(id).delete();
     customSections = customSections.filter(s => s.id !== id);
-    await saveSectionsToFirebase();
+    const batch = db.batch();
+    customSections.forEach((s, i) => {
+        s.orderIndex = i;
+        batch.update(db.collection('sections').doc(s.id), { orderIndex: i });
+    });
+    await batch.commit();
     renderSections();
 }
 
@@ -1224,17 +1314,25 @@ function renderSections() {
         if (!customSections.length) {
             list.innerHTML = '<p style="color: var(--color-text-secondary);">No extra sections added yet.</p>';
         } else {
-            list.innerHTML = customSections.map((s, i) => `
-                <div style="border:1px solid var(--color-border);border-radius:8px;padding:1rem;margin-bottom:0.75rem;">
-                    <strong>${i + 1}. [${s.type}]</strong><br>
-                    <input class="form-control" value="${s.title}" onchange="updateSectionTitle('${s.id}', this.value)" style="margin:0.5rem 0;">
-                    <textarea class="form-control" rows="2" onchange="updateSectionContent('${s.id}', this.value)">${s.content}</textarea>
-                    <div style="margin-top:0.5rem;">
-                        <button class="btn btn-sm" onclick="moveSection('${s.id}','up')" ${i===0?'disabled':''}>⬆</button>
-                        <button class="btn btn-sm" onclick="moveSection('${s.id}','down')" ${i===customSections.length-1?'disabled':''}>⬇</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteSection('${s.id}')">Delete</button>
-                    </div>
-                </div>`).join('');
+            list.innerHTML = customSections.map((s, i) => {
+                const preview = (s.content || '').split(/\r?\n/)[0].slice(0,40) || '(empty)';
+                return `
+                    <div style="border:1px solid var(--color-border);border-radius:8px;padding:1rem;margin-bottom:0.75rem;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <div>
+                                <strong>${s.title || s.type}</strong>
+                                <span style="font-size:.8rem;color:var(--color-text-secondary);">[${s.type}]</span><br>
+                                <span style="font-size:.8rem;color:var(--color-text-secondary);">${preview}</span>
+                            </div>
+                            <div style="display:flex;gap:.25rem;">
+                                <button class="btn btn-sm" onclick="moveSection('${s.id}','up')" ${i===0?'disabled':''}>⬆</button>
+                                <button class="btn btn-sm" onclick="moveSection('${s.id}','down')" ${i===customSections.length-1?'disabled':''}>⬇</button>
+                                <button class="btn btn-primary btn-sm" onclick="openSectionEditor('${s.id}')">Edit</button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteSection('${s.id}')">Delete</button>
+                            </div>
+                        </div>
+                    </div>`;
+            }).join('');
         }
     }
 
@@ -1258,7 +1356,7 @@ function renderSections() {
                 <div style="max-width:1200px;margin:2rem auto;">
                     <div style="background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 8px 20px rgba(0,0,0,.05);">
                         <h3 style="margin-bottom:0.5rem;">${s.title || 'New Card'}</h3>
-                        <p style="color:var(--color-text-secondary);">${s.content || ''}</p>
+                        <p style="color:var(--color-text-secondary);white-space:pre-line;">${s.content || ''}</p>
                     </div>
                 </div>`;
         }
@@ -1281,7 +1379,7 @@ function renderSections() {
                 <div style="max-width:1200px;margin:2rem auto;">
                     <h3 style="margin-bottom:1rem;">${s.title || 'Gallery'}</h3>
                     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
-                        ${items || '<p style="color:var(--color-text-secondary);">Add image URLs in the content box (space separated).</p>'}
+                        ${items || '<p style="color:var(--color-text-secondary);">Add image URLs separated by space or new line.</p>'}
                     </div>
                 </div>`;
         }
@@ -1291,12 +1389,20 @@ function renderSections() {
         return `
             <div style="max-width:800px;margin:2rem auto;text-align:center;">
                 <h3>${s.title || 'New Section'}</h3>
-                <p style="color:var(--color-text-secondary);margin-top:0.5rem;">${s.content || ''}</p>
+                <p style="color:var(--color-text-secondary);margin-top:0.5rem;white-space:pre-line;">${s.content || ''}</p>
             </div>`;
     }).join('');
 }
 
-/* ASSISTANT SETTINGS */
+function openSectionEditor(id) {
+    const s = customSections.find(x => x.id === id);
+    if (!s) return;
+    const newTitle = prompt('Section title:', s.title || '');
+    if (newTitle === null) return;
+    const newContent = prompt('Section content (for image: paste URL, for gallery: multiple URLs):', s.content || '');
+    updateSection(id, { title: newTitle, content: newContent || '' });
+}
+
 function loadAssistantSettingsIntoUI() {
     const g = document.getElementById('assistantGreeting');
     if (g && assistantSettings.greeting) g.value = assistantSettings.greeting;
@@ -1306,10 +1412,16 @@ function loadAssistantSettingsIntoUI() {
     if (st) st.value = assistantSettings.subtitle;
     const chk = document.getElementById('assistantEnabled');
     if (chk) chk.checked = assistantSettings.enabled;
+
     document.getElementById('assistantTitleHeader').textContent = assistantSettings.title;
     document.getElementById('assistantSubtitleHeader').textContent = assistantSettings.subtitle;
-    document.getElementById('aiChatButton').style.display = assistantSettings.enabled ? 'flex' : 'none';
+
+    const btn = document.getElementById('aiChatButton');
+    if (btn) btn.style.display = assistantSettings.enabled ? 'flex' : 'none';
     if (!assistantSettings.enabled) document.getElementById('aiChatWidget').style.display = 'none';
+
+    const greetBlock = document.getElementById('assistantGreetingBlock');
+    if (greetBlock) greetBlock.innerText = assistantSettings.greeting.replace(/\n/g, '\n');
 }
 function toggleAssistant() {
     const chk = document.getElementById('assistantEnabled');
@@ -1327,14 +1439,13 @@ async function saveAssistantSettings() {
 function resetAssistantSettings() {
     assistantSettings = {
         enabled: true,
-        greeting: "👋 Hi! I'm your Harish Footwear assistant. I can help you with:\n• Product information\n• Contact details\n• Bulk order inquiries\n• Location and hours\n\nHow can I assist you today?",
+        greeting: "👋 Namaste! I’m Harish Footwear’s assistant.\n\nI can help you with:\n• Product suggestions\n• Stock & size availability\n• Bulk wholesale orders\n• Shop location & contact\n\nType your question here or send your WhatsApp number,\nwe’ll reply quickly from +91 6393191774.",
         title: 'Harish Assistant 🤖',
-        subtitle: 'Ask me anything!'
+        subtitle: 'Ask me anything about footwear!'
     };
     loadAssistantSettingsIntoUI();
 }
 
-/* ADMIN ACCOUNT */
 async function saveAdminCredentials() {
     adminCredentials.username = document.getElementById('adminUsernameInput').value;
     adminCredentials.password = document.getElementById('adminPasswordInput').value;
@@ -1342,7 +1453,6 @@ async function saveAdminCredentials() {
     alert('Admin credentials updated.');
 }
 
-/* ADMIN BADGE */
 function checkAdminAccess() {
     const params = new URLSearchParams(window.location.search);
     if (params.get('admin') === 'true') {
@@ -1350,16 +1460,22 @@ function checkAdminAccess() {
     }
 }
 
-/* INIT */
 async function initialize() {
     await loadWebsiteSettings();
-    await loadCustomSections(); // Fetch saved sections from database
+    try {
+        const adminDoc = await db.collection('settings').doc('admin').get();
+        if (adminDoc.exists) adminCredentials = { ...adminCredentials, ...adminDoc.data() };
+    } catch (e) {}
+    try {
+        const aDoc = await db.collection('settings').doc('assistant').get();
+        if (aDoc.exists) assistantSettings = { ...assistantSettings, ...aDoc.data() };
+    } catch (e) {}
+    loadAssistantSettingsIntoUI();
     await loadSavedProducts();
     renderProducts();
-    renderSections(); // Render both admin list and public view
+    await loadSections();
     trackVisitor();
     checkAdminAccess();
-    loadAssistantSettingsIntoUI();
 }
 initialize();
 </script>
