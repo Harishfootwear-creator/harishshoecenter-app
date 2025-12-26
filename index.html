@@ -1159,16 +1159,20 @@ function appendChatMessage(text, from = 'user') {
     bubble.style.maxWidth = '90%';
     bubble.style.padding = '0.6rem 0.8rem';
     bubble.style.borderRadius = '10px';
+
     if (from === 'user') {
         bubble.style.marginLeft = 'auto';
         bubble.style.background = '#e5e7eb';
+        bubble.textContent = text;               // user: plain text
     } else {
         bubble.style.background = 'linear-gradient(135deg,#e0f2fe,#dbeafe)';
+        bubble.innerHTML = text;                 // bot: allow HTML (for links)
     }
-    bubble.textContent = text;
+
     container.appendChild(bubble);
     container.scrollTop = container.scrollHeight;
 }
+
 function handleAiChat(e) {
     e.preventDefault();
     const input = document.getElementById('aiChatInput');
