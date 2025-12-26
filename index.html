@@ -1144,7 +1144,6 @@ function switchTab(tab) {
     else if (tab === 'products') renderAdminProducts();
     else if (tab === 'sections') loadSections();
 }
-
 function handleAiChat(e) {
     e.preventDefault();
     const input = document.getElementById('aiChatInput');
@@ -1195,7 +1194,6 @@ function handleAiChat(e) {
         appendChatMessage(reply, 'bot');
     }, 1000);
 }
-
 
 async function loadWebsiteSettings() {
     try {
