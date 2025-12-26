@@ -1172,12 +1172,50 @@ function appendChatMessage(text, from = 'user') {
 function handleAiChat(e) {
     e.preventDefault();
     const input = document.getElementById('aiChatInput');
-    const text = input.value.trim();
+    const text = input.value.trim().toLowerCase();
     if (!text) return;
-    appendChatMessage(text, 'user');
-    const reply = 'Thanks for your message! For detailed product and bulk order help, please share your WhatsApp number or call us on +91 6393191774.';
-    appendChatMessage(reply, 'bot');
+    
+    appendChatMessage(input.value, 'user');
     input.value = '';
+    
+    // Smart replies based on keywords
+    let reply = '';
+    
+    if (text.includes('price') || text.includes('cost') || text.includes('rate') || text.includes('₹')) {
+        reply = '💰 All our prices are wholesale rates. Call +91 6393191774 or WhatsApp for current pricing and bulk discounts!';
+    }
+    else if (text.includes('stock') || text.includes('available') || text.includes('size') || text.includes('sizes')) {
+        reply = '📦 Check our product cards for sizes and stock status. For exact availability, call +91 6393191774 - we update daily!';
+    }
+    else if (text.includes('nike') || text.includes('adidas') || text.includes('puma') || text.includes('reebok')) {
+        reply = '👟 Yes we have premium brands! Browse our collection above or call +91 6393191774 for specific models and bulk pricing.';
+    }
+    else if (text.includes('order') || text.includes('bulk') || text.includes('wholesale')) {
+        reply = '🛒 Great! We specialize in bulk wholesale orders. Share your requirements on WhatsApp +91 6393191774 for best rates.';
+    }
+    else if (text.includes('men') || text.includes('women') || text.includes('kids')) {
+        reply = '👨‍👩‍👧 We have footwear for Men, Women & Kids! Filter by category or call +91 6393191774 to discuss your needs.';
+    }
+    else if (text.includes('location') || text.includes('address') || text.includes('varanasi') || text.includes('bansdih')) {
+        reply = '📍 We\'re located in Bansdih, UP-277202. Click the location card above or call +91 6393191774 for directions!';
+    }
+    else if (text.includes('delivery') || text.includes('ship') || text.includes('courier')) {
+        reply = '🚚 We arrange delivery across UP and nearby areas. Contact +91 6393191774 to discuss shipping for your order.';
+    }
+    else if (text.includes('discount') || text.includes('offer') || text.includes('sale')) {
+        reply = '🎉 Special bulk discounts available! Call/WhatsApp +91 6393191774 with your order quantity for best offers.';
+    }
+    else {
+        // Default intelligent reply
+        reply = `Thanks for asking "${input.value}"! For personalized help with products, sizes, pricing or bulk orders, please share your WhatsApp number or call +91 6393191774. We reply instantly! 😊`;
+    }
+    
+    // Typing indicator
+    appendChatMessage('🤔 Thinking...', 'bot');
+    setTimeout(() => {
+        document.querySelector('#aiChatMessages div:last-child').remove();
+        appendChatMessage(reply, 'bot');
+    }, 1000);
 }
 
 async function loadWebsiteSettings() {
