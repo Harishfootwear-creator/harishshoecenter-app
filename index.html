@@ -1144,6 +1144,31 @@ function switchTab(tab) {
     else if (tab === 'products') renderAdminProducts();
     else if (tab === 'sections') loadSections();
 }
+
+function toggleAiChat() {
+    const w = document.getElementById('aiChatWidget');
+    if (!w) return;
+    if (w.style.display === 'none' || !w.style.display) w.style.display = 'block';
+    else w.style.display = 'none';
+}
+function appendChatMessage(text, from = 'user') {
+    const container = document.getElementById('aiChatMessages');
+    const bubble = document.createElement('div');
+    bubble.style.marginBottom = '0.5rem';
+    bubble.style.fontSize = '0.875rem';
+    bubble.style.maxWidth = '90%';
+    bubble.style.padding = '0.6rem 0.8rem';
+    bubble.style.borderRadius = '10px';
+    if (from === 'user') {
+        bubble.style.marginLeft = 'auto';
+        bubble.style.background = '#e5e7eb';
+    } else {
+        bubble.style.background = 'linear-gradient(135deg,#e0f2fe,#dbeafe)';
+    }
+    bubble.textContent = text;
+    container.appendChild(bubble);
+    container.scrollTop = container.scrollHeight;
+}
 function handleAiChat(e) {
     e.preventDefault();
     const input = document.getElementById('aiChatInput');
@@ -1156,13 +1181,7 @@ function handleAiChat(e) {
     // Smart replies based on keywords
     let reply = '';
     
-    if (text.includes('location') || text.includes('address') || text.includes('where') || text.includes('bansdih')) {
-        reply = '📍 Bansdih-UP 277202 <a href="https://share.google/XIU7RJGhg3sTFikFE" target="_blank" style="color:#3b82f6;font-weight:600;">View on Google Maps</a>';
-    }
-    else if (text.includes('hour') || text.includes('time') || text.includes('open') || text.includes('timing')) {
-        reply = '🕒 Open everyday from 6AM to 8PM daily. Call +91 6393191774 to confirm before visiting!';
-    }
-    else if (text.includes('price') || text.includes('cost') || text.includes('rate') || text.includes('₹')) {
+    if (text.includes('price') || text.includes('cost') || text.includes('rate') || text.includes('₹')) {
         reply = '💰 All our prices are wholesale rates. Call +91 6393191774 or WhatsApp for current pricing and bulk discounts!';
     }
     else if (text.includes('stock') || text.includes('available') || text.includes('size') || text.includes('sizes')) {
@@ -1177,6 +1196,12 @@ function handleAiChat(e) {
     else if (text.includes('men') || text.includes('women') || text.includes('kids')) {
         reply = '👨‍👩‍👧 We have footwear for Men, Women & Kids! Filter by category or call +91 6393191774 to discuss your needs.';
     }
+     else if (text.includes('hour') || text.includes('time') || text.includes('open') || text.includes('timing')) {
+        reply = '🕒 Open everyday from 6AM to 8PM daily. Call +91 6393191774 to confirm before visiting!';
+    }
+    else if (text.includes('location') || text.includes('address') || text.includes('varanasi') || text.includes('bansdih')) {
+        reply = '📍 We\'re located in Bansdih, UP-277202. Click the location card above or call +91 6393191774 for directions!';
+    }
     else if (text.includes('delivery') || text.includes('ship') || text.includes('courier')) {
         reply = '🚚 We arrange delivery across UP and nearby areas. Contact +91 6393191774 to discuss shipping for your order.';
     }
@@ -1184,6 +1209,7 @@ function handleAiChat(e) {
         reply = '🎉 Special bulk discounts available! Call/WhatsApp +91 6393191774 with your order quantity for best offers.';
     }
     else {
+        // Default intelligent reply
         reply = `Thanks for asking "${input.value}"! For personalized help with products, sizes, pricing or bulk orders, please share your WhatsApp number or call +91 6393191774. We reply instantly! 😊`;
     }
     
