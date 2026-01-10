@@ -27,6 +27,12 @@
         @keyframes slideIn { from{opacity:0;transform:translateX(-30px)} to{opacity:1;transform:translateX(0)} }
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.8} }
 
+        /* Typing Animation for AI */
+        .typing-dots span { animation: blink 1.5s infinite; font-size: 20px; font-weight: bold; }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes blink { 0% { opacity: 0.2; } 50% { opacity: 1; } 100% { opacity: 0.2; } }
+
         *{box-sizing:border-box;margin:0;padding:0}
 
         body{
@@ -881,7 +887,7 @@ function renderProducts() {
             ${product.stock && product.stock > 0
                 ? `<div class="product-stock">${product.stock} in stock</div>`
                 : ''}                
-              </div>
+               </div>
             </div>`;
     }).join('');
 }
@@ -1022,7 +1028,7 @@ function renderMessages() {
     }
     container.innerHTML = messages.map(m => `
         <div style="border:1px solid var(--color-border);padding:1rem;border-radius:8px;margin-bottom:.75rem;">
-            <strong>${m.name || ''}</strong> &lt;${m.email || ''}&gt;<br>
+            <strong>${m.name || ''}</strong> <${m.email || ''}><br>
             <span style="font-size:.9rem;">${m.message || ''}</span><br>
             <button class="btn btn-danger btn-sm" onclick="deleteMessage('${m.id}')">Delete</button>
         </div>`).join('');
@@ -1151,6 +1157,7 @@ function toggleAiChat() {
     if (w.style.display === 'none' || !w.style.display) w.style.display = 'block';
     else w.style.display = 'none';
 }
+
 function appendChatMessage(text, from = 'user') {
     const container = document.getElementById('aiChatMessages');
     const bubble = document.createElement('div');
@@ -1163,16 +1170,37 @@ function appendChatMessage(text, from = 'user') {
     if (from === 'user') {
         bubble.style.marginLeft = 'auto';
         bubble.style.background = '#e5e7eb';
-        bubble.textContent = text;               // user: plain text
+        bubble.textContent = text;
     } else {
         bubble.style.background = 'linear-gradient(135deg,#e0f2fe,#dbeafe)';
-        bubble.innerHTML = text;                 // bot: allow HTML (for links)
+        bubble.innerHTML = text;
     }
 
     container.appendChild(bubble);
     container.scrollTop = container.scrollHeight;
 }
 
+// ADVANCED FEATURE HELPER: Quick Buttons
+function addAiQuickButtons(labels) {
+    const container = document.getElementById('aiChatMessages');
+    const btnContainer = document.createElement('div');
+    btnContainer.style.cssText = "display:flex; gap:5px; flex-wrap:wrap; margin-top:5px; margin-bottom:10px;";
+
+    labels.forEach(label => {
+        const btn = document.createElement('button');
+        btn.innerText = label;
+        btn.style.cssText = "padding:6px 10px; border-radius:15px; border:1px solid #3b82f6; background:#fff; color:#3b82f6; font-size:11px; cursor:pointer;";
+        btn.onclick = () => {
+            document.getElementById('aiChatInput').value = label;
+            document.querySelector('#aiChatWidget form').dispatchEvent(new Event('submit'));
+        };
+        btnContainer.appendChild(btn);
+    });
+    container.appendChild(btnContainer);
+    container.scrollTop = container.scrollHeight;
+}
+
+// ADVANCED FEATURE: Intent Detection & Lead Capture
 function handleAiChat(e) {
     e.preventDefault();
     const input = document.getElementById('aiChatInput');
@@ -1182,50 +1210,56 @@ function handleAiChat(e) {
     appendChatMessage(input.value, 'user');
     input.value = '';
     
-    // Smart replies based on keywords
-    let reply = '';
-    
-    if (text.includes('price') || text.includes('cost') || text.includes('rate') || text.includes('₹')) {
-        reply = '💰 All our prices are wholesale rates. Call +91 6393191774 or WhatsApp for current pricing and bulk discounts!';
-    }
-    else if (text.includes('stock') || text.includes('available') || text.includes('size') || text.includes('sizes')) {
-        reply = '📦 Check our product cards for sizes and stock status. For exact availability, call +91 6393191774 - we update daily!';
-    }
-    else if (text.includes('nike') || text.includes('adidas') || text.includes('puma') || text.includes('reebok')) {
-        reply = '👟 Yes we have premium brands! Browse our collection above or call +91 6393191774 for specific models and bulk pricing.';
-    }
-    else if (text.includes('order') || text.includes('bulk') || text.includes('wholesale')) {
-        reply = '🛒 Great! We specialize in bulk wholesale orders. Share your requirements on WhatsApp +91 6393191774 for best rates.';
-    }
-    else if (text.includes('men') || text.includes('women') || text.includes('kids')) {
-        reply = '👨‍👩‍👧 We have footwear for Men, Women & Kids! Filter by category or call +91 6393191774 to discuss your needs.';
-    }
-    else if (text.includes('location') || text.includes('address') || text.includes('where') || text.includes('bansdih')) {
-    reply = '📍 Bansdih-UP 277202 <a href="https://share.google/XIU7RJGhg3sTFikFE" target="_blank" style="color:#3b82f6;font-weight:600;">View on Google Maps</a>';
-    }
-     else if (text.includes('hour') || text.includes('time') || text.includes('open') || text.includes('timing')) {
-        reply = '🕒 Open everyday from 6AM to 8PM daily. Call +91 6393191774 to confirm before visiting!';
-    }
-    else if (text.includes('location') || text.includes('address') || text.includes('varanasi') || text.includes('bansdih')) {
-        reply = '📍 We\'re located in Bansdih, UP-277202. Click the location card above or call +91 6393191774 for directions!';
-    }
-    else if (text.includes('delivery') || text.includes('ship') || text.includes('courier')) {
-        reply = '🚚 We arrange delivery across UP and nearby areas. Contact +91 6393191774 to discuss shipping for your order.';
-    }
-    else if (text.includes('discount') || text.includes('offer') || text.includes('sale')) {
-        reply = '🎉 Special bulk discounts available! Call/WhatsApp +91 6393191774 with your order quantity for best offers.';
-    }
-    else {
-        // Default intelligent reply
-        reply = `Thanks for asking "${input.value}"! For personalized help with products, sizes, pricing or bulk orders, please share your WhatsApp number or call +91 6393191774. We reply instantly! 😊`;
-    }
-    
     // Typing indicator
-    appendChatMessage('🤔 Thinking...', 'bot');
+    appendChatMessage('<div class="typing-dots"><span>.</span><span>.</span><span>.</span></div>', 'bot');
+    const lastMsg = document.querySelector('#aiChatMessages div:last-child');
+    
     setTimeout(() => {
-        document.querySelector('#aiChatMessages div:last-child').remove();
+        lastMsg.remove();
+        let reply = '';
+        let quickButtons = [];
+
+        // 1. Phone Number Detection (Lead Capture)
+        const phoneMatch = text.match(/[0-9]{10}/);
+        if (phoneMatch) {
+            db.collection('messages').add({
+                name: "Lead from Chat",
+                email: "WhatsApp Lead",
+                message: "Customer provided phone for catalog/contact: " + phoneMatch[0],
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            reply = "✅ Thank you! I've saved your number. Our team will WhatsApp you the catalog and price list shortly at " + phoneMatch[0] + ".";
+            quickButtons = ["View Products 👟", "Shop Location 📍"];
+        }
+        // 2. Greeting
+        else if (text.match(/(hi|hello|hey|namaste|hlo)/)) {
+            reply = "Namaste! I'm your footwear assistant. How can I help you grow your business today?";
+            quickButtons = ["Latest Stock 📦", "Wholesale Price 💰", "WhatsApp Catalog 💬"];
+        }
+        // 3. Dynamic Product Awareness
+        else if (text.match(/(nike|adidas|puma|reebok|latest|stock|shoe|brand)/)) {
+            const count = products.length;
+            const brands = [...new Set(products.map(p => p.brand))].join(", ");
+            reply = `We currently have **${count}** premium models in stock! <br><br> Brands available: ${brands}. <br><br> Would you like a price list for a specific brand?`;
+            quickButtons = ["Nike List", "Adidas List", "Full Catalog 📚"];
+        }
+        // 4. Catalog Request
+        else if (text.match(/(catalog|list|price|wholesale|bulk)/)) {
+            reply = "I can send our full Wholesale Price List and PDF Catalog to your WhatsApp. <br><br> Please **share your 10-digit WhatsApp number** here. 👇";
+        }
+        // 5. Location
+        else if (text.match(/(location|address|where|place|shop|bansdih)/)) {
+            reply = "📍 **Harish Footwear** is located in Bansdih, UP-277202. <br><br> <a href='https://share.google/XIU7RJGhg3sTFikFE' target='_blank' style='color:#1e3a8a;font-weight:bold;'>Click here for Google Maps 🗺️</a>";
+        }
+        // 6. Default Smart Reply
+        else {
+            reply = `That's interesting! For detailed info on "${text}", I suggest talking to our manager directly or sharing your WhatsApp number for a call-back. 😊`;
+            quickButtons = ["Call Now 📞", "Share WhatsApp 💬"];
+        }
+        
         appendChatMessage(reply, 'bot');
-    }, 1000);
+        if(quickButtons.length > 0) addAiQuickButtons(quickButtons);
+    }, 1200);
 }
 
 async function loadWebsiteSettings() {
